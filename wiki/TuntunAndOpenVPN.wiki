@@ -1,4 +1,5 @@
 #summary Tuntun and OpenVPN
+#labels Featured,Phase-Deploy
 
 = The OpenVPN Management Interface =
 === What is it and why it's useful? ===
