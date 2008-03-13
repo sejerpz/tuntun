@@ -9,7 +9,7 @@ running instance of openvpn daemon by issue simple
 commands in a telnel like tcp connection.
 
 It's partculary useful because it allow to start or stop
-a vpn tunnel, grab its current status and to provide login credentials interactively.
+a vpn tunnel, to grab its current status and to provide login credentials interactively.
 
 It's by no means a secure connection to openvpn daemon, 
 so it should be explicitly enabled in the config file, 
