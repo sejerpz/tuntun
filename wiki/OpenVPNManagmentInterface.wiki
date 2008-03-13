@@ -1,4 +1,4 @@
-#summary Th OpenVPN managment interface
+#summary The OpenVPN managment interface
 
 = The OpenVPN Managment Interface =
 === What is it and why it's useful? ===
