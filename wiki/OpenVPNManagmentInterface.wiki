@@ -43,7 +43,7 @@ _management-query-passwords_
 
 _auth-user-pass_
    Enable pam-unix username and password authentication
-   (opzional)
+   (optional)
 
 _auth-retry interact_
    Reask the username and/or password in case of failure.
