@@ -1,6 +1,6 @@
 #summary Tuntun and OpenVPN
 
-= The OpenVPN Managment Interface =
+= The OpenVPN Management Interface =
 === What is it and why it's useful? ===
 
 The [http://openvpn.net OpenVPN] management interface allows to control a 
