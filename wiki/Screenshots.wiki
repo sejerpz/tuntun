@@ -1,7 +1,5 @@
 #labels Phase-Design
-== Tuntun screenshot ==
-----
-||http://tuntun.googlecode.com/svn/wiki/images/Screenshoot-1.png||
-||http://tuntun.googlecode.com/svn/wiki/images/Screenshoot-2.png||
-||http://tuntun.googlecode.com/svn/wiki/images/Screenshoot-3.png||
-||http://tuntun.googlecode.com/svn/wiki/images/Screenshoot-4.png||
+*Tuntun screenshots*
+
+|| http://tuntun.googlecode.com/svn/wiki/images/Screenshot-1-thumb.png || http://tuntun.googlecode.com/svn/wiki/images/Screenshot-2-thumb.png ||
+|| http://tuntun.googlecode.com/svn/wiki/images/Screenshot-3-thumb.png || http://tuntun.googlecode.com/svn/wiki/images/Screenshot-4-thumb.png ||
