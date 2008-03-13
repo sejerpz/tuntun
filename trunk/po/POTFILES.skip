@@ -1,0 +1,14 @@
+# List of source files containing translatable strings.
+
+src/tuntun.server.in
+src/tuntun-connection-info.c
+src/tuntun-connection.c
+src/tuntun-utils.c
+src/tuntun-connections-dialog.c
+src/tuntun-constants.c
+src/tuntun.c
+src/tuntun-connection-dialog.c
+src/tuntun-log-window.c
+src/tuntun-applet.c
+src/tuntun-auth-dialog.c
+ui/tuntun.glade
