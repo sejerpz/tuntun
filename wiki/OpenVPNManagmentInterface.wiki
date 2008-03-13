@@ -11,9 +11,9 @@ commands in a telnel like tcp connection.
 It's partculary useful because it allow to start or stop
 a vpn tunnel, to grab its current status and to provide login credentials interactively.
 
-It's by no means a secure connection to openvpn daemon, 
+Because it was written just to allow GUI application to control the daemon instance, it's by no means a secure connection to openvpn, 
 so it should be explicitly enabled in the config file, 
-and should be used just in a single user environment 
+and it should be used just in a single user environment 
 binded to localhost.
 
 Follow this link for futher details: http://openvpn.net/index.php/documentation/miscellaneous/management-interface.html
