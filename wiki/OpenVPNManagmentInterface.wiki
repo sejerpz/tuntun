@@ -1,4 +1,4 @@
-#summary The OpenVPN managment interface
+#summary OpenVPN Configuration
 #labels Phase-Requirements,Phase-Design
 
 = The OpenVPN Managment Interface =
