@@ -1,0 +1,23 @@
+Source: tuntun
+Section: unknown
+Priority: extra
+Maintainer: Andrea Del Signore <sejerpz@tin.it>
+Build-Depends: debhelper (>= 5), autotools-dev
+Standards-Version: 3.7.2
+
+Package: tuntun
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Tuntun an GUI for OpenVPN
+ Tuntun is a Gnome applet to control a list of
+ OpenVPN connection through the OpenVPN daemon
+ management interface.
+ .
+ Main fautures are:
+   * Light 
+   * Well integrated within the Gnome environment
+     (Gnome Keyring and notifications)
+   * Support for Auth and Private-Key authetication
+     methods
+ .
+ Homepage: http://code.google.com/p/tuntun
