@@ -26,7 +26,7 @@ Configuring a vpn tunnel so it can be controlled from
 *Tuntun* applet is quite easy.
 
 Just add some OpenVPN directive at the end of you config file
-and restart the openvpn daemon.
+and restart the daemon.
 
 The relevants config options are:
 
