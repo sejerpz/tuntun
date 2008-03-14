@@ -1,0 +1,17 @@
+#summary The future of Tuntun.
+#labels Featured,Phase-QA
+
+== Version 0.1 ==
+  * ~~Support all the functionality that [http://persbaglio.no-ip.org/?page_id=85 ovpnClient] has~~
+  * ~~Support for OpenVPN authentication requests~~
+  * ~~Support for Gnome Keyring~~
+  * Debug and code cleanup
+
+== Version 0.2 ==
+  * New _double click_ connect
+  * Animate the icon on network activity
+  * Drop [http://persbaglio.no-ip.org/?page_id=144 S.n.u.l.] and use directly GIO library
+  * Debug and code cleanup
+
+== Future ==
+  * Update to the new Panel Applet format when it will be ready (Gnome 2.24?)
