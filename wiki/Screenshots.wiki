@@ -1,4 +1,4 @@
-#summary See _Tuntun_ in action!
+#summary See Tuntun in action!
 #labels Featured,Phase-Support
 
 || [http://tuntun.googlecode.com/svn/wiki/images/Screenshot-1.png http://tuntun.googlecode.com/svn/wiki/images/Screenshot-1-thumb.png] || [http://tuntun.googlecode.com/svn/wiki/images/Screenshot-2.png http://tuntun.googlecode.com/svn/wiki/images/Screenshot-2-thumb.png] ||
