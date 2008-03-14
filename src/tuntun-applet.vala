@@ -91,7 +91,6 @@ namespace Tuntun
                             "</popup>";
 
                         this.setup_menu (_right_click_menu_xml.printf (_("_Preferences..."), _("_Show log..."), _("_About...")), _verbs, this);
-                        this.delete_event += this.on_applet_deleted;
                         this.button_press_event += this.on_button_press;
                         this.show_all ();
                 }
@@ -298,10 +297,6 @@ namespace Tuntun
                         dialog.run ();	
 
                         dialog.hide ();
-                }
-
-                private void on_applet_deleted () {
-                        debug ("applet deleted");
                 }
 
                 public static int main(string[] args) {

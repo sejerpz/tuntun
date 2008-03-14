@@ -121,7 +121,6 @@ namespace Tuntun
 
                 private void cleanup_and_close ()
                 {
-                        debug ("deinitialize");
                         _window.delete_event -= this.on_window_delete;
                         _window.hide ();
 
