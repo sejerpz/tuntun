@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tuntun 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-03-13 00:23+0100\n"
-"PO-Revision-Date: 2008-03-13 00:24+0100\n"
+"POT-Creation-Date: 2008-03-14 11:57+0100\n"
+"PO-Revision-Date: 2008-03-14 12:00+0100\n"
 "Last-Translator: Andrea Del Signore <sejerpz@tin.it>\n"
 "Language-Team: Italiano <sejerpz@tin.it>\n"
 "MIME-Version: 1.0\n"
@@ -75,68 +75,68 @@ msgstr "_Rimuovi"
 
 #: ../ui/tuntun.ui.h:16 ../ui/tuntun-auth-dialog.ui.h:4
 msgid "gtk-cancel"
-msgstr ""
+msgstr "gtk-cancel"
 
 #: ../ui/tuntun.ui.h:17 ../ui/tuntun-auth-dialog.ui.h:5
 msgid "gtk-ok"
-msgstr ""
+msgstr "gtk-ok"
 
 #: ../src/tuntun.server.in.in.h:1
 msgid "Tuntun an OpenVPN connection manager"
 msgstr "TunTun un manager per connessioni OpenVPN"
 
-#: ../src/tuntun-connections-dialog.vala:211
+#: ../src/tuntun-connections-dialog.vala:237
 msgid "Error while saving config"
 msgstr "Errore durante il salvataggio delle configurazioni"
 
-#: ../src/tuntun-log-window.vala:90
+#: ../src/tuntun-log-window.vala:116
 msgid "All"
 msgstr "Tutte"
 
-#: ../src/tuntun-log-window.vala:145
+#: ../src/tuntun-log-window.vala:171
 msgid "select a connection first..."
 msgstr "selezionare prima una connessione..."
 
-#: ../src/tuntun-applet.vala:67
+#: ../src/tuntun-applet.vala:93
 #, c-format
 msgid "_Preferences..."
 msgstr "_Preferenze"
 
-#: ../src/tuntun-applet.vala:67
+#: ../src/tuntun-applet.vala:93
 msgid "_Show log..."
 msgstr "_Visualizza log"
 
-#: ../src/tuntun-applet.vala:67
+#: ../src/tuntun-applet.vala:93
 msgid "_About..."
 msgstr "_Informazioni su..."
 
-#: ../src/tuntun-applet.vala:108
+#: ../src/tuntun-applet.vala:134
 msgid "Authentication failed"
 msgstr "Autenticazione fallita"
 
-#: ../src/tuntun-applet.vala:132
+#: ../src/tuntun-applet.vala:158
 msgid "connection established"
 msgstr "connessione avvenuta"
 
-#: ../src/tuntun-applet.vala:137
+#: ../src/tuntun-applet.vala:163
 msgid "connection closed"
 msgstr "connessione chiusa"
 
-#: ../src/tuntun-applet.vala:258
+#: ../src/tuntun-applet.vala:284
 msgid "translator_credits"
 msgstr "Andrea Del Signore"
 
-#: ../src/tuntun-applet.vala:265
+#: ../src/tuntun-applet.vala:291
 msgid "TunTun VPN Connection manager"
 msgstr "TunTun manager di connessioni VPN "
 
-#: ../src/tuntun-applet.vala:268
-msgid "perSbaglio"
-msgstr "perSbaglio"
+#: ../src/tuntun-applet.vala:294
+msgid "Homepage"
+msgstr "Homepage"
 
-#: ../src/tuntun-applet.vala:269
+#: ../src/tuntun-applet.vala:295
 msgid ""
-"(c) 2006 Andrea Del Signore (sejerpz@tin.it).\n"
+"(c) 2008 Andrea Del Signore (sejerpz@tin.it).\n"
 "\n"
 " This program is licensed under the terms of the GNU\n"
 "\n"
@@ -144,3 +144,13 @@ msgid ""
 "\n"
 " NO WARRANTY; see the file COPYING for details."
 msgstr ""
+"(c) 2008 Andrea Del Signore (sejerpz@tin.it).\n"
+"\n"
+" Questo programma è concesso in licenza sotto i termini definiti dalla GNU\n"
+"\n"
+" General Public License ed è fornito assolutamente senza\n"
+"\n"
+" NESSUNA GARANZIA; per ulteriori dettagli vedere il file COPYING."
+
+#~ msgid "perSbaglio"
+#~ msgstr "perSbaglio"

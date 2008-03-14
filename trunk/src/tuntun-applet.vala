@@ -290,9 +290,9 @@ namespace Tuntun
                         dialog.set_name (Config.PACKAGE_STRING);
                         dialog.set_comments (_("TunTun VPN Connection manager"));
                         dialog.set_version (Config.PACKAGE_VERSION);
-                        dialog.set_website ("http://persbaglio.no-ip.org");
-                        dialog.set_website_label (_("perSbaglio"));
-                        dialog.set_license (_("(c) 2006 Andrea Del Signore (sejerpz@tin.it).\n\n This program is licensed under the terms of the GNU\n\n General Public License and is provided with absolutely\n\n NO WARRANTY; see the file COPYING for details."));
+                        dialog.set_website ("http://code.google.com/p/tuntun");
+                        dialog.set_website_label (_("Homepage"));
+                        dialog.set_license (_("(c) 2008 Andrea Del Signore (sejerpz@tin.it).\n\n This program is licensed under the terms of the GNU\n\n General Public License and is provided with absolutely\n\n NO WARRANTY; see the file COPYING for details."));
 
                         dialog.set_authors (authors);
                         dialog.run ();	
