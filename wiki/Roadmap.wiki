@@ -5,7 +5,7 @@
   * ~~Support all the functionality that [http://persbaglio.no-ip.org/?page_id=85 ovpnClient] has~~
   * ~~Support for OpenVPN authentication requests~~
   * ~~Support for Gnome Keyring~~
-  * Debug and code cleanup
+  * ~~Debug and code cleanup~~
 
 == Version 0.2 ==
   * New _double click_ connect
