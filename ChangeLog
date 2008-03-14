@@ -1,0 +1,11 @@
+2008-03-14    <sejerpz@tin.it>
+
+	* src/tuntun-applet.vala: changed the homepage address.
+	* pixmaps/not_connected.png
+	  pixmaps/connected.png: updated to follows ovpnClient behaviour
+	* po/it.po: updated it traslation
+
+2008-03-13    <sejerpz@tin.it>
+
+	* src/*: first import in svn
+
