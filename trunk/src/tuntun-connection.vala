@@ -136,7 +136,6 @@ namespace Tuntun {
 
 		private void client_error (TcpClient sender, GLib.Error error)
 		{
-			//debug ("error received from %s:%s : %d-%s", sender.address, sender.port, ((Error) error).code, error.message);
 			this.control_channel_status = ConnectionStates.ERROR;
 		}
 
@@ -147,7 +146,6 @@ namespace Tuntun {
 				if (line == "" || line == "\n")
 					continue;
 
-				debug ("analyzing: %s", line);
 				if (_status_requested && PatternSpec.match_simple("*,CONNECTED,SUCCESS,*", line)) {
 					this.status = ConnectionStates.CONNECTED;
 					this._status_requested = false;

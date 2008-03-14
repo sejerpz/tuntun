@@ -1,7 +1,13 @@
+2008-03-14    <andrea@spavento.casa.locale>
+
+	* src/tuntun-connections-dialog.vala,
+	  src/tuntun-applet.vala,
+	  src/tuntun-connection.vala: cleaned up the code from the last debug functions
+
 2008-03-14    <sejerpz@tin.it>
 
 	* src/tuntun-applet.vala: changed the homepage address.
-	* pixmaps/not_connected.png
+	* pixmaps/not_connected.png,
 	  pixmaps/connected.png: updated to follows ovpnClient behaviour
 	* po/it.po: updated it traslation
 
