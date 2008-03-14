@@ -8,7 +8,7 @@ Standards-Version: 3.7.2
 Package: tuntun
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: Tuntun an GUI for OpenVPN
+Description: Gnome Applet GUI for OpenVPN
  Tuntun is a Gnome applet to control a list of
  OpenVPN connection through the OpenVPN daemon
  management interface.
