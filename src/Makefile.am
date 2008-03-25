@@ -27,7 +27,7 @@ tuntun_SOURCES = \
 	tuntun-auth-dialog.vala \
 	snul.vala
 
-tuntun_VALAFLAGS = --vapidir ../vapi --pkg libnotify --pkg config --pkg extensions --pkg unix-socket --pkg libpanelapplet-2.0-custom --pkg libbonoboui-2.0 --pkg vte --pkg gnome-keyring-1
+tuntun_VALAFLAGS = --vapidir ../vapi --pkg libnotify --pkg config --pkg extensions --pkg unix-socket --pkg libpanelapplet-2.0 --pkg libbonoboui-2.0 --pkg vte --pkg gnome-keyring-1
 
 tuntun_LDFLAGS = $(PACKAGE_LIBS) \
 	-export-dynamic

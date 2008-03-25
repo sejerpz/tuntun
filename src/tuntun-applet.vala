@@ -155,12 +155,12 @@ namespace Tuntun
 				if (connection.status == ConnectionStates.CONNECTED) {
 					notification = new Notification (connection.info.name, 
 					    _("connection established"), 
-					    Utils.get_image_path ("connected.png"), 
+					    Utils.get_image_path ("not_connected.png"), 
 					    this );
 				} else if (connection.status == ConnectionStates.DISCONNECTED) {
 					notification = new Notification (connection.info.name, 
 					    _("connection closed"), 
-					    Utils.get_image_path ("not_connected.png"), 
+					    Utils.get_image_path ("connected.png"), 
 					    this );
 				}
 
@@ -301,7 +301,7 @@ namespace Tuntun
 
                 public static int main(string[] args) {
                         var program = Gnome.Program.init ("GNOME_Tuntun", "0", Gnome.libgnomeui_module, args, "sm-connect", false);
-                        var ret = Panel.Applet.factory_main ("OAFIID:GNOME_Tuntun_Factory", typeof(PanelApplet), (Panel.AppletFactoryCallback) factory, null);
+                        var ret = Panel.Applet.factory_main ("OAFIID:GNOME_Tuntun_Factory", typeof(PanelApplet), (Panel.AppletFactoryCallback) factory);
                         return ret;
                 }
         }

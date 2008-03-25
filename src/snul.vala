@@ -180,11 +180,10 @@ namespace Snul
 			if (buffer == null)
 				return 0;
 
-			ssize_t len = buffer.size ();
 			size_t bytes_written;
 
 			try {
-				_io_channel.write_chars ((char[])buffer, (ssize_t) len, out bytes_written);
+				_io_channel.write_chars ((char[])buffer, out bytes_written);
 				_io_channel.flush ();
 			} catch (Error err) {
 				warning ("error writing: %s", err.message);
@@ -249,7 +248,7 @@ namespace Snul
 					size_t bytes_read = 0;
 
 					try {
-						channel.read_chars (_io_channel_buffer, BUFFER_LENGTH - 1, out bytes_read);
+						channel.read_chars (_io_channel_buffer, out bytes_read);
 						//null terminate
 						_io_channel_buffer[bytes_read] = (char) null;
 						if (bytes_read > 0) {
