@@ -264,7 +264,7 @@ tuntun_SOURCES = tuntun.vala tuntun-applet.vala tuntun-constants.vala \
 	tuntun-connection-dialog.h tuntun-log-window.c \
 	tuntun-log-window.h tuntun-auth-dialog.c tuntun-auth-dialog.h \
 	snul.c snul.h
-tuntun_VALAFLAGS = --vapidir ../vapi --pkg libnotify --pkg config --pkg extensions --pkg unix-socket --pkg libpanelapplet-2.0-custom --pkg libbonoboui-2.0 --pkg vte --pkg gnome-keyring-1
+tuntun_VALAFLAGS = --vapidir ../vapi --pkg libnotify --pkg config --pkg extensions --pkg unix-socket --pkg libpanelapplet-2.0 --pkg libbonoboui-2.0 --pkg vte --pkg gnome-keyring-1
 tuntun_LDFLAGS = $(PACKAGE_LIBS) \
 	-export-dynamic
 

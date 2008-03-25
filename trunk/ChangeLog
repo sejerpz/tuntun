@@ -1,3 +1,9 @@
+2008-03-25    <sejerpz@tin.it>
+
+	* src/tuntun-applet.vala: fix notification icon
+	* src/snul.vala: adapted to new glib vapi
+	* use the standard libpanelapplet vapi instead of the custom one
+
 2008-03-14    <sejerpz@tin.it>
 
 	* NEWS: pre release update
