@@ -155,12 +155,12 @@ namespace Tuntun
 				if (connection.status == ConnectionStates.CONNECTED) {
 					notification = new Notification (connection.info.name, 
 					    _("connection established"), 
-					    Utils.get_image_path ("not_connected.png"), 
+					    Utils.get_image_path (Constants.Images.CONNECTION_STATUS_CONNECTED), 
 					    this );
 				} else if (connection.status == ConnectionStates.DISCONNECTED) {
 					notification = new Notification (connection.info.name, 
 					    _("connection closed"), 
-					    Utils.get_image_path ("connected.png"), 
+					    Utils.get_image_path (Constants.Images.CONNECTION_STATUS_DISCONNECTED),
 					    this );
 				}
 
@@ -197,10 +197,10 @@ namespace Tuntun
                                                 menu_image = Utils.get_image_path (Constants.Images.CONNECTION_STATUS_UNKNOWN);
                                                 break;
                                         case ConnectionStates.DISCONNECTED:
-                                                menu_image = Utils.get_image_path (Constants.Images.CONNECTION_STATUS_NOT_CONNECTED);
+                                                menu_image = Utils.get_image_path (Constants.Images.CONNECTION_STATUS_DISCONNECT);
                                                 break;
                                         case ConnectionStates.CONNECTED:
-                                                menu_image = Utils.get_image_path (Constants.Images.CONNECTION_STATUS_CONNECTED);
+                                                menu_image = Utils.get_image_path (Constants.Images.CONNECTION_STATUS_CONNECT);
                                                 break;
                                         case ConnectionStates.CONNECTING:
                                         case ConnectionStates.DISCONNECTING:
