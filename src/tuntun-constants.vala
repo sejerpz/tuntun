@@ -35,8 +35,11 @@ namespace Tuntun {
 			public const string PANEL_ICON_NORMAL = "tuntun.png";
 
 			public const string CONNECTION_STATUS_UNKNOWN = "unknown.png";
-			public const string CONNECTION_STATUS_CONNECTED = "connected.png";
-			public const string CONNECTION_STATUS_NOT_CONNECTED = "not_connected.png";
+ 			public const string CONNECTION_STATUS_CONNECT = "disconnect.png";
+			public const string CONNECTION_STATUS_DISCONNECT = "connect.png";
+
+ 			public const string CONNECTION_STATUS_CONNECTED = "connected.png";
+			public const string CONNECTION_STATUS_DISCONNECTED = "not_connected.png";
 		}
 	}
 }

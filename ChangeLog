@@ -1,7 +1,13 @@
 2008-03-26    <sejerpz@tin.it>
 
+	* src/tuntun-applet.vala: bigger notification icons
+	* src/tuntun-constants.vala: updated the name of some image constants
+	
+2008-03-26    <sejerpz@tin.it>
+
 	* src/tuntun-auth-dialog.vala: updated to standard (new) gnome kerying vapi
 	* src/tuntun-applet.vala: updated to standard (new) libbonobo-ui vapi
+	
 2008-03-25    <sejerpz@tin.it>
 
 	* src/tuntun-applet.vala: fix notification icon
