@@ -59,20 +59,20 @@ namespace Tuntun
 
                         var verb = new BonoboUI.Verb();
                         verb.cname = "Properties";
-                        verb.cb = this.on_context_menu_item_clicked;
-                        verb.user_data = null;
+                        verb.cb = on_context_menu_item_clicked;
+                        verb.user_data = this;
                         _verbs[0] = verb;
 
                         verb = new BonoboUI.Verb();
                         verb.cname = "Log";
-                        verb.cb = this.on_context_menu_item_clicked;
-                        verb.user_data = null;
+                        verb.cb = on_context_menu_item_clicked;
+                        verb.user_data = this;
                         _verbs[1] = verb;
 
                         verb = new BonoboUI.Verb();
                         verb.cname = "About";
-                        verb.cb = this.on_context_menu_item_clicked;
-                        verb.user_data = null;
+                        verb.cb = on_context_menu_item_clicked;
+                        verb.user_data = this;
                         _verbs[2] = verb;
 		
                         verb = new BonoboUI.Verb();
@@ -234,7 +234,8 @@ namespace Tuntun
                         
                 }
 
-                private static void on_context_menu_item_clicked (BonoboUI.Component component, pointer user_data, string cname) {
+                private static void on_context_menu_item_clicked (BonoboUI.Component component, void* user_data, string cname) 
+		{
                         PanelApplet instance = (PanelApplet) user_data;
 
                         if (cname == "About") {

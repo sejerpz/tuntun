@@ -118,7 +118,7 @@ namespace Tuntun
 		{
 			//delete bogus keyring item
 			if (_keyring_item_id != 0)
-				item_delete (null, _keyring_item_id, on_item_delete_done, this, null);
+				item_delete (null, _keyring_item_id, on_item_delete_done, null);
 		}
 
 		public void authenticate ()
@@ -179,23 +179,22 @@ namespace Tuntun
 
 		private void authenticate_keyring_auth ()
 		{
-			find_network_password (null, null, _connection.info.address, null, "vpn", "auth", 0, this.on_find_password_done, this, null);
+			find_network_password (null, null, _connection.info.address, null, "vpn", "auth", 0, this.on_find_password_done, null);
 		}
 
 		private void authenticate_keyring_private_key ()
 		{
-			find_network_password (null, null, _connection.info.address, null, "vpn", "private-key", 0, this.on_find_password_done, this, null);
+			find_network_password (null, null, _connection.info.address, null, "vpn", "private-key", 0, this.on_find_password_done, null);
 		}
 
-		private static void on_find_password_done (Result result, GLib.List list, pointer data)
+		private void on_find_password_done (Result result, GLib.List list)
 		{
-			var self = (AuthDialog) data;
 			string username = null;
 			string password = null;
 
 			if (result == Result.OK && list.length () > 0) {
 				weak NetworkPasswordData npd = (NetworkPasswordData) list.first().data;
-				self._keyring_item_id = npd.item_id;
+				this._keyring_item_id = npd.item_id;
 				if (npd.authtype == "auth") {
 					username = npd.user;
 					password = npd.password;
@@ -203,26 +202,24 @@ namespace Tuntun
 					username = null;
 					password = npd.password;
 				}
-				self._connection.authenticate (self._type, username, password);
+				this._connection.authenticate (this._type, username, password);
 			} else {
-				self.authenticate_dialog ();
+				this.authenticate_dialog ();
 			}
 		}
 
-		private static void on_item_delete_done (Result result,pointer data)
+		private void on_item_delete_done (Result result)
 		{
-			var self = (AuthDialog) data;
 			if (result != Result.OK)
 				Utils.display_error (_("Keyring"), _("Error deleting credentials for '%s'"));
 		}
 
-		private static void on_set_password_done (Result result, uint val, pointer data)
+		private void on_set_password_done (Result result, uint val)
 		{
-			var self = (AuthDialog) data;
 			if (result != Result.OK)
 				Utils.display_error (_("Keyring"), _("Error saving credentials for '%s'"));
 
-			self.destroy ();
+			this.destroy ();
 		}
 
 		private void save (string username, string password)
@@ -239,7 +236,6 @@ namespace Tuntun
 			    0,
 			    password,
 			    on_set_password_done, 
-			    this,
 			    null);
 		}
 
@@ -257,7 +253,6 @@ namespace Tuntun
 			    0,
 			    private_key_password,
 			    this.on_set_password_done, 
-			    this,
 			    null);
 		}
 	}
