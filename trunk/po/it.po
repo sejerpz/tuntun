@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tuntun 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-03-14 11:57+0100\n"
-"PO-Revision-Date: 2008-03-14 12:00+0100\n"
+"POT-Creation-Date: 2008-04-05 17:10+0200\n"
+"PO-Revision-Date: 2008-04-05 17:12+0200\n"
 "Last-Translator: Andrea Del Signore <sejerpz@tin.it>\n"
 "Language-Team: Italiano <sejerpz@tin.it>\n"
 "MIME-Version: 1.0\n"
@@ -85,7 +85,15 @@ msgstr "gtk-ok"
 msgid "Tuntun an OpenVPN connection manager"
 msgstr "TunTun un manager per connessioni OpenVPN"
 
-#: ../src/tuntun-connections-dialog.vala:237
+#: ../src/tuntun-connection-info.vala:43
+msgid "none"
+msgstr "nessuno"
+
+#: ../src/tuntun-connection.vala:191
+msgid "unknown"
+msgstr "sconosciuto"
+
+#: ../src/tuntun-connections-dialog.vala:236
 msgid "Error while saving config"
 msgstr "Errore durante il salvataggio delle configurazioni"
 
@@ -110,15 +118,20 @@ msgstr "_Visualizza log"
 msgid "_About..."
 msgstr "_Informazioni su..."
 
-#: ../src/tuntun-applet.vala:134
+#: ../src/tuntun-applet.vala:133
 msgid "Authentication failed"
 msgstr "Autenticazione fallita"
 
-#: ../src/tuntun-applet.vala:158
-msgid "connection established"
-msgstr "connessione avvenuta"
+#: ../src/tuntun-applet.vala:157
+#, c-format
+msgid ""
+"connection established\n"
+"assigned ip: %s"
+msgstr ""
+"connessione avvenuta\n"
+"ip assegnato: %s"
 
-#: ../src/tuntun-applet.vala:163
+#: ../src/tuntun-applet.vala:162
 msgid "connection closed"
 msgstr "connessione chiusa"
 
