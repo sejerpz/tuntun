@@ -1,0 +1,155 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-04-05 17:10+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../ui/tuntun.ui.h:1
+msgid "<b>Remove the selected connection?</b>"
+msgstr ""
+
+#: ../ui/tuntun.ui.h:2
+msgid "Command area"
+msgstr ""
+
+#: ../ui/tuntun.ui.h:3
+msgid "Connection properties"
+msgstr ""
+
+#: ../ui/tuntun.ui.h:4
+msgid "Connections"
+msgstr ""
+
+#: ../ui/tuntun.ui.h:5
+msgid "Host address"
+msgstr ""
+
+#: ../ui/tuntun.ui.h:6
+msgid ""
+"If you choose 'remove' the selected \n"
+"connection will be permanently removed \n"
+"from the list of available connections."
+msgstr ""
+
+#: ../ui/tuntun.ui.h:9
+msgid "Name"
+msgstr ""
+
+#: ../ui/tuntun.ui.h:10 ../ui/tuntun-auth-dialog.ui.h:1
+msgid "Password"
+msgstr ""
+
+#: ../ui/tuntun.ui.h:11
+msgid "Port"
+msgstr ""
+
+#: ../ui/tuntun.ui.h:12 ../ui/tuntun-auth-dialog.ui.h:2
+msgid "Save in the keyring"
+msgstr ""
+
+#: ../ui/tuntun.ui.h:13
+msgid "Send"
+msgstr ""
+
+#: ../ui/tuntun.ui.h:14 ../ui/tuntun-auth-dialog.ui.h:3
+msgid "Username"
+msgstr ""
+
+#: ../ui/tuntun.ui.h:15
+msgid "_Remove"
+msgstr ""
+
+#: ../ui/tuntun.ui.h:16 ../ui/tuntun-auth-dialog.ui.h:4
+msgid "gtk-cancel"
+msgstr ""
+
+#: ../ui/tuntun.ui.h:17 ../ui/tuntun-auth-dialog.ui.h:5
+msgid "gtk-ok"
+msgstr ""
+
+#: ../src/tuntun.server.in.in.h:1
+msgid "Tuntun an OpenVPN connection manager"
+msgstr ""
+
+#: ../src/tuntun-connection-info.vala:43
+msgid "none"
+msgstr ""
+
+#: ../src/tuntun-connection.vala:191
+msgid "unknown"
+msgstr ""
+
+#: ../src/tuntun-connections-dialog.vala:236
+msgid "Error while saving config"
+msgstr ""
+
+#: ../src/tuntun-log-window.vala:116
+msgid "All"
+msgstr ""
+
+#: ../src/tuntun-log-window.vala:171
+msgid "select a connection first..."
+msgstr ""
+
+#: ../src/tuntun-applet.vala:93
+#, c-format
+msgid "_Preferences..."
+msgstr ""
+
+#: ../src/tuntun-applet.vala:93
+msgid "_Show log..."
+msgstr ""
+
+#: ../src/tuntun-applet.vala:93
+msgid "_About..."
+msgstr ""
+
+#: ../src/tuntun-applet.vala:133
+msgid "Authentication failed"
+msgstr ""
+
+#: ../src/tuntun-applet.vala:157
+#, c-format
+msgid ""
+"connection established\n"
+"assigned ip: %s"
+msgstr ""
+
+#: ../src/tuntun-applet.vala:162
+msgid "connection closed"
+msgstr ""
+
+#: ../src/tuntun-applet.vala:284
+msgid "translator_credits"
+msgstr ""
+
+#: ../src/tuntun-applet.vala:291
+msgid "TunTun VPN Connection manager"
+msgstr ""
+
+#: ../src/tuntun-applet.vala:294
+msgid "Homepage"
+msgstr ""
+
+#: ../src/tuntun-applet.vala:295
+msgid ""
+"(c) 2008 Andrea Del Signore (sejerpz@tin.it).\n"
+"\n"
+" This program is licensed under the terms of the GNU\n"
+"\n"
+" General Public License and is provided with absolutely\n"
+"\n"
+" NO WARRANTY; see the file COPYING for details."
+msgstr ""
