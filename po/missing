@@ -1,2 +1,2 @@
-src/tuntun-auth-dialog.c
-ui/tuntun-auth-dialog.ui
+debian/tuntun/usr/share/tuntun/ui/tuntun-auth-dialog.ui
+debian/tuntun/usr/share/tuntun/ui/tuntun.ui
