@@ -1,5 +1,9 @@
 2008-04-05    <sejerpz@tin.it>
 
+	* src/snul.vala: removed some debugging print
+
+2008-04-05    <sejerpz@tin.it>
+
 	* src/tuntun-connection.vala,
 	src/tuntun-connection-info.vala,
 	src/tuntun-applet.vala: added assigned ip to connect notification information

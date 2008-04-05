@@ -185,7 +185,6 @@ namespace Snul
 			if (buffer == null)
 				return 0;
 
-			debug ("snul, send: %s", buffer);
 			size_t bytes_written;
 
 			try {
@@ -255,7 +254,6 @@ namespace Snul
 
 					try {
 						channel.read_chars (_io_channel_buffer, out bytes_read);
-						debug ("snul, recv: %s", _io_channel_buffer);
 						//null terminate
 						_io_channel_buffer[bytes_read] = (char) null;
 						if (bytes_read > 0) {
