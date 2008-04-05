@@ -215,7 +215,9 @@ pixmapsdir = $(pkgdatadir)/pixmaps
 pixmaps_DATA = connected.png \
 		not_connected.png   \
 		tuntun.png   \
-		unknown.png 
+		unknown.png \
+		connect.png \
+		disconnect.png
 
 pixmapsicondir = $(datadir)/pixmaps
 pixmapsicon_DATA = tuntun-icon.png

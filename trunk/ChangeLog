@@ -1,5 +1,11 @@
 2008-04-05    <sejerpz@tin.it>
 
+	* src/tuntun-connection.vala,
+	src/tuntun-connection-info.vala,
+	src/tuntun-applet.vala: added assigned ip to connect notification information
+
+2008-04-05    <sejerpz@tin.it>
+
 	* src/snul.vala: initializing _io_channel_buffer in the constructor workaround
 	for a vala bug
 

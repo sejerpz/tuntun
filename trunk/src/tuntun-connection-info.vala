@@ -34,10 +34,13 @@ namespace Tuntun {
 
 		public int port { get; set; }
 
+		public string assigned_ip  { get; set; }
+
 		construct {
 			_name = "";
 			_address = "";
 			_port = 0;
+			_assigned_ip = _("none");
 		}
 	}
 }
