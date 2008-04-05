@@ -1,6 +1,11 @@
+2008-04-05    <sejerpz@tin.it>
+
+	* src/snul.vala: initializing _io_channel_buffer in the constructor workaround
+	for a vala bug
+
 2008-03-26    <sejerpz@tin.it>
 
-	* src/tuntun-applet.vala: bigger notification icons
+	* src/tuntun-applet.vala: added bigger notification icons
 	* src/tuntun-constants.vala: updated the name of some image constants
 	
 2008-03-26    <sejerpz@tin.it>
