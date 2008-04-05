@@ -143,8 +143,10 @@ namespace Tuntun
                         connection.initialize ();
 			items.append (connection);
                         on_connection_added (connection);
-			Signal.connect (connection, "notify::status", (Callback)this.connection_notify_property_changed, this);
-			Signal.connect (connection, "notify::control_channel_status", (Callback)this.connection_notify_property_changed, this);
+			Signal.connect (connection, "notify::status", 
+			    (Callback)this.connection_notify_property_changed, this);
+			Signal.connect (connection, "notify::control_channel_status", 
+			    (Callback)this.connection_notify_property_changed, this);
 			connection.authentication_required += this.on_connection_authentication_required;
 			connection.authentication_failed += this.on_connection_authentication_failed;
 			connection.control_channel_fatal_error += this.on_connection_fatal_error;
@@ -153,7 +155,8 @@ namespace Tuntun
 		public void remove (Connection connection)
 		{
 			items.remove (connection);
-			SignalHandler.disconnect_by_func (connection, (pointer) this.connection_notify_property_changed, this);
+			SignalHandler.disconnect_by_func (connection, 
+			    (pointer) this.connection_notify_property_changed, this);
 			connection.authentication_required -= this.on_connection_authentication_required;
 			connection.authentication_failed -= this.on_connection_authentication_failed;
 			connection.control_channel_fatal_error -= this.on_connection_fatal_error;
@@ -165,12 +168,14 @@ namespace Tuntun
                         connection_fatal_error (connection, error);
                 }
 
-		protected virtual void on_connection_authentication_required (Connection connection, AuthenticationModes mode, string type)
+		protected virtual void on_connection_authentication_required (Connection connection, 
+		    AuthenticationModes mode, string type)
 		{
 			authentication_required (connection, mode, type);
 		}
 
-		protected virtual void on_connection_authentication_failed (Connection connection, AuthenticationModes mode, string type)
+		protected virtual void on_connection_authentication_failed (Connection connection, 
+		    AuthenticationModes mode, string type)
 		{
 			authentication_failed (connection, mode, type);
 		}
@@ -190,7 +195,8 @@ namespace Tuntun
 			connection_status_changed (connection);
                 }
 
-		private static void connection_notify_property_changed  (Connection connection, ParamSpec param, Connections connections)
+		private static void connection_notify_property_changed  (Connection connection, 
+		    ParamSpec param, Connections connections)
 		{
 			connections.on_connection_status_changed (connection);
 		}
