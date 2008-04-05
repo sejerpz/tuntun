@@ -183,6 +183,13 @@ namespace Tuntun {
 						this.authentication_failed (AuthenticationModes.PASSWORD_ONLY, "Private Key");
 				} else if (PatternSpec.match_simple ("*FATAL*ERROR*", line)) {
 					this.control_channel_fatal_error (line);
+				} else if (PatternSpec.match_simple ("*STATE:*,ASSIGN_IP,*", line)) {
+					string[] toks = line.split (",",5);
+					if (toks[3] != null) {
+						this._info.assigned_ip = toks[3];
+					} else {
+						this._info.assigned_ip = _("unknown");
+					}
 				}
 				this.control_channel_data_received (line);
 			}

@@ -154,7 +154,7 @@ namespace Tuntun
 			try {
 				if (connection.status == ConnectionStates.CONNECTED) {
 					notification = new Notification (connection.info.name, 
-					    _("connection established"), 
+					    _("connection established\nassigned ip: %s").printf (connection.info.assigned_ip), 
 					    Utils.get_image_path (Constants.Images.CONNECTION_STATUS_CONNECTED), 
 					    this );
 				} else if (connection.status == ConnectionStates.DISCONNECTED) {
