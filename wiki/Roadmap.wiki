@@ -8,7 +8,7 @@
   * ~~Debug and code cleanup~~
 
 == Version 0.2 ==
-  * New _double click_ connect
+  * ~~New _double click_ connect~~
   * Animate the icon on network activity
   * Drop [http://persbaglio.no-ip.org/?page_id=144 S.n.u.l.] and use directly GIO library
   * Debug and code cleanup
