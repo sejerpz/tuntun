@@ -1,3 +1,7 @@
+2008-04-09    <sejerpz@tin.it>
+
+	* src/tuntun-connection.vala: reset 'assigned ip' on connection close
+
 2008-04-08    <sejerpz@tin.it>
 
 	* src/tuntun-connections-dialog.vala: added 'status' and 'assigned ip' columns 
