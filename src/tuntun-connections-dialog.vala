@@ -31,6 +31,7 @@ namespace Tuntun
 {
         private enum Columns
         {
+		DOUBLE_CLICK_CONNECT,
                 NAME,
                 ADDRESS,
                 PORT,
@@ -69,22 +70,36 @@ namespace Tuntun
 
 			_treeview.get_selection().changed += this.on_treeview_selection_changed;
 
+
                         Gtk.CellRenderer renderer;
                         Gtk.TreeViewColumn column;
                         var selection = _treeview.get_selection ();
 
                         selection.set_mode (SelectionMode.SINGLE);
                         /* list view columns */
-                        renderer = new CellRendererText ();
-                        column = new TreeViewColumn.with_attributes ("Name", renderer, "text", 0);
+                        renderer = new CellRendererToggle ();
+                        ((CellRendererToggle)renderer).toggled += this.on_double_click_connect_toggled;
+
+                        column = new TreeViewColumn.with_attributes (_("Quick connect"), 
+			    renderer, "active", Columns.DOUBLE_CLICK_CONNECT);
+			column.alignment = 0.50;
                         _treeview.append_column (column);
 
                         renderer = new CellRendererText ();
-                        column = new TreeViewColumn.with_attributes ("Host", renderer, "text", 1);
+			renderer.mode = CellRendererMode.EDITABLE;
+                        column = new TreeViewColumn.with_attributes (_("Name"), 
+			    renderer, "text", Columns.NAME);
                         _treeview.append_column (column);
 
                         renderer = new CellRendererText ();
-                        column = new TreeViewColumn.with_attributes ("Port", renderer, "text", 2);
+                        column = new TreeViewColumn.with_attributes (_("Host"), 
+			    renderer, "text", Columns.ADDRESS);
+                        _treeview.append_column (column);
+
+                        renderer = new CellRendererText ();
+                        column = new TreeViewColumn.with_attributes (_("Port"), 
+			    renderer, "text", Columns.PORT);
+			column.expand = false;
                         _treeview.append_column (column);
 
                         /* buttons events */
@@ -106,9 +121,10 @@ namespace Tuntun
 
                         /* initialize connection list view */
                         _store = new ListStore (Columns.COUNT, 
+			    typeof(bool),
                             typeof(string), 
                             typeof(string), 
-                            typeof(int), 
+                            typeof(int),
                             typeof(Connection));
                         _treeview.set_model (_store);
                         foreach (Connection connection in _tuntun.connections.items) {
@@ -118,6 +134,19 @@ namespace Tuntun
                         _tuntun.connections.connection_added += this.on_connection_added;
                         _tuntun.connections.connection_removed += this.on_connection_removed;
 		}
+
+                private void on_double_click_connect_toggled (Gtk.CellRendererToggle cell_renderer, string path)
+                {
+			TreeIter iter;
+			if (_store.get_iter_from_string (out iter, path))
+			{
+				weak Connection conn;
+                                _store.get (iter, Columns.CONNECTION, out conn,-1);
+				conn.info.quick_connect = !conn.info.quick_connect;
+				store_modify_item (iter, conn);
+				is_dirty = true;
+			}
+                }
 
                 private void cleanup_and_close ()
                 {
@@ -252,6 +281,7 @@ namespace Tuntun
                             Columns.NAME, connection.info.name,
                             Columns.ADDRESS, connection.info.address,
                             Columns.PORT, connection.info.port,
+			    Columns.DOUBLE_CLICK_CONNECT, connection.info.quick_connect,
                             Columns.CONNECTION, connection);
                 }
 
@@ -272,7 +302,7 @@ namespace Tuntun
 
                         while (valid)
                         {
-                                Connection conn;
+                                weak Connection conn;
 		
                                 _store.get (iter, Columns.CONNECTION, out conn,-1);
                                 if (conn == connection)
