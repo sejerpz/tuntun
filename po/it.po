@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tuntun 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-04-08 23:07+0200\n"
+"POT-Creation-Date: 2008-04-09 00:16+0200\n"
 "PO-Revision-Date: 2008-04-05 17:12+0200\n"
 "Last-Translator: Andrea Del Signore <sejerpz@tin.it>\n"
 "Language-Team: Italiano <sejerpz@tin.it>\n"
@@ -45,7 +45,7 @@ msgstr ""
 "selezionata sarà eliminata permanentemente \n"
 "dalla lista delle connessioni disponibili."
 
-#: ../ui/tuntun.ui.h:9 ../src/tuntun-connections-dialog.vala:90
+#: ../ui/tuntun.ui.h:9 ../src/tuntun-connections-dialog.vala:98
 msgid "Name"
 msgstr "Nome"
 
@@ -53,7 +53,7 @@ msgstr "Nome"
 msgid "Password"
 msgstr "Password"
 
-#: ../ui/tuntun.ui.h:11 ../src/tuntun-connections-dialog.vala:100
+#: ../ui/tuntun.ui.h:11 ../src/tuntun-connections-dialog.vala:108
 msgid "Port"
 msgstr "Porta"
 
@@ -86,22 +86,31 @@ msgid "Tuntun an OpenVPN connection manager"
 msgstr "TunTun un manager per connessioni OpenVPN"
 
 #: ../src/tuntun-connection-info.vala:45
+#: ../src/tuntun-connections-dialog.vala:320
 msgid "none"
 msgstr "nessuno"
 
-#: ../src/tuntun-connection.vala:191
+#: ../src/tuntun-connection.vala:200
 msgid "unknown"
 msgstr "sconosciuto"
 
-#: ../src/tuntun-connections-dialog.vala:83
+#: ../src/tuntun-connections-dialog.vala:91
 msgid "Quick connect"
 msgstr "Connessione rapida"
 
-#: ../src/tuntun-connections-dialog.vala:95
+#: ../src/tuntun-connections-dialog.vala:103
 msgid "Host"
 msgstr "Indirizzo"
 
-#: ../src/tuntun-connections-dialog.vala:265
+#: ../src/tuntun-connections-dialog.vala:114
+msgid "Status"
+msgstr "Stato"
+
+#: ../src/tuntun-connections-dialog.vala:120
+msgid "Assigned IP"
+msgstr "IP Assegnato"
+
+#: ../src/tuntun-connections-dialog.vala:287
 msgid "Error while saving config"
 msgstr "Errore durante il salvataggio delle configurazioni"
 

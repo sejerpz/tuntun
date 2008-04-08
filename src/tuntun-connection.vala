@@ -148,6 +148,7 @@ namespace Tuntun {
 
 				if (_status_requested && PatternSpec.match_simple("*,CONNECTED,SUCCESS,*", line)) {
 					this.status = ConnectionStates.CONNECTED;
+					this._info.assigned_ip = extract_ip_address (line);
 					this._status_requested = false;
 					_suspend_notifications = false;
 				} else if (_status_requested && 
@@ -184,14 +185,19 @@ namespace Tuntun {
 				} else if (PatternSpec.match_simple ("*FATAL*ERROR*", line)) {
 					this.control_channel_fatal_error (line);
 				} else if (PatternSpec.match_simple ("*STATE:*,ASSIGN_IP,*", line)) {
-					string[] toks = line.split (",",5);
-					if (toks[3] != null) {
-						this._info.assigned_ip = toks[3];
-					} else {
-						this._info.assigned_ip = _("unknown");
-					}
+					this._info.assigned_ip = extract_ip_address (line);
 				}
 				this.control_channel_data_received (line);
+			}
+		}
+
+		private string extract_ip_address (string line)
+		{
+			string[] toks = line.split (",",5);
+			if (toks[3] != null) {
+				return toks[3];
+			} else {
+				return _("unknown");
 			}
 		}
 
