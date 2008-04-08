@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tuntun 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-04-09 00:16+0200\n"
+"POT-Creation-Date: 2008-04-09 00:38+0200\n"
 "PO-Revision-Date: 2008-04-05 17:12+0200\n"
 "Last-Translator: Andrea Del Signore <sejerpz@tin.it>\n"
 "Language-Team: Italiano <sejerpz@tin.it>\n"
@@ -85,12 +85,12 @@ msgstr "gtk-ok"
 msgid "Tuntun an OpenVPN connection manager"
 msgstr "TunTun un manager per connessioni OpenVPN"
 
-#: ../src/tuntun-connection-info.vala:45
-#: ../src/tuntun-connections-dialog.vala:320
+#: ../src/tuntun-connection-info.vala:45 ../src/tuntun-connection.vala:80
+#: ../src/tuntun-connection.vala:81 ../src/tuntun-connections-dialog.vala:320
 msgid "none"
 msgstr "nessuno"
 
-#: ../src/tuntun-connection.vala:200
+#: ../src/tuntun-connection.vala:204
 msgid "unknown"
 msgstr "sconosciuto"
 
