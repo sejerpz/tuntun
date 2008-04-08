@@ -1,3 +1,16 @@
+2008-04-08    <sejerpz@tin.it>
+
+	* src/tuntun-applet.vala: implementend final quick-connect bits
+	* src/tuntun-connections-dialog.vala: debugged edit to the new quick-connect property
+	* src/tuntun-connections.vala: fixed a bug serializing new quick-connect property, 
+	fixed close <connections> tag
+	
+2008-04-05    <sejerpz@tin.it>
+
+	* src/tuntun-connections-dialog.vala: added edit to the new quick-connect property
+	* src/tuntun-connections.vala: serialized new property quick-connect
+	* src/tuntun-connection-info.vala: new quick-connect property
+	
 2008-04-05    <sejerpz@tin.it>
 
 	* src/snul.vala: removed some debugging print

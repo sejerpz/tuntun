@@ -92,13 +92,14 @@ namespace Tuntun
                         content = "<?xml version='1.0'?>\n<connections>\n";
 
                         foreach (Connection connection in items) {
-                                string tmp = Markup.printf_escaped ("\t<connection \n\t\tname=\"%s\" \n\t\thost=\"%s\" \n\t\tport=\"%d\" >\n\t</connection>\n",
+                                string tmp = Markup.printf_escaped ("\t<connection \n\t\tname=\"%s\" \n\t\thost=\"%s\" \n\t\tport=\"%d\" \n\t\tquick-connect=\"%s\" >\n\t</connection>\n",
                                     connection.info.name,
                                     connection.info.address,
-                                    connection.info.port);
+                                    connection.info.port,
+				    connection.info.quick_connect ? "1" : "0");
                                 content += tmp;
                         }
-                        content += "connections>\n";
+                        content += "</connections>\n";
 
 			try {
 				FileUtils.set_contents(filename, content);
@@ -128,7 +129,10 @@ namespace Tuntun
 						info.address = attribute_values[i];
 					} else if ("port".collate (attribute_names[i]) == 0) {
 						info.port = attribute_values[i].to_int ();
+					} else if ("quick-connect".collate (attribute_names[i]) == 0) {
+						info.quick_connect = (attribute_values[i].to_int () != 0 ? true : false);
 					}
+
 				}
 
 				if (info.name != null && info.name != "") {

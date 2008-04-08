@@ -41,6 +41,8 @@ namespace Tuntun
                 private ConnectionsDialog _settings = null;
 		private LogWindow _log = null;
 
+		private int _clicks = 0;
+
                 construct {
                         this._tuntun = new Tuntun ();
                         this._tuntun.connections.connection_status_changed += this.on_connection_status_changed;
@@ -91,7 +93,8 @@ namespace Tuntun
                             "</popup>";
 
                         this.setup_menu (_right_click_menu_xml.printf (_("_Preferences..."), _("_Show log..."), _("_About...")), _verbs, this);
-                        this.button_press_event += this.on_button_press;
+			//                        this.button_release_event += this.on_button_press_release;
+                        this.button_press_event += this.on_button_press_release;
                         this.show_all ();
                 }
 
@@ -101,15 +104,44 @@ namespace Tuntun
                         return true;
                 }
 
-                private bool on_button_press (Widget sender, Gdk.EventButton eventButton) 
+                private bool on_button_press_release (Widget sender, Gdk.EventButton eventButton) 
 		{
-                        if (eventButton.type == Gdk.EventType.BUTTON_PRESS && 
+                        if (eventButton.type == Gdk.EventType.2BUTTON_PRESS && 
                             eventButton.button == 1) {
-                                select_connection ();
+				_clicks = 2;
                                 return true;
+                        } else if (eventButton.type == Gdk.EventType.BUTTON_PRESS && 
+                            eventButton.button == 1) {
+				if (_clicks == 0)
+				{
+					Timeout.add (275, this.on_button_timed_out);
+					_clicks = 1;
+				}
+				return true;
                         }
                         return false;
                 }
+
+		private bool on_button_timed_out ()
+		{
+			if (_clicks == 2) {
+				quick_connect ();
+			} else {
+				select_connection ();
+			}
+			_clicks = 0;
+			return false;
+		}
+
+		private void quick_connect ()
+		{
+			foreach (Connection conn in _tuntun.connections.items) {
+				if (conn.info.quick_connect == true && 
+				    conn.status == ConnectionStates.DISCONNECTED) {
+					conn.connect ();
+				}
+			}
+		}
 
 		private void authenticate (Connection connection, AuthenticationModes mode, string type)
 		{

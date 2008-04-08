@@ -36,11 +36,14 @@ namespace Tuntun {
 
 		public string assigned_ip  { get; set; }
 
+		public bool quick_connect  { get; set; }
+
 		construct {
 			_name = "";
 			_address = "";
 			_port = 0;
 			_assigned_ip = _("none");
+			_quick_connect = true;
 		}
 	}
 }
