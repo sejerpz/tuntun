@@ -35,6 +35,8 @@ namespace Tuntun
                 NAME,
                 ADDRESS,
                 PORT,
+		STATUS,
+		ASSIGNED_IP,
                 CONNECTION,
                 COUNT
         }
@@ -49,6 +51,7 @@ namespace Tuntun
 		private weak Button button_conn_modify = null;
                 private ListStore _store;
                 private Tuntun _tuntun = null;
+		private Gdk.Pixbuf[] _pixbufs; 
 
 		private bool is_dirty = false;
 
@@ -70,6 +73,11 @@ namespace Tuntun
 
 			_treeview.get_selection().changed += this.on_treeview_selection_changed;
 
+			/* connection status pixbufs */
+			_pixbufs = new Gdk.Pixbuf[3];
+			_pixbufs[0] = new Gdk.Pixbuf.from_file (Utils.get_image_path (Constants.Images.CONNECTION_STATUS_UNKNOWN));
+			_pixbufs[1] = new Gdk.Pixbuf.from_file (Utils.get_image_path (Constants.Images.CONNECTION_STATUS_DISCONNECT));
+			_pixbufs[2] = new Gdk.Pixbuf.from_file (Utils.get_image_path (Constants.Images.CONNECTION_STATUS_CONNECT));
 
                         Gtk.CellRenderer renderer;
                         Gtk.TreeViewColumn column;
@@ -102,6 +110,18 @@ namespace Tuntun
 			column.expand = false;
                         _treeview.append_column (column);
 
+                        renderer = new CellRendererPixbuf ();
+                        column = new TreeViewColumn.with_attributes (_("Status"), 
+			    renderer, "pixbuf", Columns.STATUS);
+			column.alignment = 0.50;
+                        _treeview.append_column (column);
+
+                        renderer = new CellRendererText ();
+                        column = new TreeViewColumn.with_attributes (_("Assigned IP"), 
+			    renderer, "text", Columns.ASSIGNED_IP);
+			column.expand = false;
+                        _treeview.append_column (column);
+
                         /* buttons events */
                         var button = (Gtk.Button) builder.get_object ("button_connection_add");
 			assert (button != null);
@@ -125,6 +145,8 @@ namespace Tuntun
                             typeof(string), 
                             typeof(string), 
                             typeof(int),
+			    typeof(Gdk.Pixbuf),
+			    typeof(string),
                             typeof(Connection));
                         _treeview.set_model (_store);
                         foreach (Connection connection in _tuntun.connections.items) {
@@ -277,11 +299,35 @@ namespace Tuntun
 
                 private void store_modify_item (TreeIter iter, Connection connection)
                 {
+			Gdk.Pixbuf pixbuf;
+			switch (connection.status) {
+				case ConnectionStates.DISCONNECTED:
+					pixbuf = _pixbufs[1];
+					break;
+				case ConnectionStates.CONNECTED:
+					pixbuf = _pixbufs[2];
+					break;
+				case ConnectionStates.ERROR:
+				case ConnectionStates.UNKNOWN:
+				case ConnectionStates.CONNECTING:
+				case ConnectionStates.DISCONNECTING:
+				default:
+					pixbuf = _pixbufs[2];
+					break;
+			}
+
+			string assigned_ip = "";
+			if (connection.info.assigned_ip != _("none")) {
+				assigned_ip = connection.info.assigned_ip;
+			}
+
                         _store.set (iter, 
                             Columns.NAME, connection.info.name,
                             Columns.ADDRESS, connection.info.address,
                             Columns.PORT, connection.info.port,
 			    Columns.DOUBLE_CLICK_CONNECT, connection.info.quick_connect,
+			    Columns.STATUS, pixbuf,
+			    Columns.ASSIGNED_IP, assigned_ip,
                             Columns.CONNECTION, connection);
                 }
 

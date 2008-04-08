@@ -89,11 +89,11 @@ namespace Tuntun
                         _right_click_menu_xml = "<popup name=\"button3\">" +
                             "<menuitem name=\"Properties Item\" verb=\"Properties\" _label=\"%s\" pixtype=\"stock\" pixname=\"gtk-properties\"/>" +
                             "<menuitem name=\"Log Window\" verb=\"Log\" _label=\"%s\" pixtype=\"stock\" pixname=\"gtk-info\"/>" +
-                            "<menuitem debuname=\"About Item\" verb=\"About\" _label=\"%s\" pixtype=\"stock\" pixname=\"gnome-stock-about\"/>" +
+                            "<menuitem name=\"About Item\" verb=\"About\" _label=\"%s\" pixtype=\"stock\" pixname=\"gnome-stock-about\"/>" +
                             "</popup>";
 
                         this.setup_menu (_right_click_menu_xml.printf (_("_Preferences..."), _("_Show log..."), _("_About...")), _verbs, this);
-			//                        this.button_release_event += this.on_button_press_release;
+
                         this.button_press_event += this.on_button_press_release;
                         this.show_all ();
                 }
