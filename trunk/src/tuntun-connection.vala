@@ -76,6 +76,10 @@ namespace Tuntun {
 			{
 				if (_status != value) {
 					_status = value;
+					if (_status != ConnectionStates.CONNECTED && 
+					    _info.assigned_ip != _("none")) {
+						_info.assigned_ip = _("none");
+					}
 					if (!_suspend_notifications)
 						notify ("status");
 				}
