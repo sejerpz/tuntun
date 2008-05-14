@@ -200,7 +200,10 @@ namespace Tuntun
                         _tuntun.connections.connection_removed -= this.on_connection_removed;
                 }
 
-                public ConnectionsDialog (construct Tuntun tuntun) { }
+                public ConnectionsDialog (Tuntun tuntun) 
+		{ 
+			this.tuntun = tuntun;
+		}
 
                 public Tuntun tuntun { construct { _tuntun = value; } }
 
@@ -362,7 +365,7 @@ namespace Tuntun
                         return result;
                 }
 
-                private weak Connection selected_connection
+                private weak Connection? selected_connection
                 {
                         get {
                                 TreeSelection selection = _treeview.get_selection ();

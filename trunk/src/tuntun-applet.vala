@@ -98,7 +98,7 @@ namespace Tuntun
                         this.show_all ();
                 }
 
-                static bool factory (PanelApplet applet, string iid, pointer data) 
+                static bool factory (PanelApplet applet, string iid, void *data) 
 		{
                         applet.create ();
                         return true;

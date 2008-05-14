@@ -1,3 +1,18 @@
+2008-05-14    <sejerpz@tin.it>
+
+	* src/tuntun-applet.vala, 
+	src/tuntun-connections-dialog.vala,
+	src/tuntun-connections.vala,
+	src/tuntun-applet.vala,
+	src/snul.vala,
+	src/tuntun-log-window.vala,
+	src/tuntun-connection-dialog.vala,
+	src/tuntun-auth-dialog.vala,
+	src/tuntun-connection.vala,
+	src/tuntun-utils.vala,
+	vapi/unix-socket.vapi,
+	src/Makefile.am: initial work to make tuntun compile with the new vala 0.3.2
+
 2008-04-09    <sejerpz@tin.it>
 
 	* src/tuntun-connection.vala: reset 'assigned ip' on connection close

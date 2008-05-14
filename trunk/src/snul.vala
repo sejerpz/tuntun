@@ -243,7 +243,7 @@ namespace Snul
 		{
 		}
 
-		static bool socket_callback (IOChannel channel, IOCondition condition, pointer data)
+		static bool socket_callback (IOChannel channel, IOCondition condition, void *data)
 		{
 			var client = (TcpClient) data;
 			bool res = true;
