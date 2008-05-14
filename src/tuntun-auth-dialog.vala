@@ -52,7 +52,12 @@ namespace Tuntun
 			_connection.authentication_failed += this.on_connection_authentication_failed;
 		}
 
-		public AuthDialog (construct Connection connection, construct AuthenticationModes mode, construct string type) { }
+		public AuthDialog (Connection connection, AuthenticationModes mode, string type) 
+		{ 
+			this.connection = connection;
+			this.mode = mode;
+			this.type = type;
+		}
 
 		public Connection connection { construct { _connection = value; } }
 		public AuthenticationModes mode { construct { _mode = value; } }

@@ -55,7 +55,10 @@ namespace Tuntun
 			initialize ();
 		}
 
-		public LogWindow (construct Tuntun tuntun) { }
+		public LogWindow (Tuntun tuntun) 
+		{ 
+			this.tuntun = tuntun;
+		}
 
 		public Tuntun tuntun { construct { _tuntun = value; } }
 

@@ -38,7 +38,7 @@ namespace Tuntun {
 		 * gnome_util_home_file contained in
 		 * libgnome-2.0/gnome-util.h
 		 */
-		public static string gnome_util_home_file (string! afile) {
+		public static string gnome_util_home_file (string afile) {
 			return Path.build_filename ( Environment.get_home_dir (), GNOME_DOT_GNOME, afile);
 		}
 

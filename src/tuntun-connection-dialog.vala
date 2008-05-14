@@ -79,7 +79,10 @@ namespace Tuntun
                         button.clicked -= this.on_button_connection_cancel_clicked;
                 }
 
-                public ConnectionDialog (construct ConnectionInfo connection_info) { }
+                public ConnectionDialog (ConnectionInfo connection_info) 
+		{ 
+			this.connection_info = connection_info;
+		}
 
                 public ConnectionInfo connection_info { construct { _connection_info = value; } }
 

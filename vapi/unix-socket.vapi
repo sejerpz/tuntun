@@ -122,10 +122,10 @@ namespace Utils
 	[CCode (cname="g_io_channel_set_flags")]
         public static GLib.IOStatus io_channel_set_flags (IOChannel channel, IOFlags flags) throws IOChannelError;
 
-	public static delegate bool IOFunc (IOChannel source, IOCondition conditions, pointer data);
+	public static delegate bool IOFunc (IOChannel source, IOCondition conditions, void *data);
 
 	[CCode (cname="g_io_add_watch")]
-	public static uint io_add_watch (IOChannel channel, IOCondition conditions, IOFunc func, pointer data);
+	public static uint io_add_watch (IOChannel channel, IOCondition conditions, IOFunc func, void *data);
 
 	[CCode (cname="close")]
 	public static void close (int fd);

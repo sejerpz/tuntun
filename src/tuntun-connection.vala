@@ -46,7 +46,10 @@ namespace Tuntun {
 		private string _auth_password = null;
 		private AuthenticationSteps _auth_step = AuthenticationSteps.NONE;
 
-		public Connection (construct ConnectionInfo info) { }
+		public Connection (ConnectionInfo info) 
+		{
+			this.info = info;
+		}
 		
 		public weak ConnectionInfo info 
 		{

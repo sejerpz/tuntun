@@ -52,7 +52,7 @@ namespace Tuntun
 			}
 		}
 
-		private void load_config (string! filename) throws Error
+		private void load_config (string filename) throws Error
 		{
 			try {
 				MarkupParser parser;
@@ -85,7 +85,7 @@ namespace Tuntun
                         this.save_config (_config_file);
                 }
 
-		private void save_config (string! filename) throws FileError 
+		private void save_config (string filename) throws FileError 
 		{
                         string content;
 	
@@ -113,7 +113,7 @@ namespace Tuntun
 		    string element_name, 
 		    string[] attribute_names, 
 		    string[] attribute_values, 
-		    pointer user_data) 
+		    void *user_data) 
 		{
                         Connections connections = (Connections) user_data;
 
@@ -160,7 +160,7 @@ namespace Tuntun
 		{
 			items.remove (connection);
 			SignalHandler.disconnect_by_func (connection, 
-			    (pointer) this.connection_notify_property_changed, this);
+			    (void *) this.connection_notify_property_changed, this);
 			connection.authentication_required -= this.on_connection_authentication_required;
 			connection.authentication_failed -= this.on_connection_authentication_failed;
 			connection.control_channel_fatal_error -= this.on_connection_fatal_error;
@@ -207,14 +207,14 @@ namespace Tuntun
 
 		private static void xmlconfig_end_element_handler (MarkupParseContext context, 
 		    string element_name, 
-		    pointer user_data) {
+		    void *user_data) {
 			
 		}
 
 		private static void xmlconfig_text_handler (MarkupParseContext context, 
 		    string text, 
 		    ulong text_len, 
-		    pointer user_data) {
+		    void *user_data) {
 		}
 	}
 }
