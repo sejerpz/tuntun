@@ -106,39 +106,26 @@ namespace Tuntun
 
                 private bool on_button_press_release (Widget sender, Gdk.EventButton eventButton) 
 		{
-                        if (eventButton.type == Gdk.EventType.2BUTTON_PRESS && 
+                        if (eventButton.type == Gdk.EventType.BUTTON_PRESS && 
                             eventButton.button == 1) {
-				_clicks = 2;
-                                return true;
-                        } else if (eventButton.type == Gdk.EventType.BUTTON_PRESS && 
-                            eventButton.button == 1) {
-				if (_clicks == 0)
-				{
-					Timeout.add (275, this.on_button_timed_out);
-					_clicks = 1;
+				if ((eventButton.state & Gdk.ModifierType.SHIFT_MASK) != 0) {
+					quick_connect ();
+				} else {
+					select_connection ();
 				}
 				return true;
                         }
                         return false;
                 }
 
-		private bool on_button_timed_out ()
-		{
-			if (_clicks == 2) {
-				quick_connect ();
-			} else {
-				select_connection ();
-			}
-			_clicks = 0;
-			return false;
-		}
-
 		private void quick_connect ()
 		{
 			foreach (Connection conn in _tuntun.connections.items) {
-				if (conn.info.quick_connect == true && 
-				    conn.status == ConnectionStates.DISCONNECTED) {
-					conn.connect ();
+				if (conn.info.quick_connect == true) {
+                                        if (conn.status == ConnectionStates.DISCONNECTED)
+                                                conn.connect ();
+                                        else
+                                                conn.disconnect ();
 				}
 			}
 		}
@@ -170,10 +157,10 @@ namespace Tuntun
 		private void on_connection_fatal_error (Connections connections, Connection connection, string error)
 		{
 			var dialog = new MessageDialog (null,
-                                  DialogFlags.DESTROY_WITH_PARENT,
-                                  MessageType.ERROR,
-                                  ButtonsType.CLOSE,
-			          connection.info.name);
+                            DialogFlags.DESTROY_WITH_PARENT,
+                            MessageType.ERROR,
+                            ButtonsType.CLOSE,
+                            connection.info.name);
 			dialog.secondary_text = error;
 			dialog.run ();
 			dialog.destroy ();
@@ -214,8 +201,8 @@ namespace Tuntun
 			
                                 item.set("user-data", connection);
                                 item.sensitive = (connection.control_channel_status == ConnectionStates.CONNECTED &&
-						  connection.status != ConnectionStates.CONNECTING &&
-						  connection.status != ConnectionStates.DISCONNECTING);
+                                    connection.status != ConnectionStates.CONNECTING &&
+                                    connection.status != ConnectionStates.DISCONNECTING);
 
                                 popup_menu.append (item);
 
