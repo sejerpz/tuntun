@@ -229,7 +229,7 @@ namespace Tuntun {
                         _client.send ("signal SIGHUP\n");
 		}
 
-		public void authenticate (string type, string username, string password)
+		public void authenticate (string type, string? username, string? password)
 		{
 			return_if_fail (username != null || password != null);
 
