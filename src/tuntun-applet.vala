@@ -41,7 +41,10 @@ namespace Tuntun
                 private ConnectionsDialog _settings = null;
 		private LogWindow _log = null;
 
-		private int _clicks = 0;
+		private Gtk.Image _image;
+		private Gdk.Pixbuf[] _images;
+		private int _image_idx = 1;
+		private int _animation_status = 0;
 
                 construct {
                         this._tuntun = new Tuntun ();
@@ -49,6 +52,7 @@ namespace Tuntun
                         this._tuntun.connections.connection_fatal_error += this.on_connection_fatal_error;
 			this._tuntun.connections.authentication_required += this.on_connection_authentication_required;
 			this._tuntun.connections.authentication_failed += this.on_connection_authentication_failed;
+			this._tuntun.connections.connection_activity += this.on_connection_activity;
                        	Notify.init ("Tuntun");
                 }
 
@@ -57,7 +61,16 @@ namespace Tuntun
 
                 private void create() {
                         _verbs = new BonoboUI.Verb[4];
-                        var image = new Gtk.Image ();
+                        _images = new Gdk.Pixbuf[3];
+
+                        string file = Utils.get_image_path (Constants.Images.PANEL_ICON_ACTIVITY_1);
+			_images[0] = new Gdk.Pixbuf.from_file (file);
+
+                        file = Utils.get_image_path (Constants.Images.PANEL_ICON_NORMAL);
+			_images[1] = new Gdk.Pixbuf.from_file (file);
+
+                        file = Utils.get_image_path (Constants.Images.PANEL_ICON_ACTIVITY_2);
+			_images[2] = new Gdk.Pixbuf.from_file (file);
 
                         var verb = new BonoboUI.Verb();
                         verb.cname = "Properties";
@@ -83,8 +96,8 @@ namespace Tuntun
                         verb.user_data = null;
                         _verbs[3] = verb;
 
-                        image.set_from_file (Utils.get_image_path (Constants.Images.PANEL_ICON_NORMAL));
-                        this.add (image);
+			_image = new Gtk.Image.from_pixbuf (_images[1]);
+                        this.add (_image);
 
                         _right_click_menu_xml = "<popup name=\"button3\">" +
                             "<menuitem name=\"Properties Item\" verb=\"Properties\" _label=\"%s\" pixtype=\"stock\" pixname=\"gtk-properties\"/>" +
@@ -103,6 +116,32 @@ namespace Tuntun
                         applet.create ();
                         return true;
                 }
+
+		private bool on_animation_timeout ()
+		{
+			if (_animation_status == 1) {
+				_animation_status = 0;
+				return false;
+			} else {
+				_image_idx++;
+				if (_image_idx >= _images.length)
+					_image_idx = 0;
+				else if (_image_idx == 1)
+					_animation_status--;
+
+				_image.set_from_pixbuf (_images[_image_idx]);
+				return true;
+			}
+		}
+
+		private void animate_icon ()
+		{
+			if (_animation_status == 0) {
+				Timeout.add (250, this.on_animation_timeout);
+				_image_idx = 1;
+			} 
+			_animation_status = 4;
+		}
 
                 private bool on_button_press_release (Widget sender, Gdk.EventButton eventButton) 
 		{
@@ -128,6 +167,12 @@ namespace Tuntun
                                                 conn.disconnect ();
 				}
 			}
+		}
+
+		private void on_connection_activity (Connections connections, Connection connection)
+		{
+			debug ("Connection activity for: %s", connection.info.name);
+			animate_icon ();
 		}
 
 		private void authenticate (Connection connection, AuthenticationModes mode, string type)

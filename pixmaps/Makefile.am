@@ -5,6 +5,8 @@ pixmapsdir = $(pkgdatadir)/pixmaps
 pixmaps_DATA = 	connected.png \
 		not_connected.png   \
 		tuntun.png   \
+		tuntun_act_1.png \
+		tuntun_act_2.png \
 		unknown.png \
 		connect.png \
 		disconnect.png

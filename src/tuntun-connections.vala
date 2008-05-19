@@ -36,6 +36,7 @@ namespace Tuntun
                 public signal void connection_added (Connection connection);
                 public signal void connection_removed (Connection connection);
 		public signal void connection_status_changed (Connection connection);
+		public signal void connection_activity (Connection connection);
 		public signal void connection_fatal_error (Connection connection, string error);
 		public signal void authentication_required (Connection connection, AuthenticationModes mode, string type);
 		public signal void authentication_failed (Connection connection, AuthenticationModes mode, string type);
@@ -154,6 +155,7 @@ namespace Tuntun
 			connection.authentication_required += this.on_connection_authentication_required;
 			connection.authentication_failed += this.on_connection_authentication_failed;
 			connection.control_channel_fatal_error += this.on_connection_fatal_error;
+			connection.control_channel_data_received += this.on_connection_data_received;
 		}
 
 		public void remove (Connection connection)
@@ -164,7 +166,19 @@ namespace Tuntun
 			connection.authentication_required -= this.on_connection_authentication_required;
 			connection.authentication_failed -= this.on_connection_authentication_failed;
 			connection.control_channel_fatal_error -= this.on_connection_fatal_error;
+			connection.control_channel_data_received -= this.on_connection_data_received;
                         on_connection_removed (connection);
+		}
+
+
+		private void on_connection_data_received (Connection connection, string data)
+		{
+			on_connection_activity (connection);
+		}
+
+		protected virtual void on_connection_activity (Connection connection)
+		{
+			connection_activity (connection);
 		}
 
                 protected virtual void on_connection_fatal_error (Connection connection, string error)
