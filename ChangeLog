@@ -1,5 +1,9 @@
 2008-05-19    <sejerpz@tin.it>
 
+	* src/tuntun-applet.vala: fix valac struct initialization warnings
+
+2008-05-19    <sejerpz@tin.it>
+
 	* pixmaps/Makefile.am,
 	src/tuntun-constants.vala,
 	src/tuntun-connections.vala,

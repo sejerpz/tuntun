@@ -72,29 +72,21 @@ namespace Tuntun
                         file = Utils.get_image_path (Constants.Images.PANEL_ICON_ACTIVITY_2);
 			_images[2] = new Gdk.Pixbuf.from_file (file);
 
-                        var verb = new BonoboUI.Verb();
-                        verb.cname = "Properties";
-                        verb.cb = on_context_menu_item_clicked;
-                        verb.user_data = this;
-                        _verbs[0] = verb;
+                        _verbs[0].cname = "Properties";
+                        _verbs[0].cb = on_context_menu_item_clicked;
+                        _verbs[0].user_data = this;
 
-                        verb = new BonoboUI.Verb();
-                        verb.cname = "Log";
-                        verb.cb = on_context_menu_item_clicked;
-                        verb.user_data = this;
-                        _verbs[1] = verb;
+                        _verbs[1].cname = "Log";
+                        _verbs[1].cb = on_context_menu_item_clicked;
+                        _verbs[1].user_data = this;
 
-                        verb = new BonoboUI.Verb();
-                        verb.cname = "About";
-                        verb.cb = on_context_menu_item_clicked;
-                        verb.user_data = this;
-                        _verbs[2] = verb;
+                        _verbs[2].cname = "About";
+                        _verbs[2].cb = on_context_menu_item_clicked;
+                        _verbs[2].user_data = this;
 		
-                        verb = new BonoboUI.Verb();
-                        verb.cname = null;
-                        verb.cb = null;
-                        verb.user_data = null;
-                        _verbs[3] = verb;
+                        _verbs[3].cname = null;
+                        _verbs[3].cb = null;
+                        _verbs[3].user_data = null;
 
 			_image = new Gtk.Image.from_pixbuf (_images[1]);
                         this.add (_image);
@@ -171,7 +163,6 @@ namespace Tuntun
 
 		private void on_connection_activity (Connections connections, Connection connection)
 		{
-			debug ("Connection activity for: %s", connection.info.name);
 			animate_icon ();
 		}
 
