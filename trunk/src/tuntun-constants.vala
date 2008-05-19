@@ -33,6 +33,8 @@ namespace Tuntun {
 		public static class Images {
 			public const string APPLICATION = "tuntun.png";
 			public const string PANEL_ICON_NORMAL = "tuntun.png";
+			public const string PANEL_ICON_ACTIVITY_1 = "tuntun_act_1.png";
+			public const string PANEL_ICON_ACTIVITY_2 = "tuntun_act_2.png";
 
 			public const string CONNECTION_STATUS_UNKNOWN = "unknown.png";
  			public const string CONNECTION_STATUS_CONNECT = "disconnect.png";

@@ -1,5 +1,12 @@
 2008-05-19    <sejerpz@tin.it>
 
+	* pixmaps/Makefile.am,
+	src/tuntun-constants.vala,
+	src/tuntun-connections.vala,
+	src/tuntun-applet.vala: add simple animation to panel icon on connection activity
+	
+2008-05-19    <sejerpz@tin.it>
+
 	* src/tuntun-connection.vala: fix bug caused by missing nullable decorator in authenticate function
 
 2008-05-19    <sejerpz@tin.it>
