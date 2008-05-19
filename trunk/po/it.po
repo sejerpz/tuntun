@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tuntun 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-04-09 00:38+0200\n"
+"POT-Creation-Date: 2008-05-19 21:43+0200\n"
 "PO-Revision-Date: 2008-04-05 17:12+0200\n"
 "Last-Translator: Andrea Del Signore <sejerpz@tin.it>\n"
 "Language-Team: Italiano <sejerpz@tin.it>\n"
@@ -85,12 +85,12 @@ msgstr "gtk-ok"
 msgid "Tuntun an OpenVPN connection manager"
 msgstr "TunTun un manager per connessioni OpenVPN"
 
-#: ../src/tuntun-connection-info.vala:45 ../src/tuntun-connection.vala:80
-#: ../src/tuntun-connection.vala:81 ../src/tuntun-connections-dialog.vala:320
+#: ../src/tuntun-connection-info.vala:45 ../src/tuntun-connection.vala:83
+#: ../src/tuntun-connection.vala:84 ../src/tuntun-connections-dialog.vala:323
 msgid "none"
 msgstr "nessuno"
 
-#: ../src/tuntun-connection.vala:204
+#: ../src/tuntun-connection.vala:207
 msgid "unknown"
 msgstr "sconosciuto"
 
@@ -110,36 +110,36 @@ msgstr "Stato"
 msgid "Assigned IP"
 msgstr "IP Assegnato"
 
-#: ../src/tuntun-connections-dialog.vala:287
+#: ../src/tuntun-connections-dialog.vala:290
 msgid "Error while saving config"
 msgstr "Errore durante il salvataggio delle configurazioni"
 
-#: ../src/tuntun-log-window.vala:116
+#: ../src/tuntun-log-window.vala:119
 msgid "All"
 msgstr "Tutte"
 
-#: ../src/tuntun-log-window.vala:171
+#: ../src/tuntun-log-window.vala:174
 msgid "select a connection first..."
 msgstr "selezionare prima una connessione..."
 
-#: ../src/tuntun-applet.vala:95
+#: ../src/tuntun-applet.vala:100
 #, c-format
 msgid "_Preferences..."
 msgstr "_Preferenze"
 
-#: ../src/tuntun-applet.vala:95
+#: ../src/tuntun-applet.vala:100
 msgid "_Show log..."
 msgstr "_Visualizza log"
 
-#: ../src/tuntun-applet.vala:95
+#: ../src/tuntun-applet.vala:100
 msgid "_About..."
 msgstr "_Informazioni su..."
 
-#: ../src/tuntun-applet.vala:165
+#: ../src/tuntun-applet.vala:188
 msgid "Authentication failed"
 msgstr "Autenticazione fallita"
 
-#: ../src/tuntun-applet.vala:189
+#: ../src/tuntun-applet.vala:212
 #, c-format
 msgid ""
 "connection established\n"
@@ -148,23 +148,23 @@ msgstr ""
 "connessione avvenuta\n"
 "ip assegnato: %s"
 
-#: ../src/tuntun-applet.vala:194
+#: ../src/tuntun-applet.vala:217
 msgid "connection closed"
 msgstr "connessione chiusa"
 
-#: ../src/tuntun-applet.vala:316
+#: ../src/tuntun-applet.vala:339
 msgid "translator_credits"
 msgstr "Andrea Del Signore"
 
-#: ../src/tuntun-applet.vala:323
+#: ../src/tuntun-applet.vala:346
 msgid "TunTun VPN Connection manager"
 msgstr "TunTun manager di connessioni VPN "
 
-#: ../src/tuntun-applet.vala:326
+#: ../src/tuntun-applet.vala:349
 msgid "Homepage"
 msgstr "Homepage"
 
-#: ../src/tuntun-applet.vala:327
+#: ../src/tuntun-applet.vala:350
 msgid ""
 "(c) 2008 Andrea Del Signore (sejerpz@tin.it).\n"
 "\n"
