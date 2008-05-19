@@ -1,5 +1,9 @@
 2008-05-19    <sejerpz@tin.it>
 
+	* src/tuntun-connection.vala: fix bug caused by missing nullable decorator in authenticate function
+
+2008-05-19    <sejerpz@tin.it>
+
 	* src/tuntun-applet.vala: changed quick connect from doubleclick to shift+click 
 
 2008-05-14    <sejerpz@tin.it>
