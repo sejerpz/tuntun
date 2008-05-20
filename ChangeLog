@@ -1,5 +1,11 @@
 2008-05-20    <sejerpz@tin.it>
 
+	* src/tuntun-auth-dialog.vala: fixed auth dialog nullable param bug
+	* src/tuntun-connections-dialog.vala: fixed column allocation attributes
+	* src/tuntun-connection-dialog.vala: fixed weak modifier in set_text_if_null function
+
+2008-05-20    <sejerpz@tin.it>
+
 	* src/tuntun-connection.vala,
 	src/tuntun-utils.vala,
 	src/tuntun-auth-dialog.vala: silenced some valac warnings
