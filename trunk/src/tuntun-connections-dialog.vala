@@ -91,17 +91,20 @@ namespace Tuntun
                         column = new TreeViewColumn.with_attributes (_("Quick connect"), 
 			    renderer, "active", Columns.DOUBLE_CLICK_CONNECT);
 			column.alignment = 0.50;
+			column.expand = false;
                         _treeview.append_column (column);
 
                         renderer = new CellRendererText ();
 			renderer.mode = CellRendererMode.EDITABLE;
                         column = new TreeViewColumn.with_attributes (_("Name"), 
 			    renderer, "text", Columns.NAME);
+			column.expand = false;
                         _treeview.append_column (column);
 
                         renderer = new CellRendererText ();
                         column = new TreeViewColumn.with_attributes (_("Host"), 
 			    renderer, "text", Columns.ADDRESS);
+			column.expand = true;
                         _treeview.append_column (column);
 
                         renderer = new CellRendererText ();
@@ -114,6 +117,7 @@ namespace Tuntun
                         column = new TreeViewColumn.with_attributes (_("Status"), 
 			    renderer, "pixbuf", Columns.STATUS);
 			column.alignment = 0.50;
+			column.expand = false;
                         _treeview.append_column (column);
 
                         renderer = new CellRendererText ();

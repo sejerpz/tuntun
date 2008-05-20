@@ -196,7 +196,7 @@ namespace Tuntun
 			find_network_password (null, null, _connection.info.address, null, "vpn", "private-key", 0, this.on_find_password_done, null);
 		}
 
-		private void on_find_password_done (Result result, GLib.List list)
+		private void on_find_password_done (Result result, GLib.List? list)
 		{
 			string username = null;
 			string password = null;
@@ -231,9 +231,9 @@ namespace Tuntun
 			this.destroy ();
 		}
 
-		private void save (string username, string password)
+		private void save (string username, string? password)
 		{
-			return_if_fail (username != null && username != "");
+			return_if_fail (username != "");
 
 			set_network_password (null, 
 			    username, 
@@ -250,8 +250,6 @@ namespace Tuntun
 
 		private void save_private_key_password (string private_key_password)
 		{
-			return_if_fail (private_key_password != null);
-			
 			set_network_password (null, 
 			    null, 
 			    null, 

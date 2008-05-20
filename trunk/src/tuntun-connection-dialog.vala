@@ -120,7 +120,7 @@ namespace Tuntun
                         _connection_info.port = _port.get_text ().to_int ();
 		}
 
-                private void set_text_if_null(weak Gtk.Entry entry, string text)
+                private void set_text_if_null(Gtk.Entry entry, string text)
                 {
                         if (text != null)
                                 entry.set_text(text);
