@@ -122,8 +122,12 @@ namespace Tuntun {
 
 		public void reinitialize ()
 		{
-			_client.disconnect ();
-			_client.connect (_info.address, _info.port.to_string());
+			try {
+				_client.disconnect ();
+				_client.connect (_info.address, _info.port.to_string());
+			} catch (Error err) {
+				Utils.display_error ("reinitialize", err.message);
+			}
 		}
 
 		private void client_connected (TcpClient sender, int socket_fd)

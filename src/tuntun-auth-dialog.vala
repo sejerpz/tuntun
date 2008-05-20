@@ -66,7 +66,11 @@ namespace Tuntun
 		private void initialize_ui ()
 		{
 			var builder = new Builder();
-			builder.add_from_file (Utils.get_ui_path ("tuntun-auth-dialog.ui"));
+			try {
+				builder.add_from_file (Utils.get_ui_path ("tuntun-auth-dialog.ui"));
+			} catch (Error err) {
+				Utils.display_error ("initialize_ui", err.message);
+			}
 			var childs = (Gtk.VBox) builder.get_object ("vbox_authentication");
 			assert (childs != null);
 			this.add (childs);
