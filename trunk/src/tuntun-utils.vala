@@ -50,22 +50,22 @@ namespace Tuntun {
 			return Path.build_filename (Config.PACKAGE_DATA_DIR, "tuntun", "ui", id);
 		}
 
-		public static weak Gtk.Builder get_ui () throws GLib.Error
+		public static weak Gtk.Builder get_ui ()
 		{
-                        try {
-                                if (ui == null)
-                                        initialize_gtk_builder ();
+                        if (ui == null)
+				initialize_gtk_builder ();
 
-                                return ui;
-                        } catch (Error err) {
-                                throw err;
-                        }
+			return ui;
 		}
 
-		private static void initialize_gtk_builder () throws GLib.Error
+		private static void initialize_gtk_builder ()
 		{
-			ui = new Gtk.Builder ();
-			ui.add_from_file ( get_ui_path ("tuntun.ui") );
+			try {
+				ui = new Gtk.Builder ();
+				ui.add_from_file ( get_ui_path ("tuntun.ui") );
+			} catch (Error err) {
+				display_error ("initialize_gtk_builder", err.message);
+			}
 		}
 
 		public static void display_error (string function, string message)
