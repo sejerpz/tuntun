@@ -24,8 +24,8 @@ You can simply open or close a connection by selecting it on the menu that will 
 ||http://tuntun.googlecode.com/svn/wiki/images/docs/connection_established.png||
 
 Legend of the icons shown on the popup menu:
-	* http://tuntun.googlecode.com/svn/wiki/images/docs/connected.png connect to the server
-	* http://tuntun.googlecode.com/svn/wiki/images/docs/not_connected.png close the opened connection
+	* http://tuntun.googlecode.com/svn/wiki/images/docs/connected.png connection currently established, click to disconnect
+	* http://tuntun.googlecode.com/svn/wiki/images/docs/not_connected.png connection closed, click to connect
 	* http://tuntun.googlecode.com/svn/wiki/images/docs/unknown.png connection status unknown (the server running the Management Interface is unreachable, the corresponding menu item will be disabled).
 
 === Links ===
@@ -33,3 +33,6 @@ Legend of the icons shown on the popup menu:
 	* _kovpn_: it's a project like ovpnClient, but more advanced and for KDE Desktop (http://www.enlighter.de/)
 	* _Network Manager_: it's a GNOME application and it has a module to control OpenVPN connection (http://www.gnome.org/projects/NetworkManager/)
 	* _Tango Project_: where I've taken the icons for Tuntun (http://tango.freedesktop.org/)
+
+=== Old Documentation ===
+        * _tuntun_ version 0.1.0 (http://code.google.com/p/tuntun/wiki/Old_Documentation_0_1_0)
