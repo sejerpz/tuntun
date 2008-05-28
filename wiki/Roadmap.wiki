@@ -11,7 +11,7 @@
   * ~~New _double click_ connect~~
   * ~~Animate the icon on network activity~~
   * ~~More info in the preference window an notification boubble: like connection status, assigned ip~~
-  * Update documentation and screenshots
+  * ~~Update documentation and screenshots~~
   * Debug and code cleanup
 
 == Version 0.3 ==
