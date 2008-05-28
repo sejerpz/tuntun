@@ -11,7 +11,7 @@ _*Tuntun*_ is a GNOME applet written in Vala useful to manage Vpn connections. I
 
 After adding it to the GNOME panel, you can configure the predefined Open VPN connections by clicking with the right mouse button on the Tuntun icon and then selecting the item Properties from the popup menu:
 ||http://tuntun.googlecode.com/svn/wiki/images/docs/conn_manager.png||
-You can add, remove a connection with the buttons _add, remove_ or modify its properties in a window like the following with the button _properties:_
+You can add, remove a connection with the buttons _add, remove_ or modify its _properties_, you can also see its status in a window like the following:_
 ||http://tuntun.googlecode.com/svn/wiki/images/docs/conn_prop.png||
 
 
@@ -23,7 +23,7 @@ You can simply open or close a connection by selecting it on the menu that will 
 ||http://tuntun.googlecode.com/svn/wiki/images/docs/connecting.png||
 ||http://tuntun.googlecode.com/svn/wiki/images/docs/connection_established.png||
 
-Legend of the icons shown on the popup menu:
+Legend of the icons shown on the popup menu and in the connections manager dialog:
 	* http://tuntun.googlecode.com/svn/wiki/images/docs/connected.png connection currently established, click to disconnect
 	* http://tuntun.googlecode.com/svn/wiki/images/docs/not_connected.png connection closed, click to connect
 	* http://tuntun.googlecode.com/svn/wiki/images/docs/unknown.png connection status unknown (the server running the Management Interface is unreachable, the corresponding menu item will be disabled).
