@@ -1,5 +1,9 @@
 2008-06-07    <sejerpz@tin.it>
 
+	* configure.ac: post release version bump
+
+2008-06-07    <sejerpz@tin.it>
+
 	* vapi/unix-socket.vapi: added [Compact] attribute
 
 2008-06-06    <sejerpz@tin.it>
