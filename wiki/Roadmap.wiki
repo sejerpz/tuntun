@@ -16,6 +16,7 @@
 
 == Version 0.3 ==
   * Drop [http://persbaglio.no-ip.org/?page_id=144 S.n.u.l.] and use directly GIO library
+  * Implement a summary tooltip with the current connection status
   * Debug and code cleanup
 
 == Future ==
