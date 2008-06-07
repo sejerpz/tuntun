@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tuntun 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-05-19 21:43+0200\n"
+"POT-Creation-Date: 2008-06-07 15:03+0200\n"
 "PO-Revision-Date: 2008-04-05 17:12+0200\n"
 "Last-Translator: Andrea Del Signore <sejerpz@tin.it>\n"
 "Language-Team: Italiano <sejerpz@tin.it>\n"
@@ -45,7 +45,7 @@ msgstr ""
 "selezionata sarà eliminata permanentemente \n"
 "dalla lista delle connessioni disponibili."
 
-#: ../ui/tuntun.ui.h:9 ../src/tuntun-connections-dialog.vala:98
+#: ../ui/tuntun.ui.h:9 ../src/tuntun-connections-dialog.vala:102
 msgid "Name"
 msgstr "Nome"
 
@@ -53,7 +53,7 @@ msgstr "Nome"
 msgid "Password"
 msgstr "Password"
 
-#: ../ui/tuntun.ui.h:11 ../src/tuntun-connections-dialog.vala:108
+#: ../ui/tuntun.ui.h:11 ../src/tuntun-connections-dialog.vala:114
 msgid "Port"
 msgstr "Porta"
 
@@ -86,31 +86,31 @@ msgid "Tuntun an OpenVPN connection manager"
 msgstr "TunTun un manager per connessioni OpenVPN"
 
 #: ../src/tuntun-connection-info.vala:45 ../src/tuntun-connection.vala:83
-#: ../src/tuntun-connection.vala:84 ../src/tuntun-connections-dialog.vala:323
+#: ../src/tuntun-connection.vala:84 ../src/tuntun-connections-dialog.vala:330
 msgid "none"
 msgstr "nessuno"
 
-#: ../src/tuntun-connection.vala:207
+#: ../src/tuntun-connection.vala:211
 msgid "unknown"
 msgstr "sconosciuto"
 
-#: ../src/tuntun-connections-dialog.vala:91
+#: ../src/tuntun-connections-dialog.vala:94
 msgid "Quick connect"
 msgstr "Connessione rapida"
 
-#: ../src/tuntun-connections-dialog.vala:103
+#: ../src/tuntun-connections-dialog.vala:108
 msgid "Host"
 msgstr "Indirizzo"
 
-#: ../src/tuntun-connections-dialog.vala:114
+#: ../src/tuntun-connections-dialog.vala:120
 msgid "Status"
 msgstr "Stato"
 
-#: ../src/tuntun-connections-dialog.vala:120
+#: ../src/tuntun-connections-dialog.vala:127
 msgid "Assigned IP"
 msgstr "IP Assegnato"
 
-#: ../src/tuntun-connections-dialog.vala:290
+#: ../src/tuntun-connections-dialog.vala:297
 msgid "Error while saving config"
 msgstr "Errore durante il salvataggio delle configurazioni"
 
@@ -122,24 +122,24 @@ msgstr "Tutte"
 msgid "select a connection first..."
 msgstr "selezionare prima una connessione..."
 
-#: ../src/tuntun-applet.vala:100
+#: ../src/tuntun-applet.vala:101
 #, c-format
 msgid "_Preferences..."
 msgstr "_Preferenze"
 
-#: ../src/tuntun-applet.vala:100
+#: ../src/tuntun-applet.vala:101
 msgid "_Show log..."
 msgstr "_Visualizza log"
 
-#: ../src/tuntun-applet.vala:100
+#: ../src/tuntun-applet.vala:101
 msgid "_About..."
 msgstr "_Informazioni su..."
 
-#: ../src/tuntun-applet.vala:188
+#: ../src/tuntun-applet.vala:194
 msgid "Authentication failed"
 msgstr "Autenticazione fallita"
 
-#: ../src/tuntun-applet.vala:212
+#: ../src/tuntun-applet.vala:218
 #, c-format
 msgid ""
 "connection established\n"
@@ -148,23 +148,23 @@ msgstr ""
 "connessione avvenuta\n"
 "ip assegnato: %s"
 
-#: ../src/tuntun-applet.vala:217
+#: ../src/tuntun-applet.vala:223
 msgid "connection closed"
 msgstr "connessione chiusa"
 
-#: ../src/tuntun-applet.vala:339
+#: ../src/tuntun-applet.vala:345
 msgid "translator_credits"
 msgstr "Andrea Del Signore"
 
-#: ../src/tuntun-applet.vala:346
+#: ../src/tuntun-applet.vala:352
 msgid "TunTun VPN Connection manager"
 msgstr "TunTun manager di connessioni VPN "
 
-#: ../src/tuntun-applet.vala:349
+#: ../src/tuntun-applet.vala:355
 msgid "Homepage"
 msgstr "Homepage"
 
-#: ../src/tuntun-applet.vala:350
+#: ../src/tuntun-applet.vala:356
 msgid ""
 "(c) 2008 Andrea Del Signore (sejerpz@tin.it).\n"
 "\n"
