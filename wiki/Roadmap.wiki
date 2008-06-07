@@ -12,7 +12,7 @@
   * ~~Animate the icon on network activity~~
   * ~~More info in the preference window an notification boubble: like connection status, assigned ip~~
   * ~~Update documentation and screenshots~~
-  * Debug and code cleanup
+  * ~~Debug and code cleanup~~
 
 == Version 0.3 ==
   * Drop [http://persbaglio.no-ip.org/?page_id=144 S.n.u.l.] and use directly GIO library
