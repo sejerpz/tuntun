@@ -43,4 +43,5 @@ src/Makefile
 ui/Makefile
 po/Makefile.in
 pixmaps/Makefile
+vapi/Makefile
 ])

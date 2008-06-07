@@ -1,7 +1,7 @@
 ## Process this file with automake to produce Makefile.in
 ## Created by Anjuta
 
-SUBDIRS = src ui po pixmaps
+SUBDIRS = src ui po pixmaps vapi
 
 tuntundocdir = ${prefix}/doc/tuntun
 tuntundoc_DATA = \
