@@ -18,6 +18,8 @@ You can _add_, _remove_ a connection or modify its _properties_, you can also se
   * Name: connection's name
   * Address: ip address or server name where OpenVPN is running (usually localhost)
   * Port: port number where the server is listening, written in the connection config option '_management_'.
+  * Status: the tunnel status (see below for an explanation of the icons meanings)
+  * Quick connect: check this box if you want to quickly activate this tunnel with a shit+click in the tuntun panel icon
 
 You can simply open or close a connection by selecting it on the menu that will popup with a left clck on the Tuntun icon. A boubble window will appear whenever the connection state change.
 ||http://tuntun.googlecode.com/svn/wiki/images/docs/connecting.png||
