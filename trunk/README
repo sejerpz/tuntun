@@ -11,7 +11,7 @@ for more infos.
 
 * Tips on how configure OpenVpn to use it with Tuntun
 
-The relevants config options of an vpn connection are:
+The relevant config options of an vpn connection are:
 
 management <ip address> <port>
    This is the local address and port where openvpn daemon
