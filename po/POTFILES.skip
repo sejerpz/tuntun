@@ -12,3 +12,6 @@ src/tuntun-log-window.c
 src/tuntun-applet.c
 src/tuntun-auth-dialog.c
 ui/tuntun.glade
+#result of debian packaging...
+debian/tuntun/usr/share/tuntun/ui/tuntun-auth-dialog.ui
+debian/tuntun/usr/share/tuntun/ui/tuntun.ui

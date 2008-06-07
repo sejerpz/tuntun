@@ -27,10 +27,10 @@
 using GLib;
 
 namespace Tuntun {
-	public static class Constants {
+	namespace Constants {
 		public const string CONNECTIONS_FILENAME = "tuntun.xml";
 
-		public static class Images {
+		namespace Images {
 			public const string APPLICATION = "tuntun.png";
 			public const string PANEL_ICON_NORMAL = "tuntun.png";
 			public const string PANEL_ICON_ACTIVITY_1 = "tuntun_act_1.png";

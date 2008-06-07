@@ -44,6 +44,7 @@ namespace UnixSocket
 	}
 
 	[CCode (cheader_filename = "netinet/in.h", cname = "struct sockaddr", free_function="free")]
+	[Compact]
         public class sockaddr
         {
                 public ushort sa_family;
@@ -57,6 +58,7 @@ namespace UnixSocket
 	}
 
         [CCode (cname = "struct sockaddr_in",  free_function="free")]
+	[Compact]
 	public class sockaddr_in
 	{
 		public ushort sin_family;
@@ -78,6 +80,7 @@ namespace UnixSocket
 	public static int socket (AddressFamilies socket_family, int type, int protocol);
 
         [CCode (cheader_filename="netdb.h", cname="struct servent", free_function="free")]
+	[Compact]
         public class servent
         {
                 public string s_name;
@@ -90,6 +93,7 @@ namespace UnixSocket
         public weak servent getservbyname (string name, string protocol);
 
         [CCode (cheader_filename="netdb.h", cname="struct hostent")]
+	[Compact]
         public class hostent
         {
                 public string h_name;

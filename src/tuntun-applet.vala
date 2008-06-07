@@ -60,47 +60,51 @@ namespace Tuntun
                 }
 
                 private void create() {
-                        _verbs = new BonoboUI.Verb[4];
-                        _images = new Gdk.Pixbuf[3];
+			try {
+				_verbs = new BonoboUI.Verb[4];
+				_images = new Gdk.Pixbuf[3];
 
-                        string file = Utils.get_image_path (Constants.Images.PANEL_ICON_ACTIVITY_1);
-			_images[0] = new Gdk.Pixbuf.from_file (file);
+				string file = Utils.get_image_path (Constants.Images.PANEL_ICON_ACTIVITY_1);
+				_images[0] = new Gdk.Pixbuf.from_file (file);
 
-                        file = Utils.get_image_path (Constants.Images.PANEL_ICON_NORMAL);
-			_images[1] = new Gdk.Pixbuf.from_file (file);
+				file = Utils.get_image_path (Constants.Images.PANEL_ICON_NORMAL);
+				_images[1] = new Gdk.Pixbuf.from_file (file);
 
-                        file = Utils.get_image_path (Constants.Images.PANEL_ICON_ACTIVITY_2);
-			_images[2] = new Gdk.Pixbuf.from_file (file);
+				file = Utils.get_image_path (Constants.Images.PANEL_ICON_ACTIVITY_2);
+				_images[2] = new Gdk.Pixbuf.from_file (file);
 
-                        _verbs[0].cname = "Properties";
-                        _verbs[0].cb = on_context_menu_item_clicked;
-                        _verbs[0].user_data = this;
+				_verbs[0].cname = "Properties";
+				_verbs[0].cb = on_context_menu_item_clicked;
+				_verbs[0].user_data = this;
 
-                        _verbs[1].cname = "Log";
-                        _verbs[1].cb = on_context_menu_item_clicked;
-                        _verbs[1].user_data = this;
+				_verbs[1].cname = "Log";
+				_verbs[1].cb = on_context_menu_item_clicked;
+				_verbs[1].user_data = this;
 
-                        _verbs[2].cname = "About";
-                        _verbs[2].cb = on_context_menu_item_clicked;
-                        _verbs[2].user_data = this;
+				_verbs[2].cname = "About";
+				_verbs[2].cb = on_context_menu_item_clicked;
+				_verbs[2].user_data = this;
 		
-                        _verbs[3].cname = null;
-                        _verbs[3].cb = null;
-                        _verbs[3].user_data = null;
+				_verbs[3].cname = null;
+				_verbs[3].cb = null;
+				_verbs[3].user_data = null;
 
-			_image = new Gtk.Image.from_pixbuf (_images[1]);
-                        this.add (_image);
+				_image = new Gtk.Image.from_pixbuf (_images[1]);
+				this.add (_image);
 
-                        _right_click_menu_xml = "<popup name=\"button3\">" +
-                            "<menuitem name=\"Properties Item\" verb=\"Properties\" _label=\"%s\" pixtype=\"stock\" pixname=\"gtk-properties\"/>" +
-                            "<menuitem name=\"Log Window\" verb=\"Log\" _label=\"%s\" pixtype=\"stock\" pixname=\"gtk-info\"/>" +
-                            "<menuitem name=\"About Item\" verb=\"About\" _label=\"%s\" pixtype=\"stock\" pixname=\"gnome-stock-about\"/>" +
-                            "</popup>";
+				_right_click_menu_xml = "<popup name=\"button3\">" +
+				    "<menuitem name=\"Properties Item\" verb=\"Properties\" _label=\"%s\" pixtype=\"stock\" pixname=\"gtk-properties\"/>" +
+				    "<menuitem name=\"Log Window\" verb=\"Log\" _label=\"%s\" pixtype=\"stock\" pixname=\"gtk-info\"/>" +
+				    "<menuitem name=\"About Item\" verb=\"About\" _label=\"%s\" pixtype=\"stock\" pixname=\"gnome-stock-about\"/>" +
+				    "</popup>";
 
-                        this.setup_menu (_right_click_menu_xml.printf (_("_Preferences..."), _("_Show log..."), _("_About...")), _verbs, this);
+				this.setup_menu (_right_click_menu_xml.printf (_("_Preferences..."), _("_Show log..."), _("_About...")), _verbs, this);
 
-                        this.button_press_event += this.on_button_press_release;
-                        this.show_all ();
+				this.button_press_event += this.on_button_press_release;
+				this.show_all ();
+			} catch (Error err) {
+				Utils.display_error ("PanelApplet.create", err.message);
+			}
                 }
 
                 static bool factory (PanelApplet applet, string iid, void *data) 
@@ -135,11 +139,13 @@ namespace Tuntun
 			_animation_status = 4;
 		}
 
-                private bool on_button_press_release (Widget sender, Gdk.EventButton eventButton) 
+                private bool on_button_press_release (PanelApplet sender, Gdk.Event event) 
 		{
-                        if (eventButton.type == Gdk.EventType.BUTTON_PRESS && 
-                            eventButton.button == 1) {
-				if ((eventButton.state & Gdk.ModifierType.SHIFT_MASK) != 0) {
+                        //			var event.button = (Gdk.EventButton*) event;
+
+                        if (event.button.type == Gdk.EventType.BUTTON_PRESS && 
+                            event.button.button == 1) {
+				if ((event.button.state & Gdk.ModifierType.SHIFT_MASK) != 0) {
 					quick_connect ();
 				} else {
 					select_connection ();

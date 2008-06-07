@@ -75,10 +75,13 @@ namespace Tuntun
 
 			/* connection status pixbufs */
 			_pixbufs = new Gdk.Pixbuf[3];
-			_pixbufs[0] = new Gdk.Pixbuf.from_file (Utils.get_image_path (Constants.Images.CONNECTION_STATUS_UNKNOWN));
-			_pixbufs[1] = new Gdk.Pixbuf.from_file (Utils.get_image_path (Constants.Images.CONNECTION_STATUS_DISCONNECT));
-			_pixbufs[2] = new Gdk.Pixbuf.from_file (Utils.get_image_path (Constants.Images.CONNECTION_STATUS_CONNECT));
-
+			try {
+				_pixbufs[0] = new Gdk.Pixbuf.from_file (Utils.get_image_path (Constants.Images.CONNECTION_STATUS_UNKNOWN));
+				_pixbufs[1] = new Gdk.Pixbuf.from_file (Utils.get_image_path (Constants.Images.CONNECTION_STATUS_DISCONNECT));
+				_pixbufs[2] = new Gdk.Pixbuf.from_file (Utils.get_image_path (Constants.Images.CONNECTION_STATUS_CONNECT));
+			} catch (Error err) {
+				warning ("ConnectionsDialog.initialize error reading status images: %s", err.message);
+			}
                         Gtk.CellRenderer renderer;
                         Gtk.TreeViewColumn column;
                         var selection = _treeview.get_selection ();
