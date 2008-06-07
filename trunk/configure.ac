@@ -13,7 +13,7 @@ AC_HEADER_STDC
 
 GNOME_COMMON_INIT
 
-VALA_PROG_VALAC([0.1.7])
+VALA_PROG_VALAC([0.3.3])
 
 dnl ***************************************************************************
 dnl Internatinalization
