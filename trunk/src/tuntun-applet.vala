@@ -101,6 +101,8 @@ namespace Tuntun
 				this.setup_menu (_right_click_menu_xml.printf (_("_Preferences..."), _("_Show log..."), _("_About...")), _verbs, this);
 
 				this.button_press_event += this.on_button_press_release;
+				this.has_tooltip = true;
+				this.query_tooltip += this.on_query_tooltip;
 				this.show_all ();
 			} catch (Error err) {
 				Utils.display_error ("PanelApplet.create", err.message);
@@ -112,6 +114,45 @@ namespace Tuntun
                         applet.create ();
                         return true;
                 }
+
+		private bool on_query_tooltip (PanelApplet applet, int x, int y, bool keyboard_tooltip, Gtk.Tooltip tooltip)
+		{
+			var message = new StringBuilder ();
+			bool tmp = true;
+
+			foreach (Connection conn in _tuntun.connections.items) {
+                                switch (conn.status) {
+                                        case ConnectionStates.CONNECTED:
+						if (tmp) {
+							message.append ("\n <b>Connected:</b>\n");
+							tmp = false;
+						}
+						message.append_printf ("\t<i>%s</i> - assigned ip: %s \n", conn.info.name, conn.info.assigned_ip);
+                                                break;
+
+                                }
+			}
+
+			tmp = true;
+			foreach (Connection conn in _tuntun.connections.items) {
+                                switch (conn.status) {
+                                        case ConnectionStates.DISCONNECTED:
+						if (tmp) {
+							message.append ("\n <b>Not connected:</b>\n");
+							tmp = false;
+						}
+						message.append_printf ("\t<i>%s</i> \n", conn.info.name);
+                                                break;
+
+                                }
+			}
+
+			if (message.len > 0) {
+				tooltip.set_markup (message.str);
+				return true;
+			} else
+				return false;
+		}
 
 		private bool on_animation_timeout ()
 		{
