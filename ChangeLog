@@ -1,3 +1,7 @@
+2008-06-10    <sejerpz@tin.it>
+
+	* src/tuntun-applet.vala: added tooltip to main applet icon
+
 2008-06-07    <sejerpz@tin.it>
 
 	* configure.ac: post release version bump
