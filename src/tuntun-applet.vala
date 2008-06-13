@@ -117,41 +117,8 @@ namespace Tuntun
 
 		private bool on_query_tooltip (PanelApplet applet, int x, int y, bool keyboard_tooltip, Gtk.Tooltip tooltip)
 		{
-			var message = new StringBuilder ();
-			bool tmp = true;
-
-			foreach (Connection conn in _tuntun.connections.items) {
-                                switch (conn.status) {
-                                        case ConnectionStates.CONNECTED:
-						if (tmp) {
-							message.append ("\n <b>Connected:</b>\n");
-							tmp = false;
-						}
-						message.append_printf ("\t<i>%s</i> - assigned ip: %s \n", conn.info.name, conn.info.assigned_ip);
-                                                break;
-
-                                }
-			}
-
-			tmp = true;
-			foreach (Connection conn in _tuntun.connections.items) {
-                                switch (conn.status) {
-                                        case ConnectionStates.DISCONNECTED:
-						if (tmp) {
-							message.append ("\n <b>Not connected:</b>\n");
-							tmp = false;
-						}
-						message.append_printf ("\t<i>%s</i> \n", conn.info.name);
-                                                break;
-
-                                }
-			}
-
-			if (message.len > 0) {
-				tooltip.set_markup (message.str);
-				return true;
-			} else
-				return false;
+			tooltip.set_custom (new Tooltip (_tuntun.connections));
+			return true;
 		}
 
 		private bool on_animation_timeout ()
@@ -182,8 +149,6 @@ namespace Tuntun
 
                 private bool on_button_press_release (PanelApplet sender, Gdk.Event event) 
 		{
-                        //			var event.button = (Gdk.EventButton*) event;
-
                         if (event.button.type == Gdk.EventType.BUTTON_PRESS && 
                             event.button.button == 1) {
 				if ((event.button.state & Gdk.ModifierType.SHIFT_MASK) != 0) {
