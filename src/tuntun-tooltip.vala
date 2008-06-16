@@ -45,7 +45,7 @@ namespace Tuntun
 			Label label;
 
 			hbox.pack_start (widget, false, false, 4);
-			hbox.pack_start (new Label.with_mnemonic (connection.info.name), false, false, 12);
+			hbox.pack_start (new Label (connection.info.name), false, false, 12);
 			if (connection.status == ConnectionStates.CONNECTED) {
 				label = new Label (null);
 				label.set_markup (_("<i>ip address: %s</i>").printf(connection.info.assigned_ip));
