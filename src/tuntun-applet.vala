@@ -101,8 +101,6 @@ namespace Tuntun
 				this.setup_menu (_right_click_menu_xml.printf (_("_Preferences..."), _("_Show log..."), _("_About...")), _verbs, this);
 
 				this.button_press_event += this.on_button_press_release;
-				this.has_tooltip = true;
-				this.query_tooltip += this.on_query_tooltip;
 				this.show_all ();
 			} catch (Error err) {
 				Utils.display_error ("PanelApplet.create", err.message);
@@ -114,12 +112,6 @@ namespace Tuntun
                         applet.create ();
                         return true;
                 }
-
-		private bool on_query_tooltip (PanelApplet applet, int x, int y, bool keyboard_tooltip, Gtk.Tooltip tooltip)
-		{
-			tooltip.set_custom (new Tooltip (_tuntun.connections));
-			return true;
-		}
 
 		private bool on_animation_timeout ()
 		{
@@ -149,6 +141,8 @@ namespace Tuntun
 
                 private bool on_button_press_release (PanelApplet sender, Gdk.Event event) 
 		{
+                        //			var event.button = (Gdk.EventButton*) event;
+
                         if (event.button.type == Gdk.EventType.BUTTON_PRESS && 
                             event.button.button == 1) {
 				if ((event.button.state & Gdk.ModifierType.SHIFT_MASK) != 0) {

@@ -1,16 +1,3 @@
-2008-06-13    <sejerpz@tin.it>
-
-	* src/tuntun-tooltip.vala,
-	  src/tuntun-applet.vala:  new tooltip custom class
-	
-2008-06-10    <sejerpz@tin.it>
-
-	* src/tuntun-applet.vala: added tooltip to main applet icon
-
-2008-06-07    <sejerpz@tin.it>
-
-	* configure.ac: post release version bump
-
 2008-06-07    <sejerpz@tin.it>
 
 	* vapi/unix-socket.vapi: added [Compact] attribute
