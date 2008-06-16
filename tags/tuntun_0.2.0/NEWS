@@ -1,0 +1,23 @@
+Tuntun version 0.2.0
+====================
+
+* Second release for Tuntun:
+
+  Main changes from 0.1.0 are:
+       * Animated panel icon on activity
+       * Assigned ip shown in the notification 
+       * More consistent status icons in the menu / notification / connections dialog
+       * A connection may be selected for a quick (shift + click) connect action
+       * Fully compatible with valac 0.3.3
+
+  
+Tuntun version 0.1.0
+====================
+
+* First relase for Tuntun the ovpnClient successor
+
+  Main features are:
+       * Support all the functionality that ovpnClient has
+       * Support for OpenVPN authentication requests
+       * Support for Gnome Keyring 
+  
