@@ -1,0 +1,42 @@
+New classes added to GIO (marked by *):
+
+GObject
+ |- GInetAddress *
+ |   |- GInet4Address *
+ |   \- GInet6Address *
+ |
+ |- GSocketAddress *
+ |   \- GInetSocketAddress *
+ |
+ |- GNetworkInputStream * (implements GInputStream)
+ |- GNetworkOutputStream * (implements GOutputStream)
+ |
+ |- GSocket *
+ |
+ |- GSocketConnection *
+ |   \- GTCPConnection *
+ |
+ \- GSocketServer *
+     \- GTCPServer *
+
+I've also written another library (in Vala), which I'm currently calling "gurl", with the following:
+
+GObject
+ |- GurlURI * (mostly copied from GVfsDecodedUri, utility for URI handling)
+ |
+ |- GurlOpener * (handles opening URIs)
+ |
+ \- GurlBaseHandler * (base handler for requests)
+     |- GurlBaseHttpHandler *
+     |- GurlHttpHandler *
+     |- GurlHttpBasicAuthHandler *
+     |- GurlHttp
+
+This design is based roughly off of Python's urllib2. It is intended mostly as a libsoup replacement built on g(n)io, as well as being a good test for the gnio stuff. The 
+handlers are loaded using gio extension points, so that gurl doesn't have to link to gnutls or openssl but can load them if available in lib/gio/modules.
+
+I have an initial patch that makes SoupAddress just a thin wrapper around GSocketAddress, but "porting" anything else in Soup to use gnio would be hard without breaking ABI 
+(since Soup lets you pick a GMainContext, something that was omitted in gio [1]), at which point SoupSocket/Address would disappear anyways [2].
+
+[1] http://mail.gnome.org/archives/gnome-vfs-list/2007-October/msg00010.html
+[2] http://mail.gnome.org/archives/libsoup-list/2008-May/msg00005.html
