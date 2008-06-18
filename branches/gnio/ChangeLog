@@ -1,5 +1,9 @@
 2008-06-18    <sejerpz@tin.it>
 
+	* src/snul-gnio.vala: first porting to gnio
+
+2008-06-18    <sejerpz@tin.it>
+
 	* src/Makefile.am: integrated libgnio build
 
 2008-06-13    <sejerpz@tin.it>

@@ -130,7 +130,7 @@ namespace Tuntun {
 			}
 		}
 
-		private void client_connected (TcpClient sender, int socket_fd)
+		private void client_connected (TcpClient sender, SocketConnection socket)
 		{
                         _client.send ("state on\n");
 
