@@ -1,0 +1,11 @@
+prefix=@PREFIX@
+exec_prefix=@PREFIX@/bin
+libdir=@PREFIX@/lib
+includedir=@PREFIX@/include
+
+Name: gnio
+Description: a GObject networking library
+Version: 0.1
+Requires: glib-2.0 gobject-2.0 gio-2.0
+Libs: -L${libdir} -lgnio
+Cflags: -I${includedir}
