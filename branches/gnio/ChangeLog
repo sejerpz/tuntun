@@ -1,3 +1,8 @@
+2008-06-19    <sejerpz@tin.it>
+
+	* src/tuntun-applet.vala: fixed keypress event handler delegate
+	* src/snul-gnio.vala: misc fixes, added to svn
+	
 2008-06-18    <sejerpz@tin.it>
 
 	* src/snul-gnio.vala: first porting to gnio
