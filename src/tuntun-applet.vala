@@ -147,11 +147,11 @@ namespace Tuntun
 			_animation_status = 4;
 		}
 
-                private bool on_button_press_release (PanelApplet sender, Gdk.Event event) 
+                private bool on_button_press_release (PanelApplet sender, Gdk.EventButton event) 
 		{
-                        if (event.button.type == Gdk.EventType.BUTTON_PRESS && 
-                            event.button.button == 1) {
-				if ((event.button.state & Gdk.ModifierType.SHIFT_MASK) != 0) {
+                        if (event.type == Gdk.EventType.BUTTON_PRESS && 
+                            event.button == 1) {
+				if ((event.state & Gdk.ModifierType.SHIFT_MASK) != 0) {
 					quick_connect ();
 				} else {
 					select_connection ();

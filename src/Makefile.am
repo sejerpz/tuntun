@@ -31,7 +31,7 @@ tuntun_SOURCES = \
 
 tuntun_VALAFLAGS = -C --save-temps --vapidir ../gnio/vala --vapidir ../vapi --pkg libnotify --pkg config --pkg extensions --pkg unix-socket --pkg libpanelapplet-2.0 --pkg libbonoboui-2.0 --pkg vte --pkg gnome-keyring-1 --pkg gnio
 
-tuntun-connection.$(OBJEXT): libgnio.a
+snul-gnio.$(OBJEXT): libgnio.a
 
 tuntun_LDFLAGS = $(PACKAGE_LIBS) \
 	-export-dynamic
