@@ -30,7 +30,7 @@ AM_PROG_LIBTOOL
 
 
 
-PKG_CHECK_MODULES(TUNTUN, [gtk+-2.0 >= 2.8 libglade-2.0 >= 2.6.0 libpanelapplet-2.0 >= 2.6 libnotify >= 0.4.4])
+PKG_CHECK_MODULES(TUNTUN, [gtk+-2.0 >= 2.8 libglade-2.0 >= 2.6.0 libpanelapplet-2.0 >= 2.6 libnotify >= 0.4.4, gio-2.0 >= 2.16.0])
 AC_SUBST(TUNTUN_CFLAGS)
 AC_SUBST(TUNTUN_LIBS)
 
