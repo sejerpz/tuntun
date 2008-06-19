@@ -29,7 +29,7 @@ tuntun_SOURCES = \
 	tuntun-tooltip.vala \
 	snul-gnio.vala
 
-tuntun_VALAFLAGS = -C --save-temps --vapidir ../gnio/vala --vapidir ../vapi --pkg libnotify --pkg config --pkg extensions --pkg unix-socket --pkg libpanelapplet-2.0 --pkg libbonoboui-2.0 --pkg vte --pkg gnome-keyring-1 --pkg gnio
+tuntun_VALAFLAGS = -C --save-temps --vapidir ../gnio/vala --vapidir ../vapi --pkg libnotify --pkg config --pkg extensions --pkg libpanelapplet-2.0 --pkg libbonoboui-2.0 --pkg vte --pkg gnome-keyring-1 --pkg gnio
 
 snul-gnio.$(OBJEXT): libgnio.a
 

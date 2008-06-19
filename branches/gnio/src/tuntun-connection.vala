@@ -168,24 +168,24 @@ namespace Tuntun {
 					this.status = ConnectionStates.DISCONNECTED;
 					this._status_requested = false;
 					_suspend_notifications = false;
-				} else if (PatternSpec.match_simple("*STATE:*,CONNECTED,SUCCESS,*", line))
+				} else if (PatternSpec.match_simple(">STATE:*,CONNECTED,SUCCESS,*", line))
 					this.status = ConnectionStates.CONNECTED;
-				else if (PatternSpec.match_simple("*STATE:*,RECONNECTING,*error*", line) ||
-				    PatternSpec.match_simple("*STATE:*,RECONNECTING,SIGHUP*", line)) {
+				else if (PatternSpec.match_simple(">STATE:*,RECONNECTING,*error*", line) ||
+				    PatternSpec.match_simple(">STATE:*,RECONNECTING,SIGHUP*", line)) {
 					this.status = ConnectionStates.DISCONNECTED;
-				} else if (PatternSpec.match_simple("*STATE:*,RECONNECTING,auth-failure*", line) ||
-					 PatternSpec.match_simple("*STATE:*,RECONNECTING,private-key-password-failure*", line))
+				} else if (PatternSpec.match_simple(">STATE:*,RECONNECTING,auth-failure*", line) ||
+					 PatternSpec.match_simple(">STATE:*,RECONNECTING,private-key-password-failure*", line))
 					/* no status changed event */
 					this._status = ConnectionStates.DISCONNECTED;
-				else if (PatternSpec.match_simple("*STATE:*,WAIT", line))
+				else if (PatternSpec.match_simple(">STATE:*,WAIT", line))
 					this.status = ConnectionStates.CONNECTING;
-				else if (PatternSpec.match_simple ("*PASSWORD*'Auth'*username/password*", line)) {
+				else if (PatternSpec.match_simple (">PASSWORD*'Auth'*username/password*", line)) {
 					this.authentication_required (AuthenticationModes.USERNAME_PASSWORD, "Auth");
-				} else if (PatternSpec.match_simple ("*PASSWORD*'Private Key'*password*", line)) {
+				} else if (PatternSpec.match_simple (">PASSWORD*'Private Key'*password*", line)) {
 					this.authentication_required (AuthenticationModes.PASSWORD_ONLY, "Private Key");
 				} else if (this._auth_step != AuthenticationSteps.NONE &&
-				    (PatternSpec.match_simple ("*SUCCESS: '%s'*username*".printf (this._auth_type), line) ||
-					PatternSpec.match_simple ("*SUCCESS: '%s'*password*".printf (this._auth_type), line)) ) {
+				    (PatternSpec.match_simple ("SUCCESS: '%s'*username*".printf (this._auth_type), line) ||
+					PatternSpec.match_simple ("SUCCESS: '%s'*password*".printf (this._auth_type), line)) ) {
 					authenticate_async ();				
 				} else if (PatternSpec.match_simple ("*PASSWORD*Verification*Failed*'Auth'*", line)) {
 					if (!_suppress_auth_failed)
@@ -195,7 +195,7 @@ namespace Tuntun {
 						this.authentication_failed (AuthenticationModes.PASSWORD_ONLY, "Private Key");
 				} else if (PatternSpec.match_simple ("*FATAL*ERROR*", line)) {
 					this.control_channel_fatal_error (line);
-				} else if (PatternSpec.match_simple ("*STATE:*,ASSIGN_IP,*", line)) {
+				} else if (PatternSpec.match_simple (">STATE:*,ASSIGN_IP,*", line)) {
 					this._info.assigned_ip = extract_ip_address (line);
 				}
 				this.control_channel_data_received (line);

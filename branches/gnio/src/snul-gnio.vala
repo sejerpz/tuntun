@@ -50,8 +50,6 @@ namespace Snul
 		public signal void disconnected ();
 		public signal void error (Error error);
 
-		private const string error_domain_quark = "tcp_socket_error_domain-quark";
-
 		private string _address = null;
 		private string _first_address = null;
 		private string _port = null;
@@ -66,15 +64,6 @@ namespace Snul
 		public string address { get { return _address; } }
 		public string first_address { get { return address; } set { _first_address = value; } }
 		public string port { get { return _port; } }
-
-
-		//[CCode (cname="g_source_set_callback")]
-		//private static extern void source_set_callback (Source source, SourceFunc func, DestroyNotify? notify);
-
-                construct
-                {
-                        
-                }
 
                 [CCode (instance_pos = 2.5)]
 		private void on_address_resolved (Object sender, AsyncResult result)
@@ -98,6 +87,7 @@ namespace Snul
 					// create a source for
 					// monitoring incoming data
                                         _client = (SocketConnection) sender;
+                                        _client.input_stream.socket.set_blocking (false);
                                         _input = new DataInputStream (_client.input_stream);
 					IOCondition conditions = IOCondition.IN | IOCondition.HUP | IOCondition.ERR | IOCondition.NVAL;
 					_source = _client.input_stream.socket.create_source (conditions, null);
@@ -184,14 +174,28 @@ namespace Snul
 
 			switch (condition) {
 				case IOCondition.IN:
-					size_t length = 0;
+					size_t length = -1;
+					
+                                        var message = new StringBuilder ();
 
-                                        string message = _input.read_line (out length, null);
-                                        if (message != null)
-                                                message = message.strip ();
+					//HACK: this makes me sure
+					//that I empty the socket buffer
+					while (length != 0) {
+						try {
+							string buffer = _input.read_line (out length, null);
+							if (buffer != null) {
+								message.append_printf ("%s\n", buffer);
+							}
+						} catch (IOError err) {
+                                                        if (err.code != 27) { //IOError.WOULD_BLOCK
+                                                                this.on_error (err);
+                                                        }
+							length = 0;
+						}
+					}
 
-                                        if (length > 0) {
-                                                this.on_data_received (message, length);
+                                        if (message.len > 0) {
+                                                this.on_data_received (message.str, message.len);
                                         } else {
                                                 this.on_error (new TcpSocketError.SOCKET_BROKEN ("zero length data, socket broken? Closing connection."));
                                                 this.disconnect ();
@@ -199,18 +203,15 @@ namespace Snul
 
 					break;
 				case IOCondition.HUP:
-                                        critical ("HUP");
-                                        this.on_error (new TcpSocketError.SOCKET_HUP ("Socket HUP")); // new Error (Quark.from_string (error_domain_quark), 0, "IOChannel error (HUP)"));
+                                        this.on_error (new TcpSocketError.SOCKET_HUP ("Socket HUP"));
 					this.disconnect ();
 					res = false;
 					break;
 				case IOCondition.ERR:
-                                        critical ("ERR");
 					this.on_error (new TcpSocketError.IOCHANNEL_ERROR ("IOChannel error (ERR)"));
 					this.disconnect ();
 					break;
 				case IOCondition.NVAL:
-                                        critical ("NVAL");
 					this.on_error (new TcpSocketError.IOCHANNEL_NVAL ("IOChannel invalid request (NAVL)"));
 					this.disconnect ();
 					break;
