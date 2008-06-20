@@ -1,3 +1,21 @@
+2008-06-19    <sejerpz@tin.it>
+
+	* src/snul-gnio.vala: code cleanup and fixed buffered io problem on the socket
+	* src/tuntun-connection.vala: strict string check because 'log all' command confuses the applet
+	
+2008-06-19    <sejerpz@tin.it>
+
+	* src/tuntun-applet.vala: fixed keypress event handler delegate
+	* src/snul-gnio.vala: misc fixes, added to svn
+	
+2008-06-18    <sejerpz@tin.it>
+
+	* src/snul-gnio.vala: first porting to gnio
+
+2008-06-18    <sejerpz@tin.it>
+
+	* src/Makefile.am: integrated libgnio build
+
 2008-06-13    <sejerpz@tin.it>
 
 	* src/tuntun-tooltip.vala,
