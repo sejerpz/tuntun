@@ -1,0 +1,44 @@
+#!/usr/bin/env python
+
+VERSION = '0.1'
+APPNAME = 'gnio'
+
+srcdir = '.'
+blddir = 'build'
+
+def set_options(opt):
+	opt.tool_options('compiler_cc')
+
+def configure(conf):
+	conf.check_pkg('glib-2.0', destvar='GLIB', vnum='2.16.0', mandatory=True)
+	conf.check_pkg('gobject-2.0', destvar='GOBJECT', vnum='2.16.0', mandatory=True)
+	conf.check_pkg('gthread-2.0', destvar='GOBJECT', vnum='2.16.0', mandatory=True)
+	conf.check_pkg('gio-2.0', destvar='GIO', vnum='2.16.0', mandatory=True, pkgvars='giomoduledir')
+	conf.check_pkg('gio-unix-2.0', destvar='GIO_UNIX', vnum='2.16.0', mandatory=True)
+	conf.check_tool('compiler_cc misc gnome vala')
+
+	# to install these into ${GIO_MODULE_DIR}/gurl/, uncomment this
+	# conf.env['GURL_MODULE_DIR'] = '%s/gurl' % conf.env['GIO_GIOMODULEDIR'][0]
+
+	conf.env['GURL_MODULE_DIR'] = 'lib/gio/modules/gurl/'
+
+	conf.env['defines']['GURL_MODULE_DIR'] = '"%s/%s"' % (conf.env['PREFIX'], conf.env['GURL_MODULE_DIR'])
+
+	conf.write_config_header('config.h')
+
+def build(bld):
+	bld.add_subdirs('gnio data vala')
+	bld.install_files('PREFIX', 'include/gnio', 'gnio/gi*.h')
+	bld.install_files('PREFIX', 'include/gnio', 'gnio/gn*.h')
+	bld.install_files('PREFIX', 'include/gnio', 'gnio/gr*.h')
+	bld.install_files('PREFIX', 'include/gnio', 'gnio/gs*.h')
+	bld.install_files('PREFIX', 'include/gnio', 'gnio/gt*.h')
+	bld.install_files('PREFIX', 'include/gnio', 'gnio/gnioenums.h')
+
+def shutdown():
+	import UnitTest
+	ut = UnitTest.unit_test()
+#	ut.want_to_see_test_output = True
+#	ut.want_to_see_test_error = True
+	ut.run()
+	ut.print_results()
