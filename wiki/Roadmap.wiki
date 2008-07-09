@@ -16,7 +16,8 @@
 
 == Version 0.3 ==
   * ~~Implement a summary tooltip with the current connection status~~
-  * Drop [http://persbaglio.no-ip.org/?page_id=144 S.n.u.l.] and use directly GIO library
+  * ~~Drop [http://persbaglio.no-ip.org/?page_id=144 S.n.u.l.] and use directly GIO library~~
+  * ~~Reconnect automatically to the openvpn daemon management interface on connection lost~~
   * Debug and code cleanup
 
 == Future ==
