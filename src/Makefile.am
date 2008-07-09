@@ -58,7 +58,7 @@ include Makefile.vm
 BUILT_SOURCES += libgnio.a
 
 libgnio.a:
-	cd ../gnio; ./waf configure;
-	cd ../gnio; ./waf build --target=gnio; 
-	cp ../gnio/build/default/gnio/libgnio.a  .
+	cd $(top_srcdir)/gnio; ./waf configure;
+	cd $(top_srcdir)/gnio; ./waf build --target=gnio; 
+	cp $(top_srcdir)/gnio/build/default/gnio/libgnio.a  .
 
