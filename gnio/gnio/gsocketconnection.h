@@ -86,6 +86,8 @@ GSocketOutputStream * g_socket_connection_get_output_stream (GSocketConnection *
 
 GSocketAddress *      g_socket_connection_get_address       (GSocketConnection *connection);
 
+gboolean              g_socket_connection_is_connected      (GSocketConnection *connection);
+
 gboolean              g_socket_connection_connect           (GSocketConnection  *connection,
                                                              GCancellable       *cancellable,
                                                              GError            **error);

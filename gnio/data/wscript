@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 def build(bld):
-	pc = bld.create_obj('subst')
+	pc = bld.new_task_gen('subst')
 	pc.source = 'gnio.pc.in'
 	pc.target = 'gnio.pc'
 	bld.install_files('PREFIX', 'lib/pkgconfig', 'gnio.pc')

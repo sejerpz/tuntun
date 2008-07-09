@@ -206,6 +206,12 @@ g_set_error_from_last_error (GError **error)
 }
 #endif
 
+typedef struct
+{
+  GInetAddress *address;
+  gchar        *canonical_name;
+} HostInfo;
+
 #if !defined(HAVE_GETADDRINFO)
 static GList *
 hostent2list (const struct hostent *he)

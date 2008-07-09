@@ -39,7 +39,8 @@ namespace Snul
 		SOCKET_BROKEN,
 		SOCKET_HUP,
 		IOCHANNEL_ERROR,
-		IOCHANNEL_NVAL
+	        IOCHANNEL_NVAL,
+		OPERATION_TIMEOUT
 	}
 
 	public class TcpClient : GLib.Object
@@ -60,10 +61,18 @@ namespace Snul
 		private SocketConnection _client = null;
                 private Source _source = null;
                 private DataInputStream _input = null;
+		private Cancellable _cancellable = null;
+		private uint _timeout_id = 0;
+		private const int TimeoutValue = 10; // timeout in seconds
 
 		public string address { get { return _address; } }
 		public string first_address { get { return address; } set { _first_address = value; } }
 		public string port { get { return _port; } }
+
+		~TcpClient ()
+		{
+			cleanup ();
+		}
 
                 [CCode (instance_pos = 2.5)]
 		private void on_address_resolved (Object sender, AsyncResult result)
@@ -82,22 +91,28 @@ namespace Snul
                 [CCode (instance_pos = 2.5)]
 		private void on_client_connected (Object sender, AsyncResult result)
 		{
-			try {
-				if (((SocketConnection) sender).connect_finish (result)) {
-					// create a source for
-					// monitoring incoming data
-                                        _client = (SocketConnection) sender;
-                                        _client.input_stream.socket.set_blocking (false);
-                                        _input = new DataInputStream (_client.input_stream);
-					IOCondition conditions = IOCondition.IN | IOCondition.HUP | IOCondition.ERR | IOCondition.NVAL;
-					_source = _client.input_stream.socket.create_source (conditions, null);
-                                        Extensions.source_set_callback (_source, (void*) socket_callback, this, null);
-                                        _source.attach (null);
-					this.connected (_client);
+			try
+			{
+				((SocketConnection) sender).connect_finish (result);
+				// create a source for
+				// monitoring incoming data
+				_client = (SocketConnection) sender;
+				_client.input_stream.socket.set_blocking (false);
+				_input = new DataInputStream (_client.input_stream);
+				IOCondition conditions = IOCondition.IN | IOCondition.HUP | IOCondition.ERR | IOCondition.NVAL;
+				_source = _client.input_stream.socket.create_source (conditions, null);
+				Extensions.source_set_callback (_source, (void*) socket_callback, this, null);
+				_source.attach (null);
+				this.connected (_client);
+				this._cancellable = null;
+				if (_timeout_id != 0) {
+					Source.remove (_timeout_id);
+					_timeout_id = 0;
 				}
-			} catch (Error err) {
-				this.on_error (err);
+			} catch (Error sock) {
+				this.on_error (sock);
 			}
+			
 		}
 	    
 		public void connect (string address, string port) throws TcpSocketError
@@ -108,13 +123,25 @@ namespace Snul
 
 				this._address = address;
 				this._port = port;
+				this._cancellable = new Cancellable ();
 
+				_timeout_id = Timeout.add_seconds (TimeoutValue, this.on_operation_timed_out);
 				_resolver = new Resolver();
-				_resolver.resolve_async (this._address, null, this.on_address_resolved);
+				_resolver.resolve_async (this._address, this._cancellable, this.on_address_resolved);
 			} catch (GLib.Error err) {
 				this.on_error (err);
 				throw err;
 			}
+		}
+
+		private bool on_operation_timed_out ()
+		{
+			if (_cancellable != null && !_cancellable.is_cancelled ()) {
+				_cancellable.cancel ();
+				this.on_error (new TcpSocketError.OPERATION_TIMEOUT ("Operation timeout"));
+			}
+			_timeout_id = 0;
+			return false;
 		}
 
 		public size_t send (string buffer)
@@ -133,6 +160,14 @@ namespace Snul
 
 		public void disconnect ()
 		{
+			cleanup ();
+			on_disconnected ();
+		}
+
+		private void cleanup ()
+		{
+			Source.remove_by_user_data (this);
+
 			if (_source != null) {
 				_source.destroy ();
 				_source = null;
@@ -143,8 +178,6 @@ namespace Snul
 				_client.close ();
 				_client = null;
 			}
-
-			on_disconnected ();
 		}
 
 		protected virtual void on_connected (SocketConnection client)

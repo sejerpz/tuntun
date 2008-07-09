@@ -66,8 +66,9 @@ namespace Tuntun {
 			set {
 				if (_control_channel_status != value) {
 					_control_channel_status = value;
-					if (!_suspend_notifications)
-						notify ("control_channel_status");
+					if (!_suspend_notifications) {
+						notify ("control-channel-status");
+					}
 				}
 			}
 		}
@@ -99,6 +100,7 @@ namespace Tuntun {
 			_status = ConnectionStates.UNKNOWN;
 		}
 
+		
 		public bool initialize ()
 		{
 			_client = new TcpClient ();
@@ -106,8 +108,14 @@ namespace Tuntun {
 			_client.data_received += this.client_data_received;
 			_client.disconnected += this.client_disconnected;
 			_client.error += this.client_error;
-			_suspend_notifications = true;
 
+			return control_channel_connect ();
+		}
+
+		private bool control_channel_connect ()
+		{
+			_suspend_notifications = true;
+			_status_requested = false;
 			try {
 
 				this.control_channel_status = ConnectionStates.CONNECTING;
@@ -115,28 +123,34 @@ namespace Tuntun {
 				return true;
 			} catch (Error err) {
 				warning ("Error initializiong connection %s", err.message);
+				this.control_channel_status = ConnectionStates.ERROR;
+				return false;
+			}
+		}
+
+		public bool reinitialize ()
+		{
+			try {
+				if (this.status == ConnectionStates.CONNECTED)
+					_client.disconnect ();
+
+				return initialize ();
+			} catch (Error err) {
+				Utils.display_error ("reinitialize", err.message);
 				this.control_channel_status = ConnectionStates.ERROR;				
 				return false;
 			}
 		}
 
-		public void reinitialize ()
-		{
-			try {
-				_client.disconnect ();
-				_client.connect (_info.address, _info.port.to_string());
-			} catch (Error err) {
-				Utils.display_error ("reinitialize", err.message);
-			}
-		}
-
 		private void client_connected (TcpClient sender, SocketConnection socket)
 		{
+			this.control_channel_status = ConnectionStates.CONNECTED;
                         _client.send ("state on\n");
 
-			_status_requested = true;
-                        _client.send ("state\n");
-			this.control_channel_status = ConnectionStates.CONNECTED;
+			if (this._control_channel_status != ConnectionStates.ERROR) {
+				_status_requested = true;
+				_client.send ("state\n");
+			}
 		}
 
 		private void client_disconnected (TcpClient sender)
@@ -147,7 +161,11 @@ namespace Tuntun {
 
 		private void client_error (TcpClient sender, GLib.Error error)
 		{
+			_suspend_notifications = false;
+			//disconnect immediatly, if not everything explodes
+			sender.disconnect ();
 			this.control_channel_status = ConnectionStates.ERROR;
+			_status_requested = false;
 		}
 
 		private void client_data_received (TcpClient sender, string buffer, size_t len)
