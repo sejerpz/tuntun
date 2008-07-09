@@ -66,14 +66,14 @@ enum
 
 struct _GSocketPrivate
 {
-  GSocketDomain domain;
-  GSocketType type;
-  gchar *protocol;
-  gint fd;
-  gboolean blocking;
-  gint backlog;
-  gboolean reuse_address;
-  GError *error;
+  GSocketDomain   domain;
+  GSocketType     type;
+  gchar          *protocol;
+  gint            fd;
+  gboolean        blocking;
+  gint            backlog;
+  gboolean        reuse_address;
+  GError         *error;
   GSocketAddress *local_address;
   GSocketAddress *remote_address;
 };
@@ -509,6 +509,14 @@ g_socket_has_error (GSocket  *socket,
 }
 
 gboolean
+g_socket_is_connected (GSocket *socket)
+{
+  g_return_val_if_fail (G_IS_SOCKET (socket), FALSE);
+
+  return socket->priv->remote_address != NULL;
+}
+
+gboolean
 g_socket_listen (GSocket  *socket,
                  GError  **error)
 {
@@ -606,6 +614,7 @@ g_socket_connect (GSocket         *socket,
           socket->priv->error = g_error_new (G_IO_ERROR, g_io_error_from_errno (errno), "error connecting: %s", g_strerror (errno));
           g_propagate_error (error, socket->priv->error);
         }
+
       return FALSE;
     }
 

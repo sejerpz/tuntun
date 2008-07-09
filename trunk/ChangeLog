@@ -1,3 +1,12 @@
+2008-07-10    <sejerpz@tin.it>
+
+	* src/tuntun-connection.vala,
+	src/tuntun-connections.vala,
+	src/snul-gnio.vala: reconnect automatically to the openvpn daemon 
+	                    if control channel connection is lost
+	
+	* src/gnio: update gnio version from git repository
+	
 2008-06-19    <sejerpz@tin.it>
 
 	* src/snul-gnio.vala: code cleanup and fixed buffered io problem on the socket

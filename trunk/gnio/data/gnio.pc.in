@@ -3,6 +3,8 @@ exec_prefix=@PREFIX@/bin
 libdir=@PREFIX@/lib
 includedir=@PREFIX@/include
 
+gniovapidir=@PREFIX@/share/vala/vapi
+
 Name: gnio
 Description: a GObject networking library
 Version: 0.1

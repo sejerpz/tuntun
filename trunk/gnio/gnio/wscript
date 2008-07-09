@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 def build(bld):
-	lib = bld.create_obj('cc', 'staticlib')
+	lib = bld.new_task_gen('cc', 'shlib')
 	lib.uselib = 'GLIB GOBJECT GIO'
 	lib.packages = 'gio-2.0'
 	lib.find_sources_in_dirs('.')

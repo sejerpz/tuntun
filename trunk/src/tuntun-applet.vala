@@ -53,7 +53,7 @@ namespace Tuntun
 			this._tuntun.connections.authentication_required += this.on_connection_authentication_required;
 			this._tuntun.connections.authentication_failed += this.on_connection_authentication_failed;
 			this._tuntun.connections.connection_activity += this.on_connection_activity;
-                       	Notify.init ("Tuntun");
+                       	Notify.init ("Tuntun");			
                 }
 
                 public PanelApplet() {

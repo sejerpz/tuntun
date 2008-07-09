@@ -238,6 +238,17 @@ g_socket_connection_get_address (GSocketConnection *connection)
 }
 
 gboolean
+g_socket_connection_is_connected (GSocketConnection *connection)
+{
+  g_return_val_if_fail (G_IS_SOCKET_CONNECTION (connection), FALSE);
+
+  if (!connection->priv->socket)
+    return FALSE;
+
+  return g_socket_is_connected (connection->priv->socket);
+}
+
+gboolean
 g_socket_connection_connect (GSocketConnection  *connection,
                              GCancellable       *cancellable,
                              GError            **error)
@@ -407,4 +418,6 @@ void
 g_socket_connection_close (GSocketConnection *connection)
 {
   g_return_if_fail (G_IS_SOCKET_CONNECTION (connection));
+
+  g_socket_close (connection->priv->socket);
 }

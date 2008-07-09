@@ -31,6 +31,8 @@ namespace Tuntun
 	public class Connections : Object 
 	{
 		private string _config_file;
+		private uint _timeout_id = 0;
+
 		public List<Connection> items;
 
                 public signal void connection_added (Connection connection);
@@ -43,8 +45,13 @@ namespace Tuntun
 
 		construct 
 		{
-			_config_file = Utils.gnome_util_home_file (Constants.CONNECTIONS_FILENAME);
 			items = new List<Connection> ();
+			load ();
+		}
+
+		private void load ()
+		{
+			_config_file = Utils.gnome_util_home_file (Constants.CONNECTIONS_FILENAME);
 			try {
 				load_config (_config_file);
 			}
@@ -150,7 +157,7 @@ namespace Tuntun
                         on_connection_added (connection);
 			Signal.connect (connection, "notify::status", 
 			    (Callback)this.connection_notify_property_changed, this);
-			Signal.connect (connection, "notify::control_channel_status", 
+			Signal.connect (connection, "notify::control-channel-status", 
 			    (Callback)this.connection_notify_property_changed, this);
 			connection.authentication_required += this.on_connection_authentication_required;
 			connection.authentication_failed += this.on_connection_authentication_failed;
@@ -211,7 +218,29 @@ namespace Tuntun
 		protected virtual void on_connection_status_changed (Connection connection)
                 {
 			connection_status_changed (connection);
+
+			//see if I need to reinit the connection later
+			if (_timeout_id == 0 && 
+			    connection.control_channel_status == ConnectionStates.ERROR) {
+				_timeout_id = Timeout.add_seconds (15, this.connection_recheck);
+			}
                 }
+
+		private bool connection_recheck ()
+		{
+			bool result = false;
+			foreach (Connection connection in items) {
+				if (connection.control_channel_status == ConnectionStates.ERROR) {
+					connection.reinitialize ();
+					result = true; //ensure that
+						       //we do this
+						       //for 2 times since some bad concurrency could happen here
+				}
+			}
+			if (!result)
+				_timeout_id = 0;
+			return result;
+		}
 
 		private static void connection_notify_property_changed  (Connection connection, 
 		    ParamSpec param, Connections connections)

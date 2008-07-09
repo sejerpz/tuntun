@@ -70,8 +70,8 @@ namespace GLib {
 		public weak GLib.InetAddress resolve (string host, GLib.Cancellable? cancellable) throws GLib.Error;
 		public void resolve_async (string host, GLib.Cancellable? cancellable, GLib.AsyncReadyCallback callback);
 		public weak GLib.InetAddress resolve_finish (GLib.AsyncResult _result) throws GLib.Error;
-		public weak GLib.List resolve_list (string host, GLib.Cancellable cancellable) throws GLib.Error;
-		public void resolve_list_async (string host, GLib.Cancellable cancellable, GLib.AsyncReadyCallback callback);
+		public weak GLib.List resolve_list (string host, GLib.Cancellable? cancellable) throws GLib.Error;
+		public void resolve_list_async (string host, GLib.Cancellable? cancellable, GLib.AsyncReadyCallback callback);
 		public weak GLib.List resolve_list_finish (GLib.AsyncResult _result) throws GLib.Error;
 	}
 	[CCode (cheader_filename = "gnio/gnio.h")]
@@ -80,7 +80,7 @@ namespace GLib {
 		public bool bind (GLib.SocketAddress address) throws GLib.Error;
 		public void close ();
 		public bool connect (GLib.SocketAddress address) throws GLib.Error;
-		public weak GLib.TimeoutSource create_source (GLib.IOCondition condition, GLib.Cancellable cancellable);
+		public weak GLib.TimeoutSource create_source (GLib.IOCondition condition, GLib.Cancellable? cancellable);
 		public bool get_blocking ();
 		public weak GLib.SocketAddress get_local_address () throws GLib.Error;
 		public weak GLib.SocketAddress get_remote_address () throws GLib.Error;
@@ -124,7 +124,7 @@ namespace GLib {
 		public virtual void connect_async (GLib.Cancellable? cancellable, GLib.AsyncReadyCallback callback);
 		public virtual bool connect_finish (GLib.AsyncResult _result) throws GLib.Error;
 		[NoWrapper]
-		public virtual bool connect_fn (GLib.Cancellable cancellable) throws GLib.Error;
+		public virtual bool connect_fn (GLib.Cancellable? cancellable) throws GLib.Error;
 		public virtual weak GLib.SocketInputStream get_input_stream ();
 		public virtual weak GLib.SocketOutputStream get_output_stream ();
 		[NoAccessorMethod]
@@ -146,8 +146,8 @@ namespace GLib {
 	}
 	[CCode (cheader_filename = "gnio/gnio.h")]
 	public class SocketServer : GLib.Object {
-		public weak GLib.SocketConnection accept (GLib.Cancellable cancellable) throws GLib.Error;
-		public void accept_async (GLib.Cancellable cancellable, GLib.AsyncReadyCallback callback);
+		public weak GLib.SocketConnection accept (GLib.Cancellable? cancellable) throws GLib.Error;
+		public void accept_async (GLib.Cancellable? cancellable, GLib.AsyncReadyCallback callback);
 		public weak GLib.SocketConnection accept_finish (GLib.AsyncResult _result) throws GLib.Error;
 		public void close ();
 		public SocketServer (GLib.SocketAddress address) throws GLib.Error;
@@ -166,8 +166,8 @@ namespace GLib {
 	}
 	[CCode (cheader_filename = "gnio/gnio.h")]
 	public class TCPServer : GLib.SocketServer {
-		public weak GLib.TCPConnection accept (GLib.Cancellable cancellable) throws GLib.Error;
-		public void accept_async (GLib.Cancellable cancellable, GLib.AsyncReadyCallback callback);
+		public weak GLib.TCPConnection accept (GLib.Cancellable? cancellable) throws GLib.Error;
+		public void accept_async (GLib.Cancellable? cancellable, GLib.AsyncReadyCallback callback);
 		public weak GLib.TCPConnection accept_finish (GLib.AsyncResult _result) throws GLib.Error;
 		public void close ();
 		public TCPServer (GLib.InetSocketAddress address) throws GLib.Error;

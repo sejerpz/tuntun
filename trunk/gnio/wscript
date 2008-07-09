@@ -27,7 +27,7 @@ def configure(conf):
 	conf.write_config_header('config.h')
 
 def build(bld):
-	bld.add_subdirs('gnio data vala')
+	bld.add_subdirs('gnio gurl data test vala')
 	bld.install_files('PREFIX', 'include/gnio', 'gnio/gi*.h')
 	bld.install_files('PREFIX', 'include/gnio', 'gnio/gn*.h')
 	bld.install_files('PREFIX', 'include/gnio', 'gnio/gr*.h')

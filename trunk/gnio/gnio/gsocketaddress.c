@@ -25,12 +25,14 @@
 #include <glib.h>
 
 #include <sys/socket.h>
+#include <sys/un.h>
 #include <netinet/in.h>
 
 #include "gsocketaddress.h"
 #include "ginetsocketaddress.h"
 #include "ginet4address.h"
 #include "ginet6address.h"
+#include "glocalsocketaddress.h"
 
 /**
  * SECTION:gsocketaddress
@@ -121,7 +123,12 @@ g_socket_address_from_native (gpointer native, gsize len)
       return G_SOCKET_ADDRESS (g_inet_socket_address_new (G_INET_ADDRESS (g_inet6_address_from_bytes ((guint8 *) &(addr->sin6_addr))), g_ntohs (addr->sin6_port)));
     }
 
-  // TODO: handle AF_UNIX
+  if (family == AF_LOCAL)
+    {
+      struct sockaddr_un *addr = (struct sockaddr_un *) native;
+
+      return G_SOCKET_ADDRESS (g_local_socket_address_new (addr->sun_path));
+    }
 
   return NULL;
 }

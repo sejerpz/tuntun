@@ -95,6 +95,8 @@ gboolean         g_socket_get_reuse_address  (GSocket  *socket);
 gboolean         g_socket_has_error          (GSocket  *socket,
                                               GError  **error);
 
+gboolean         g_socket_is_connected       (GSocket *socket);
+
 gboolean         g_socket_bind               (GSocket         *socket,
                                               GSocketAddress  *address,
                                               GError         **error);
@@ -114,10 +116,22 @@ gssize           g_socket_receive            (GSocket  *socket,
                                               gsize     size,
                                               GError  **error);
 
+gssize           g_socket_receive_from       (GSocket         *socket,
+                                              gchar           *buffer,
+                                              gsize            size,
+                                              GSocketAddress **address,
+                                              GError         **error);
+
 gssize           g_socket_send               (GSocket      *socket,
                                               const gchar  *buffer,
                                               gsize         size,
                                               GError      **error);
+
+gssize           g_socket_send_to            (GSocket         *socket,
+                                              const gchar     *buffer,
+                                              gsize            size,
+                                              GSocketAddress **address,
+                                              GError         **error);
 
 void             g_socket_close              (GSocket *socket);
 
