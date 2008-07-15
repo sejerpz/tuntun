@@ -1,3 +1,7 @@
+2008-07-15    <sejerpz@tin.it>
+
+	* src/tuntun-applet.vala: fixed a crash at startup
+
 2008-07-10    <sejerpz@tin.it>
 
 	* src/tuntun-connection.vala,

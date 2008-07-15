@@ -13,6 +13,18 @@ AC_HEADER_STDC
 
 GNOME_COMMON_INIT
 
+AC_ARG_VAR([PATCH], [path to Patch])
+AC_PATH_PROG([PATCH], [patch], [no])
+if test "$PATCH" = "no"; then
+	AC_MSG_ERROR([patch is required])
+fi
+
+AC_ARG_VAR([TAR], [path to Tar])
+AC_PATH_PROG([TAR], [tar], [no])
+if test "$TAR" = "no"; then
+	AC_MSG_ERROR([tar is required])
+fi
+
 VALA_PROG_VALAC([0.3.3])
 
 dnl ***************************************************************************

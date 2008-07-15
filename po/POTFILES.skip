@@ -11,6 +11,8 @@ src/tuntun-connection-dialog.c
 src/tuntun-log-window.c
 src/tuntun-applet.c
 src/tuntun-auth-dialog.c
+src/tuntun-tooltip.c
+src/gnio/.waf-1.4.2-9335c28f2b191cef7fec692e4978c8b3/wafadmin/Environment.py
 ui/tuntun.glade
 #result of debian packaging...
 debian/tuntun/usr/share/tuntun/ui/tuntun-auth-dialog.ui

@@ -46,21 +46,21 @@ namespace Tuntun
 		private int _image_idx = 1;
 		private int _animation_status = 0;
 
-                construct {
-                        this._tuntun = new Tuntun ();
-                        this._tuntun.connections.connection_status_changed += this.on_connection_status_changed;
-                        this._tuntun.connections.connection_fatal_error += this.on_connection_fatal_error;
-			this._tuntun.connections.authentication_required += this.on_connection_authentication_required;
-			this._tuntun.connections.authentication_failed += this.on_connection_authentication_failed;
-			this._tuntun.connections.connection_activity += this.on_connection_activity;
-                       	Notify.init ("Tuntun");			
-                }
-
                 public PanelApplet() {
+			
                 }
 
                 private void create() {
 			try {
+				Notify.init ("Tuntun");			
+
+				this._tuntun = new Tuntun ();
+				this._tuntun.connections.connection_status_changed += this.on_connection_status_changed;
+				this._tuntun.connections.connection_fatal_error += this.on_connection_fatal_error;
+				this._tuntun.connections.authentication_required += this.on_connection_authentication_required;
+				this._tuntun.connections.authentication_failed += this.on_connection_authentication_failed;
+				this._tuntun.connections.connection_activity += this.on_connection_activity;
+
 				_verbs = new BonoboUI.Verb[4];
 				_images = new Gdk.Pixbuf[3];
 
