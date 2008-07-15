@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tuntun 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-06-07 15:03+0200\n"
+"POT-Creation-Date: 2008-07-15 22:39+0200\n"
 "PO-Revision-Date: 2008-04-05 17:12+0200\n"
 "Last-Translator: Andrea Del Signore <sejerpz@tin.it>\n"
 "Language-Team: Italiano <sejerpz@tin.it>\n"
@@ -85,12 +85,12 @@ msgstr "gtk-ok"
 msgid "Tuntun an OpenVPN connection manager"
 msgstr "TunTun un manager per connessioni OpenVPN"
 
-#: ../src/tuntun-connection-info.vala:45 ../src/tuntun-connection.vala:83
-#: ../src/tuntun-connection.vala:84 ../src/tuntun-connections-dialog.vala:330
+#: ../src/tuntun-connection-info.vala:45 ../src/tuntun-connection.vala:84
+#: ../src/tuntun-connection.vala:85 ../src/tuntun-connections-dialog.vala:330
 msgid "none"
 msgstr "nessuno"
 
-#: ../src/tuntun-connection.vala:211
+#: ../src/tuntun-connection.vala:229
 msgid "unknown"
 msgstr "sconosciuto"
 
@@ -135,11 +135,11 @@ msgstr "_Visualizza log"
 msgid "_About..."
 msgstr "_Informazioni su..."
 
-#: ../src/tuntun-applet.vala:194
+#: ../src/tuntun-applet.vala:200
 msgid "Authentication failed"
 msgstr "Autenticazione fallita"
 
-#: ../src/tuntun-applet.vala:218
+#: ../src/tuntun-applet.vala:224
 #, c-format
 msgid ""
 "connection established\n"
@@ -148,23 +148,23 @@ msgstr ""
 "connessione avvenuta\n"
 "ip assegnato: %s"
 
-#: ../src/tuntun-applet.vala:223
+#: ../src/tuntun-applet.vala:229
 msgid "connection closed"
 msgstr "connessione chiusa"
 
-#: ../src/tuntun-applet.vala:345
+#: ../src/tuntun-applet.vala:351
 msgid "translator_credits"
 msgstr "Andrea Del Signore"
 
-#: ../src/tuntun-applet.vala:352
+#: ../src/tuntun-applet.vala:358
 msgid "TunTun VPN Connection manager"
 msgstr "TunTun manager di connessioni VPN "
 
-#: ../src/tuntun-applet.vala:355
+#: ../src/tuntun-applet.vala:361
 msgid "Homepage"
 msgstr "Homepage"
 
-#: ../src/tuntun-applet.vala:356
+#: ../src/tuntun-applet.vala:362
 msgid ""
 "(c) 2008 Andrea Del Signore (sejerpz@tin.it).\n"
 "\n"
@@ -181,6 +181,19 @@ msgstr ""
 " General Public License ed è fornito assolutamente senza\n"
 "\n"
 " NESSUNA GARANZIA; per ulteriori dettagli vedere il file COPYING."
+
+#: ../src/tuntun-tooltip.vala:37
+msgid "<b>Tuntun connections status</b>"
+msgstr "<b>Tuntun stato connessioni</b>"
+
+#: ../src/tuntun-tooltip.vala:51
+#, c-format
+msgid "<i>ip address: %s</i>"
+msgstr "<i>indirizzo ip: %s</i>"
+
+#: ../src/tuntun-tooltip.vala:55
+msgid "<i>disconnected</i>"
+msgstr "<i>disconnesso</i>"
 
 #~ msgid "perSbaglio"
 #~ msgstr "perSbaglio"

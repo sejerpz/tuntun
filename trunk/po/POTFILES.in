@@ -11,3 +11,4 @@ src/tuntun.vala
 src/tuntun-connection-dialog.vala
 src/tuntun-log-window.vala
 src/tuntun-applet.vala
+src/tuntun-tooltip.vala

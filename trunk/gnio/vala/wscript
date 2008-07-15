@@ -1,2 +1,0 @@
-def build(bld):
-	bld.install_files('PREFIX', 'share/vala/vapi', 'gnio.deps gnio.vapi')
