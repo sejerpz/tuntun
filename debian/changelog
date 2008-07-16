@@ -1,14 +1,8 @@
-tuntun (0.3.0+1) unstable; urgency=low
+tuntun (0.3.0) unstable; urgency=low
 
   * New upstream release
 
- -- Andrea Del Signore <sejerpz@tin.it>  Fri, 20 Jun 2008 14:05:32 +0200
-
-tuntun (0.3.0+0) unstable; urgency=low
-
-  * New upstream release
-
- -- Andrea Del Signore <sejerpz@tin.it>  Wed, 18 Jun 2008 22:31:46 +0200
+ -- Andrea Del Signore <sejerpz@tin.it>  Wed, 16 Jul 2008 14:08:57 +0200
 
 tuntun (0.2.0) unstable; urgency=low
 

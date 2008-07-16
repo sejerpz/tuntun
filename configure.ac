@@ -25,7 +25,7 @@ if test "$TAR" = "no"; then
 	AC_MSG_ERROR([tar is required])
 fi
 
-VALA_PROG_VALAC([0.3.3])
+VALA_PROG_VALAC([0.3.4])
 
 dnl ***************************************************************************
 dnl Internatinalization
