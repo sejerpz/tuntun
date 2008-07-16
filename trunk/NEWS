@@ -1,3 +1,15 @@
+Tuntun version 0.3.0
+====================
+
+* Another Tuntun release:
+
+  Main changes from 0.2.0 are:
+       * S.n.u.l. adapted to use GIO/GNIO library
+       * New summary tooltip with the current connection status
+       * Automatically reconnect to the openvpn daemon management interface on connection lost
+       * Fully compatible with valac 0.3.4
+  
+
 Tuntun version 0.2.0
 ====================
 
