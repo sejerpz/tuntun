@@ -20,5 +20,10 @@
   * ~~Reconnect automatically to the openvpn daemon management interface on connection lost~~
   * ~~Debug and code cleanup~~
 
+== Version 0.4 ==
+  * Improve tuntun icon to report broken connection with the server
+  * Improve tooltip status info
+  * Debug and code cleanup
+
 == Future ==
   * Update to the new Panel Applet format when it will be ready (Gnome 2.24?)
