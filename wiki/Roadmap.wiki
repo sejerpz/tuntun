@@ -18,7 +18,7 @@
   * ~~Implement a summary tooltip with the current connection status~~
   * ~~Drop [http://persbaglio.no-ip.org/?page_id=144 S.n.u.l.] and use directly GIO library~~
   * ~~Reconnect automatically to the openvpn daemon management interface on connection lost~~
-  * Debug and code cleanup
+  * ~~Debug and code cleanup~~
 
 == Future ==
   * Update to the new Panel Applet format when it will be ready (Gnome 2.24?)
