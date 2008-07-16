@@ -130,16 +130,10 @@ namespace Tuntun {
 
 		public bool reinitialize ()
 		{
-			try {
-				if (this.status == ConnectionStates.CONNECTED)
-					_client.disconnect ();
+			if (this.status == ConnectionStates.CONNECTED)
+				_client.disconnect ();
 
-				return initialize ();
-			} catch (Error err) {
-				Utils.display_error ("reinitialize", err.message);
-				this.control_channel_status = ConnectionStates.ERROR;				
-				return false;
-			}
+			return initialize ();
 		}
 
 		private void client_connected (TcpClient sender, SocketConnection socket)

@@ -1,3 +1,7 @@
+2008-07-16    <sejerpz@tin.it>
+
+	* src/tuntun-connection.vala: silenced a warning in reinitialize ()
+
 2008-07-15    <sejerpz@tin.it>
 
 	* src/tuntun-applet.vala: fixed a crash at startup
