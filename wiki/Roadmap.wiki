@@ -21,8 +21,8 @@
   * ~~Debug and code cleanup~~
 
 == Version 0.4 ==
-  * Improve tuntun icon to report broken connection with the server
-  * Improve tooltip status info
+  * Improve tuntun icon to report broken connection status
+  * Improve tooltip status info with more informations
   * Debug and code cleanup
 
 == Future ==
