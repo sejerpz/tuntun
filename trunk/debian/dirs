@@ -1,5 +1,4 @@
-usr/bin
-usr/sbin
+usr/lib/gnome-applets
 usr/lib/bonobo/servers
 usr/share/tuntun
 usr/share/pixmaps

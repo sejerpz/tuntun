@@ -3,7 +3,7 @@
 
 SUBDIRS = src ui po pixmaps vapi
 
-tuntundocdir = ${prefix}/doc/tuntun
+tuntundocdir = ${datadir}/doc/tuntun
 tuntundoc_DATA = \
 	README\
 	COPYING\
