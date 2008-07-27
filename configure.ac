@@ -27,15 +27,19 @@ fi
 
 VALA_PROG_VALAC([0.3.4])
 
+IT_PROG_INTLTOOL([0.35.0])
+
+
 dnl ***************************************************************************
-dnl Internatinalization
+dnl Internationalization
 dnl ***************************************************************************
 GETTEXT_PACKAGE=tuntun
 AC_SUBST(GETTEXT_PACKAGE)
-AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE,"$GETTEXT_PACKAGE", [GETTEXT package name])
-AM_GLIB_GNU_GETTEXT
-IT_PROG_INTLTOOL([0.35.0])
+AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE", "definition of GETTEXT_PACKAGE")
 
+ALL_LINGUAS=""
+AM_GLIB_GNU_GETTEXT
+AM_GLIB_DEFINE_LOCALEDIR([GNOMELOCALEDIR])
 
 
 AM_PROG_LIBTOOL

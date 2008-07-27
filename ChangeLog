@@ -1,3 +1,17 @@
+2008-07-27    <sejerpz@tin.it>
+
+
+	* configure.ac: 
+	* src/Makefile.am: 
+	* src/tuntun-connections-dialog.vala: 
+	* src/tuntun-utils.vala: 
+	* src/tuntun-tooltip.vala: 
+	* src/tuntun-log-window.vala: 
+	* src/tuntun-auth-dialog.vala: 
+	* src/tuntun-applet.vala: 
+
+	fixed translation & internationalization support
+
 2008-07-23    <sejerpz@tin.it>
 
 	* configure.ac: 

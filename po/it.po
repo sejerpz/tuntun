@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tuntun 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-07-15 22:39+0200\n"
-"PO-Revision-Date: 2008-04-05 17:12+0200\n"
+"POT-Creation-Date: 2008-07-27 19:46+0200\n"
+"PO-Revision-Date: 2008-07-27 19:12+0200\n"
 "Last-Translator: Andrea Del Signore <sejerpz@tin.it>\n"
 "Language-Team: Italiano <sejerpz@tin.it>\n"
 "MIME-Version: 1.0\n"
@@ -90,7 +90,7 @@ msgstr "TunTun un manager per connessioni OpenVPN"
 msgid "none"
 msgstr "nessuno"
 
-#: ../src/tuntun-connection.vala:229
+#: ../src/tuntun-connection.vala:223
 msgid "unknown"
 msgstr "sconosciuto"
 
@@ -158,7 +158,7 @@ msgstr "Andrea Del Signore"
 
 #: ../src/tuntun-applet.vala:358
 msgid "TunTun VPN Connection manager"
-msgstr "TunTun manager di connessioni VPN "
+msgstr "TunTun manager di connessioni VPN"
 
 #: ../src/tuntun-applet.vala:361
 msgid "Homepage"
@@ -183,17 +183,39 @@ msgstr ""
 " NESSUNA GARANZIA; per ulteriori dettagli vedere il file COPYING."
 
 #: ../src/tuntun-tooltip.vala:37
-msgid "<b>Tuntun connections status</b>"
-msgstr "<b>Tuntun stato connessioni</b>"
+msgid "Tuntun connections status"
+msgstr "Tuntun stato connessioni"
 
-#: ../src/tuntun-tooltip.vala:51
+#: ../src/tuntun-tooltip.vala:52
 #, c-format
-msgid "<i>ip address: %s</i>"
-msgstr "<i>indirizzo ip: %s</i>"
+msgid "ip address: %s"
+msgstr "indirizzo ip: %s"
 
-#: ../src/tuntun-tooltip.vala:55
-msgid "<i>disconnected</i>"
-msgstr "<i>disconnesso</i>"
+#: ../src/tuntun-tooltip.vala:56
+#, c-format
+msgid "disconnected"
+msgstr "disconnesso"
 
-#~ msgid "perSbaglio"
-#~ msgstr "perSbaglio"
+#: ../src/tuntun-auth-dialog.vala:102
+#, c-format
+msgid "Username and password for %s"
+msgstr "Nome utente e password per %s"
+
+#: ../src/tuntun-auth-dialog.vala:108
+#, c-format
+msgid "Private key password for %s"
+msgstr "Password della chiave privata di %s"
+
+#: ../src/tuntun-auth-dialog.vala:227 ../src/tuntun-auth-dialog.vala:233
+msgid "Keyring"
+msgstr "Portachiavi"
+
+#: ../src/tuntun-auth-dialog.vala:227
+#, c-format
+msgid "Error deleting credentials for '%s'"
+msgstr "Errore nell'eliminazione delle credenziali di accesso per '%s'"
+
+#: ../src/tuntun-auth-dialog.vala:233
+#, c-format
+msgid "Error saving credentials for '%s'"
+msgstr "Errore nel salvataggio delle credenziali di accesso per '%s'"

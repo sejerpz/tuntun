@@ -62,6 +62,7 @@ namespace Tuntun {
 		{
 			try {
 				ui = new Gtk.Builder ();
+				ui.set_translation_domain (Config.GETTEXT_PACKAGE);
 				ui.add_from_file ( get_ui_path ("tuntun.ui") );
 			} catch (Error err) {
 				display_error ("initialize_gtk_builder", err.message);
