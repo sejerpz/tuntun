@@ -1,0 +1,174 @@
+2008-07-16    <sejerpz@tin.it>
+
+	* src/tuntun-connection.vala: silenced a warning in reinitialize ()
+
+2008-07-15    <sejerpz@tin.it>
+
+	* src/tuntun-applet.vala: fixed a crash at startup
+
+2008-07-10    <sejerpz@tin.it>
+
+	* src/tuntun-connection.vala,
+	src/tuntun-connections.vala,
+	src/snul-gnio.vala: reconnect automatically to the openvpn daemon 
+	                    if control channel connection is lost
+	
+	* src/gnio: update gnio version from git repository
+	
+2008-06-19    <sejerpz@tin.it>
+
+	* src/snul-gnio.vala: code cleanup and fixed buffered io problem on the socket
+	* src/tuntun-connection.vala: strict string check because 'log all' command confuses the applet
+	
+2008-06-19    <sejerpz@tin.it>
+
+	* src/tuntun-applet.vala: fixed keypress event handler delegate
+	* src/snul-gnio.vala: misc fixes, added to svn
+	
+2008-06-18    <sejerpz@tin.it>
+
+	* src/snul-gnio.vala: first porting to gnio
+
+2008-06-18    <sejerpz@tin.it>
+
+	* src/Makefile.am: integrated libgnio build
+
+2008-06-13    <sejerpz@tin.it>
+
+	* src/tuntun-tooltip.vala,
+	  src/tuntun-applet.vala:  new tooltip custom class
+	
+2008-06-10    <sejerpz@tin.it>
+
+	* src/tuntun-applet.vala: added tooltip to main applet icon
+
+2008-06-07    <sejerpz@tin.it>
+
+	* configure.ac: post release version bump
+
+2008-06-07    <sejerpz@tin.it>
+
+	* vapi/unix-socket.vapi: added [Compact] attribute
+
+2008-06-06    <sejerpz@tin.it>
+
+	* src/tuntun-constants.vala: fixed valac 0.3.3 syntax incompatibility
+	* src/tuntun-applet.vala: silence some unandled error warning
+	
+2008-05-20    <sejerpz@tin.it>
+
+	* src/tuntun-auth-dialog.vala: fixed auth dialog nullable param bug
+	* src/tuntun-connections-dialog.vala: fixed column allocation attributes
+	* src/tuntun-connection-dialog.vala: fixed weak modifier in set_text_if_null function
+
+2008-05-20    <sejerpz@tin.it>
+
+	* src/tuntun-connection.vala,
+	src/tuntun-utils.vala,
+	src/tuntun-auth-dialog.vala: silenced some valac warnings
+
+2008-05-19    <sejerpz@tin.it>
+
+	* src/tuntun-applet.vala: fix valac struct initialization warnings
+
+2008-05-19    <sejerpz@tin.it>
+
+	* pixmaps/Makefile.am,
+	src/tuntun-constants.vala,
+	src/tuntun-connections.vala,
+	src/tuntun-applet.vala: add simple animation to panel icon on connection activity
+	
+2008-05-19    <sejerpz@tin.it>
+
+	* src/tuntun-connection.vala: fix bug caused by missing nullable decorator in authenticate function
+
+2008-05-19    <sejerpz@tin.it>
+
+	* src/tuntun-applet.vala: changed quick connect from doubleclick to shift+click 
+
+2008-05-14    <sejerpz@tin.it>
+
+	* src/tuntun-applet.vala, 
+	src/tuntun-connections-dialog.vala,
+	src/tuntun-connections.vala,
+	src/tuntun-applet.vala,
+	src/snul.vala,
+	src/tuntun-log-window.vala,
+	src/tuntun-connection-dialog.vala,
+	src/tuntun-auth-dialog.vala,
+	src/tuntun-connection.vala,
+	src/tuntun-utils.vala,
+	vapi/unix-socket.vapi,
+	src/Makefile.am: initial work to make tuntun compile with the new vala 0.3.2
+
+2008-04-09    <sejerpz@tin.it>
+
+	* src/tuntun-connection.vala: reset 'assigned ip' on connection close
+
+2008-04-08    <sejerpz@tin.it>
+
+	* src/tuntun-connections-dialog.vala: added 'status' and 'assigned ip' columns 
+
+2008-04-08    <sejerpz@tin.it>
+
+	* src/tuntun-applet.vala: implementend final quick-connect bits
+	* src/tuntun-connections-dialog.vala: debugged edit to the new quick-connect property
+	* src/tuntun-connections.vala: fixed a bug serializing new quick-connect property, 
+	fixed close <connections> tag
+	
+2008-04-05    <sejerpz@tin.it>
+
+	* src/tuntun-connections-dialog.vala: added edit to the new quick-connect property
+	* src/tuntun-connections.vala: serialized new property quick-connect
+	* src/tuntun-connection-info.vala: new quick-connect property
+	
+2008-04-05    <sejerpz@tin.it>
+
+	* src/snul.vala: removed some debugging print
+
+2008-04-05    <sejerpz@tin.it>
+
+	* src/tuntun-connection.vala,
+	src/tuntun-connection-info.vala,
+	src/tuntun-applet.vala: added assigned ip to connect notification information
+
+2008-04-05    <sejerpz@tin.it>
+
+	* src/snul.vala: initializing _io_channel_buffer in the constructor workaround
+	for a vala bug
+
+2008-03-26    <sejerpz@tin.it>
+
+	* src/tuntun-applet.vala: added bigger notification icons
+	* src/tuntun-constants.vala: updated the name of some image constants
+	
+2008-03-26    <sejerpz@tin.it>
+
+	* src/tuntun-auth-dialog.vala: updated to standard (new) gnome kerying vapi
+	* src/tuntun-applet.vala: updated to standard (new) libbonobo-ui vapi
+	
+2008-03-25    <sejerpz@tin.it>
+
+	* src/tuntun-applet.vala: fix notification icon
+	* src/snul.vala: adapted to new glib vapi
+	* use the standard libpanelapplet vapi instead of the custom one
+
+2008-03-14    <sejerpz@tin.it>
+
+	* NEWS: pre release update
+
+	* src/tuntun-connections-dialog.vala,
+	  src/tuntun-applet.vala,
+	  src/tuntun-connection.vala: cleaned up the code from the last debug functions
+
+2008-03-14    <sejerpz@tin.it>
+
+	* src/tuntun-applet.vala: changed the homepage address.
+	* pixmaps/not_connected.png,
+	  pixmaps/connected.png: updated to follows ovpnClient behaviour
+	* po/it.po: updated it traslation
+
+2008-03-13    <sejerpz@tin.it>
+
+	* src/*: first import in svn
+
