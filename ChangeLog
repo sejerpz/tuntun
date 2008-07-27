@@ -1,5 +1,12 @@
 2008-07-27    <sejerpz@tin.it>
 
+	* LINGUAS: 
+	* po/lv.po:
+
+	added Latvian translation thanks to Ivars Strazdiņš
+	
+2008-07-27    <sejerpz@tin.it>
+
 	* configure.ac: 
 	* debian/changelog: 
 
