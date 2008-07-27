@@ -34,7 +34,7 @@ namespace Tuntun
 		private void add_title ()
 		{
 			var title = new Label (null);
-			title.set_markup (_("<b>Tuntun connections status</b>"));
+			title.set_markup ("<b>%s</b>".printf(_("Tuntun connections status")));
 			this.pack_start (title, false, true, 8);
 		}
 
@@ -43,16 +43,16 @@ namespace Tuntun
 			var widget = new Image.from_file (Utils.get_image_path (status_image));
 			var hbox = new HBox (false, 8);
 			Label label;
-
+			
 			hbox.pack_start (widget, false, false, 4);
 			hbox.pack_start (new Label.with_mnemonic (connection.info.name), false, false, 12);
 			if (connection.status == ConnectionStates.CONNECTED) {
 				label = new Label (null);
-				label.set_markup (_("<i>ip address: %s</i>").printf(connection.info.assigned_ip));
+				label.set_markup ("<i>%s</i>".printf(_("ip address: %s").printf(connection.info.assigned_ip)));
 				hbox.pack_end (label, false, false, 12);
 			} else {
 				label = new Label (null);
-				label.set_markup (_("<i>disconnected</i>"));
+				label.set_markup ("<i>%s</i>".printf(_("disconnected")));
 				hbox.pack_end (label, false, false, 12);
 			}
 			this.pack_start (hbox, true, true, 4);

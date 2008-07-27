@@ -66,6 +66,7 @@ namespace Tuntun
 		private void initialize_ui ()
 		{
 			var builder = new Builder();
+			builder.set_translation_domain (Config.GETTEXT_PACKAGE);
 			try {
 				builder.add_from_file (Utils.get_ui_path ("tuntun-auth-dialog.ui"));
 			} catch (Error err) {
@@ -93,16 +94,19 @@ namespace Tuntun
 
 			var label = (Gtk.Label)  builder.get_object ("label_username");
 			var label_message = (Gtk.Label)  builder.get_object ("label_message");
+			string label_text;
 			assert (label != null);
 			assert (label_message != null);
 			switch (_mode) {
 				case AuthenticationModes.USERNAME_PASSWORD:
-					label_message.set_text (_("Username and password for %s").printf (_connection.info.name));
+					label_text = _("Username and password for %s");
+					label_message.set_text (label_text.printf (_connection.info.name));
 					_entry_user.show ();
 					label.show ();
 					break;
 				case AuthenticationModes.PASSWORD_ONLY:
-					label_message.set_text (_("Private key password for %s").printf (_connection.info.name));
+					label_text = _("Private key password for %s");
+					label_message.set_text (label_text.printf (_connection.info.name));
 					_entry_user.hide ();
 					label.hide ();
 					break;

@@ -4,7 +4,7 @@ INCLUDES = \
 	-DPACKAGE_LOCALE_DIR=\""$(prefix)/$(DATADIRNAME)/locale"\" \
 	-DPACKAGE_SRC_DIR=\""$(srcdir)"\" \
 	-DPACKAGE_DATA_DIR=\""$(datadir)"\" \
-	-DGETTEXT_PACKAGE=\""$(tuntunlocaledir)"\" \
+	-DGETTEXT_PACKAGE=\""$(GETTEXT_PACKAGE)"\" \
 	-I ./gnio \
 	$(TUNTUN_CFLAGS)
 
