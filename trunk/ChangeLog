@@ -1,5 +1,12 @@
 2008-07-28    <sejerpz@tin.it>
 
+	* debian/changelog: 
+	* NEWS: 
+
+	updated NEWS file and deb version bump
+
+2008-07-28    <sejerpz@tin.it>
+
 	* po/lv.po:
 
 	updated Latvian translation thanks to Ivars Strazdiņš
