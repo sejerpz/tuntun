@@ -1,0 +1,33 @@
+diff -ru gnio.orig/gnio/wscript gnio/gnio/wscript
+--- gnio.orig/gnio/wscript	2008-07-09 23:15:16.000000000 +0200
++++ gnio/gnio/wscript	2008-07-16 15:06:38.000000000 +0200
+@@ -1,7 +1,7 @@
+ #!/usr/bin/env python
+ 
+ def build(bld):
+-	lib = bld.new_task_gen('cc', 'shlib')
++	lib = bld.new_task_gen('cc', 'staticlib')
+ 	lib.uselib = 'GLIB GOBJECT GIO'
+ 	lib.packages = 'gio-2.0'
+ 	lib.find_sources_in_dirs('.')
+diff -ru gnio.orig/wscript gnio/wscript
+--- gnio.orig/wscript	2008-07-05 16:26:34.000000000 +0200
++++ gnio/wscript	2008-07-16 15:06:55.000000000 +0200
+@@ -15,7 +15,7 @@
+ 	conf.check_pkg('gthread-2.0', destvar='GOBJECT', vnum='2.16.0', mandatory=True)
+ 	conf.check_pkg('gio-2.0', destvar='GIO', vnum='2.16.0', mandatory=True, pkgvars='giomoduledir')
+ 	conf.check_pkg('gio-unix-2.0', destvar='GIO_UNIX', vnum='2.16.0', mandatory=True)
+-	conf.check_tool('compiler_cc misc gnome vala')
++	conf.check_tool('compiler_cc misc gnome')
+ 
+ 	# to install these into ${GIO_MODULE_DIR}/gurl/, uncomment this
+ 	# conf.env['GURL_MODULE_DIR'] = '%s/gurl' % conf.env['GIO_GIOMODULEDIR'][0]
+@@ -27,7 +27,7 @@
+ 	conf.write_config_header('config.h')
+ 
+ def build(bld):
+-	bld.add_subdirs('gnio gurl data test vala')
++	bld.add_subdirs('gnio gurl data test')
+ 	bld.install_files('PREFIX', 'include/gnio', 'gnio/gi*.h')
+ 	bld.install_files('PREFIX', 'include/gnio', 'gnio/gn*.h')
+ 	bld.install_files('PREFIX', 'include/gnio', 'gnio/gr*.h')
