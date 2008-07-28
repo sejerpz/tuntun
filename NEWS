@@ -1,3 +1,12 @@
+Tuntun version 0.3.1
+====================
+
+* This is a bugfix Tuntun release:
+
+  Main changes from 0.3.0 are:
+       * Fixed internationalization support
+       * Added Latvian translation (Ivars Strazdiņš)
+
 Tuntun version 0.3.0
 ====================
 
