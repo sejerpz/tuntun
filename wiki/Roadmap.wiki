@@ -23,6 +23,7 @@
 == Version 0.4 ==
   * Improve tuntun icon to report broken connection status
   * Improve tooltip status info with more informations
+  * Automatic connections configuration
   * Debug and code cleanup
 
 == Future ==
