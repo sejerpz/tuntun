@@ -9,7 +9,9 @@ pixmaps_DATA = 	connected.png \
 		tuntun_act_2.png \
 		unknown.png \
 		connect.png \
-		disconnect.png
+		disconnect.png \
+		tuntun_warning.png   \
+		tuntun_error.png   
 
 pixmapsicondir = $(datadir)/pixmaps
 pixmapsicon_DATA = tuntun-icon.png

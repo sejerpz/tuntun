@@ -1,3 +1,13 @@
+2008-09-13    <sejerpz@tin.it>
+
+	* src/tuntun-constants.vala: 
+	* src/tuntun-applet.vala: 
+
+	implemented main icon status:
+	. normal 
+	. warning: some connection is in error
+	. error: all connections are in error
+
 2008-07-28    <sejerpz@tin.it>
 
 	* debian/changelog: 
