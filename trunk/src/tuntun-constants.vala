@@ -33,6 +33,8 @@ namespace Tuntun {
 		namespace Images {
 			public const string APPLICATION = "tuntun.png";
 			public const string PANEL_ICON_NORMAL = "tuntun.png";
+			public const string PANEL_ICON_WARNING = "tuntun_warning.png";
+			public const string PANEL_ICON_ERROR = "tuntun_error.png";
 			public const string PANEL_ICON_ACTIVITY_1 = "tuntun_act_1.png";
 			public const string PANEL_ICON_ACTIVITY_2 = "tuntun_act_2.png";
 

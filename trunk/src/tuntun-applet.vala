@@ -42,6 +42,7 @@ namespace Tuntun
 		private LogWindow _log = null;
 
 		private Gtk.Image _image;
+		private Gdk.Pixbuf[] _animation_frames;
 		private Gdk.Pixbuf[] _images;
 		private int _image_idx = 1;
 		private int _animation_status = 0;
@@ -62,15 +63,25 @@ namespace Tuntun
 				this._tuntun.connections.connection_activity += this.on_connection_activity;
 
 				_verbs = new BonoboUI.Verb[4];
-				_images = new Gdk.Pixbuf[3];
+				_animation_frames = new Gdk.Pixbuf[3];
 
 				string file = Utils.get_image_path (Constants.Images.PANEL_ICON_ACTIVITY_1);
-				_images[0] = new Gdk.Pixbuf.from_file (file);
+				_animation_frames[0] = new Gdk.Pixbuf.from_file (file);
 
 				file = Utils.get_image_path (Constants.Images.PANEL_ICON_NORMAL);
-				_images[1] = new Gdk.Pixbuf.from_file (file);
+				_animation_frames[1] = new Gdk.Pixbuf.from_file (file);
 
 				file = Utils.get_image_path (Constants.Images.PANEL_ICON_ACTIVITY_2);
+				_animation_frames[2] = new Gdk.Pixbuf.from_file (file);
+
+				_images = new Gdk.Pixbuf[3];
+				file = Utils.get_image_path (Constants.Images.PANEL_ICON_NORMAL);
+				_images[0] = new Gdk.Pixbuf.from_file (file);
+
+				file = Utils.get_image_path (Constants.Images.PANEL_ICON_WARNING);
+				_images[1] = new Gdk.Pixbuf.from_file (file);
+
+				file = Utils.get_image_path (Constants.Images.PANEL_ICON_ERROR);
 				_images[2] = new Gdk.Pixbuf.from_file (file);
 
 				_verbs[0].cname = "Properties";
@@ -89,8 +100,9 @@ namespace Tuntun
 				_verbs[3].cb = null;
 				_verbs[3].user_data = null;
 
-				_image = new Gtk.Image.from_pixbuf (_images[1]);
+				_image = new Gtk.Image (); //.from_pixbuf (_animation_frames[1]);
 				this.add (_image);
+				set_applet_icon ();
 
 				_right_click_menu_xml = "<popup name=\"button3\">" +
 				    "<menuitem name=\"Properties Item\" verb=\"Properties\" _label=\"%s\" pixtype=\"stock\" pixname=\"gtk-properties\"/>" +
@@ -125,15 +137,16 @@ namespace Tuntun
 		{
 			if (_animation_status == 1) {
 				_animation_status = 0;
+				set_applet_icon ();
 				return false;
 			} else {
 				_image_idx++;
-				if (_image_idx >= _images.length)
+				if (_image_idx >= _animation_frames.length)
 					_image_idx = 0;
 				else if (_image_idx == 1)
 					_animation_status--;
 
-				_image.set_from_pixbuf (_images[_image_idx]);
+				_image.set_from_pixbuf (_animation_frames[_image_idx]);
 				return true;
 			}
 		}
@@ -145,6 +158,31 @@ namespace Tuntun
 				_image_idx = 1;
 			} 
 			_animation_status = 4;
+		}
+
+		private void set_applet_icon ()
+		{
+			if (_animation_status != 0)
+				return;
+
+			int err = 0;
+
+			foreach (Connection connection in _tuntun.connections.items) {
+				switch (connection.status) {
+					case ConnectionStates.UNKNOWN:
+					case ConnectionStates.ERROR:
+						err++;
+						break;
+				}
+			}
+
+			int icon = 0;
+			if (err == _tuntun.connections.items.length ())
+				icon = 2;
+			else if (err != 0)
+				icon = 1;
+
+			_image.set_from_pixbuf (_images[icon]);
 		}
 
                 private bool on_button_press_release (PanelApplet sender, Gdk.EventButton event) 
@@ -239,6 +277,7 @@ namespace Tuntun
 			} catch (Error err) {
 				warning ("error %d: %s", err.code, err.message);
 			}
+			set_applet_icon ();
                 }
 
                 private void select_connection () {
