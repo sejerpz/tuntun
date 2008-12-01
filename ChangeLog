@@ -1,3 +1,14 @@
+2008-12-01    <sejerpz@tin.it>
+
+	* src/tuntun-connections-dialog.vala:
+	* src/snul-gnio.vala:
+	* src/tuntun-connections.vala:
+	* src/tuntun-applet.vala:
+	* src/tuntun-log-window.vala:
+	* src/tuntun-connection-dialog.vala:
+	
+	fixed to compile with the upcoming vala 0.5.2 compiler
+
 2008-09-13    <sejerpz@tin.it>
 
 	* src/tuntun-constants.vala: 

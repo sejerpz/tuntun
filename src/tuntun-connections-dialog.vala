@@ -93,7 +93,7 @@ namespace Tuntun
 
                         column = new TreeViewColumn.with_attributes (_("Quick connect"), 
 			    renderer, "active", Columns.DOUBLE_CLICK_CONNECT);
-			column.alignment = 0.50;
+			column.alignment = 0.50f;
 			column.expand = false;
                         _treeview.append_column (column);
 
@@ -119,7 +119,7 @@ namespace Tuntun
                         renderer = new CellRendererPixbuf ();
                         column = new TreeViewColumn.with_attributes (_("Status"), 
 			    renderer, "pixbuf", Columns.STATUS);
-			column.alignment = 0.50;
+			column.alignment = 0.50f;
 			column.expand = false;
                         _treeview.append_column (column);
 

@@ -54,7 +54,6 @@ namespace Snul
 		private string _address = null;
 		private string _first_address = null;
 		private string _port = null;
-		private ushort _port_number = 0;
 
 		private Resolver _resolver = null;
 		private InetAddress _inet_address = null;
