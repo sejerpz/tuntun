@@ -407,7 +407,7 @@ namespace Tuntun
                 }
 
                 public static int main(string[] args) {
-                        var program = Gnome.Program.init (Config.PACKAGE_STRING, "0", Gnome.libgnomeui_module, args, "sm-connect", false);
+                        Gnome.Program.init (Config.PACKAGE_STRING, "0", Gnome.libgnomeui_module, args, "sm-connect", false);
                         var ret = Panel.Applet.factory_main ("OAFIID:GNOME_Tuntun_Factory", typeof(PanelApplet), (Panel.AppletFactoryCallback) factory);
                         return ret;
                 }

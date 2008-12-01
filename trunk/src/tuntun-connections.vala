@@ -60,10 +60,10 @@ namespace Tuntun
 			}
 		}
 
-		private void load_config (string filename) throws Error
+		private void load_config (string filename) throws FileError
 		{
 			try {
-				MarkupParser parser;
+				MarkupParser parser = MarkupParser ();
 				string content;
 				long len;
 
@@ -72,7 +72,7 @@ namespace Tuntun
 
 				if (!(FileUtils.test (filename, FileTest.IS_REGULAR) ||
 					FileUtils.test (filename, FileTest.IS_SYMLINK)))
-					throw new Error (Quark.from_string ("File exists, but not a regular file or link"), 0, "File exists, but not a regular file or link");
+					throw new FileError.BADF ("File exists, but not a regular file or link");
 
 				// read config file
 				FileUtils.get_contents (filename, out content, out len);
@@ -117,14 +117,11 @@ namespace Tuntun
 		}
 
 		[NoArrayLength]
-		private static void xmlconfig_start_element_handler (MarkupParseContext context, 
+		private void xmlconfig_start_element_handler (MarkupParseContext context, 
 		    string element_name, 
 		    string[] attribute_names, 
-		    string[] attribute_values, 
-		    void *user_data) 
+		    string[] attribute_values) 
 		{
-                        Connections connections = (Connections) user_data;
-
 			if (element_name != null && "connection".collate (element_name) == 0) {
 				var info = new ConnectionInfo ();
 				for(int i=0; attribute_names[i] != null; i++) {
@@ -145,7 +142,7 @@ namespace Tuntun
 
 				if (info.name != null && info.name != "") {
 					var connection = new Connection (info);
-					connections.add (connection);
+					this.add (connection);
 				}
 			}
 		}
@@ -248,16 +245,12 @@ namespace Tuntun
 			connections.on_connection_status_changed (connection);
 		}
 
-		private static void xmlconfig_end_element_handler (MarkupParseContext context, 
-		    string element_name, 
-		    void *user_data) {
+		private void xmlconfig_end_element_handler (MarkupParseContext context, string element_name) {
 			
 		}
 
-		private static void xmlconfig_text_handler (MarkupParseContext context, 
-		    string text, 
-		    ulong text_len, 
-		    void *user_data) {
+		private void xmlconfig_text_handler (MarkupParseContext context, string text, ulong text_len) {
+		
 		}
 	}
 }

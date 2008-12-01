@@ -250,7 +250,6 @@ namespace Tuntun
 		private void on_button_send_clicked (Widget sender)
 		{
 			string command_text = _entry_send.get_text ();
-			var connection = this.active_connection;
 			send_command (active_connection, command_text);
 			_entry_send.set_text ("");
 		}

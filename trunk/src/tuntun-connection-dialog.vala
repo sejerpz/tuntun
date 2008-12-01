@@ -38,7 +38,6 @@ namespace Tuntun
                 private weak Gtk.Entry _address = null;
                 private weak Gtk.Entry _port = null;
 
-                private ListStore _store;
                 private ConnectionInfo _connection_info = null;
 
                 construct
