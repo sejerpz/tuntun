@@ -51,7 +51,17 @@ namespace Tuntun
 
 		private void load ()
 		{
-			_config_file = Utils.gnome_util_home_file (Constants.CONNECTIONS_FILENAME);
+			var _old_config_file = Utils.gnome_util_home_file (Constants.CONNECTIONS_FILENAME);
+			_config_file = Path.build_filename(Environment.get_user_config_dir (), Constants.CONNECTIONS_FILENAME);
+			if (_old_config_file != _config_file
+			    && FileUtils.test (_old_config_file, FileTest.IS_REGULAR)
+			    && !FileUtils.test (_old_config_file, FileTest.IS_SYMLINK)
+			    && !FileUtils.test (_config_file, FileTest.IS_REGULAR))
+			{
+				GLib.print ("migrating config from %s to %s\n", _old_config_file, _config_file);
+				FileUtils.rename (_old_config_file, _config_file);
+			    	
+			}
 			try {
 				load_config (_config_file);
 			}
