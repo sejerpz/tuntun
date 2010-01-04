@@ -15,11 +15,7 @@ tuntundoc_DATA = \
 EXTRA_DIST = $(tuntundoc_DATA) \
 	intltool-extract.in \
 	intltool-merge.in \
-	intltool-update.in \
-	vala-support \
-	gnio.build.patch \
-	gnio-svn_11072008.tar.gz
-
+	intltool-update.in
 
 DISTCLEANFILES = \
 	intltool-extract \

@@ -62,7 +62,7 @@ namespace Tuntun
 
 		public Tooltip (Connections connections)
 		{
-			this.connections = connections;
+			GLib.Object(connections: connections);
 		}
 	}
 }

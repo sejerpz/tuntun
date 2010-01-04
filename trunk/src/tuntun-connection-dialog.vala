@@ -80,7 +80,7 @@ namespace Tuntun
 
                 public ConnectionDialog (ConnectionInfo connection_info) 
 		{ 
-			this.connection_info = connection_info;
+			GLib.Object(connection_info: connection_info);
 		}
 
                 public ConnectionInfo connection_info { construct { _connection_info = value; } }

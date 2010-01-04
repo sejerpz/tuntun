@@ -57,7 +57,7 @@ namespace Tuntun
 
 		public LogWindow (Tuntun tuntun) 
 		{ 
-			this.tuntun = tuntun;
+			GLib.Object(tuntun: tuntun);
 		}
 
 		public Tuntun tuntun { construct { _tuntun = value; } }

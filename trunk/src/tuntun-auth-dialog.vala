@@ -54,14 +54,12 @@ namespace Tuntun
 
 		public AuthDialog (Connection connection, AuthenticationModes mode, string type) 
 		{ 
-			this.connection = connection;
-			this.mode = mode;
-			this.type = type;
+			GLib.Object(connection: connection, mode: mode, type: type);
 		}
 
 		public Connection connection { construct { _connection = value; } }
 		public AuthenticationModes mode { construct { _mode = value; } }
-		public string type { construct { _type = value; } }
+		public new string type { construct { _type = value; } }
 
 		private void initialize_ui ()
 		{
@@ -131,7 +129,7 @@ namespace Tuntun
 		{
 			//delete bogus keyring item
 			if (_keyring_item_id != 0)
-				item_delete (null, _keyring_item_id, on_item_delete_done, null);
+				item_delete (null, _keyring_item_id, on_item_delete_done);
 		}
 
 		public void authenticate ()
@@ -192,12 +190,12 @@ namespace Tuntun
 
 		private void authenticate_keyring_auth ()
 		{
-			find_network_password (null, null, _connection.info.address, null, "vpn", "auth", 0, this.on_find_password_done, null);
+			find_network_password (null, null, _connection.info.address, null, "vpn", "auth", 0, this.on_find_password_done);
 		}
 
 		private void authenticate_keyring_private_key ()
 		{
-			find_network_password (null, null, _connection.info.address, null, "vpn", "private-key", 0, this.on_find_password_done, null);
+			find_network_password (null, null, _connection.info.address, null, "vpn", "private-key", 0, this.on_find_password_done);
 		}
 
 		private void on_find_password_done (Result result, GLib.List? list)
@@ -227,7 +225,7 @@ namespace Tuntun
 				Utils.display_error (_("Keyring"), _("Error deleting credentials for '%s'"));
 		}
 
-		private void on_set_password_done (Result result, uint val)
+		private void on_set_password_done (Result result, uint32 val)
 		{
 			if (result != Result.OK)
 				Utils.display_error (_("Keyring"), _("Error saving credentials for '%s'"));
@@ -248,8 +246,7 @@ namespace Tuntun
 			    "auth",
 			    0,
 			    password,
-			    on_set_password_done, 
-			    null);
+			    on_set_password_done);
 		}
 
 		private void save_private_key_password (string private_key_password)
@@ -263,8 +260,7 @@ namespace Tuntun
 			    "private-key",
 			    0,
 			    private_key_password,
-			    this.on_set_password_done, 
-			    null);
+			    this.on_set_password_done);
 		}
 	}
 }

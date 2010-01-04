@@ -60,13 +60,13 @@ namespace Tuntun
 			}
 		}
 
-		private void load_config (string filename) throws FileError
+		private void load_config (string filename) throws Error
 		{
 			try {
-				MarkupParser parser = MarkupParser ();
+				var parser = XmlUtils.MarkupParser ();
 				string content;
-				long len;
-
+				size_t len;
+				
 				if (!FileUtils.test (filename, FileTest.EXISTS))
 					return; //no file
 
@@ -77,12 +77,10 @@ namespace Tuntun
 				// read config file
 				FileUtils.get_contents (filename, out content, out len);
 
-				parser.start_element = xmlconfig_start_element_handler;
-				parser.end_element = this.xmlconfig_end_element_handler;
-				parser.text = this.xmlconfig_text_handler;
+				parser.start_element = (XmlUtils.MarkupParserStartElementFunc) xmlconfig_start_element_handler;
 
-				var context = new MarkupParseContext (parser, MarkupParseFlags.TREAT_CDATA_AS_TEXT, this, null);
-				context.parse (content, len);
+				var context = new XmlUtils.MarkupParseContext (parser, XmlUtils.MarkupParseFlags.TREAT_CDATA_AS_TEXT, this, null);
+				context.parse (content, content.length);
 			} catch (Error err) {
 				throw err;
 			}
@@ -116,12 +114,9 @@ namespace Tuntun
 			}
 		}
 
-		[NoArrayLength]
-		private void xmlconfig_start_element_handler (MarkupParseContext context, 
-		    string element_name, 
-		    string[] attribute_names, 
-		    string[] attribute_values) 
+		private static void xmlconfig_start_element_handler (MarkupParseContext context, string element_name, [CCode (array_length = false, array_null_terminated = true)] string[] attribute_names, [CCode (array_length = false, array_null_terminated = true)] string[] attribute_values, void* user_data) throws MarkupError
 		{
+			var self = (Connections) user_data;
 			if (element_name != null && "connection".collate (element_name) == 0) {
 				var info = new ConnectionInfo ();
 				for(int i=0; attribute_names[i] != null; i++) {
@@ -142,7 +137,7 @@ namespace Tuntun
 
 				if (info.name != null && info.name != "") {
 					var connection = new Connection (info);
-					this.add (connection);
+					self.add (connection);
 				}
 			}
 		}
@@ -243,14 +238,6 @@ namespace Tuntun
 		    ParamSpec param, Connections connections)
 		{
 			connections.on_connection_status_changed (connection);
-		}
-
-		private void xmlconfig_end_element_handler (MarkupParseContext context, string element_name) {
-			
-		}
-
-		private void xmlconfig_text_handler (MarkupParseContext context, string text, ulong text_len) {
-		
 		}
 	}
 }

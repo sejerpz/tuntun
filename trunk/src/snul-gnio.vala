@@ -57,8 +57,11 @@ namespace Snul
 
 		private Resolver _resolver = null;
 		private InetAddress _inet_address = null;
-		private SocketConnection _client = null;
+		private SocketClient _client = null;
+		private SocketConnection _connection = null;
+		private IOChannel _in_channel = null;
                 private Source _source = null;
+                private uint _source_id = 0;
                 private DataInputStream _input = null;
 		private Cancellable _cancellable = null;
 		private uint _timeout_id = 0;
@@ -73,48 +76,7 @@ namespace Snul
 			cleanup ();
 		}
 
-                [CCode (instance_pos = 2.5)]
-		private void on_address_resolved (Object sender, AsyncResult result)
-		{
-			try {
-				_inet_address = ((Resolver) sender).resolve_finish (result);
-				var socket_address = new InetSocketAddress (_inet_address, (ushort) _port.to_int ());
-			        _client = new SocketConnection (socket_address);
-				_client.connect_async (null, this.on_client_connected);
-
-			} catch (Error err) {
-				this.error (err);
-			}
-		}
-
-                [CCode (instance_pos = 2.5)]
-		private void on_client_connected (Object sender, AsyncResult result)
-		{
-			try
-			{
-				((SocketConnection) sender).connect_finish (result);
-				// create a source for
-				// monitoring incoming data
-				_client = (SocketConnection) sender;
-				_client.input_stream.socket.set_blocking (false);
-				_input = new DataInputStream (_client.input_stream);
-				IOCondition conditions = IOCondition.IN | IOCondition.HUP | IOCondition.ERR | IOCondition.NVAL;
-				_source = _client.input_stream.socket.create_source (conditions, null);
-				Extensions.source_set_callback (_source, (void*) socket_callback, this, null);
-				_source.attach (null);
-				this.connected (_client);
-				this._cancellable = null;
-				if (_timeout_id != 0) {
-					Source.remove (_timeout_id);
-					_timeout_id = 0;
-				}
-			} catch (Error sock) {
-				this.on_error (sock);
-			}
-			
-		}
-	    
-		public void connect (string address, string port) throws TcpSocketError
+		public async new void connect (string address, string port) throws Error
 		{
 			try {
 				if (_client != null)
@@ -125,8 +87,34 @@ namespace Snul
 				this._cancellable = new Cancellable ();
 
 				_timeout_id = Timeout.add_seconds (TimeoutValue, this.on_operation_timed_out);
-				_resolver = new Resolver();
-				_resolver.resolve_async (this._address, this._cancellable, this.on_address_resolved);
+				_resolver = Resolver.get_default();
+				unowned List<InetAddress> results = yield _resolver.lookup_by_name_async (this._address, this._cancellable);
+				
+				if (results != null) {
+					_inet_address = (InetAddress) results.nth_data (0);
+					var socket_address = new InetSocketAddress (_inet_address, (ushort) _port.to_int ());
+					_client = new SocketClient ();
+					_connection = yield _client.connect_async (socket_address, this._cancellable);
+
+					// connected. create a source for monitoring incoming data
+					this._cancellable = null;
+					_connection.get_socket().set_blocking (false);
+					_input = new DataInputStream (_connection.get_input_stream());
+					IOCondition conditions = IOCondition.IN | IOCondition.HUP | IOCondition.ERR | IOCondition.NVAL;
+					_in_channel = new IOChannel.unix_new (_connection.get_socket().get_fd());
+					_source_id = _in_channel.add_watch (conditions, this.socket_callback);
+				
+					//_source = _client.input_stream.socket.create_source (conditions, null);
+					//Extensions.source_set_callback (_source, (void*) socket_callback, this, null);
+					//_source.attach (null);
+					this.connected (_connection);
+					
+					if (_timeout_id != 0) {
+						Source.remove (_timeout_id);
+						_timeout_id = 0;
+					}
+				}
+				
 			} catch (GLib.Error err) {
 				this.on_error (err);
 				throw err;
@@ -148,7 +136,7 @@ namespace Snul
 			size_t bytes_written = 0;
 
 			try {
-                                _client.output_stream.write (buffer, buffer.len (), null);
+                                _connection.output_stream.write (buffer, buffer.len (), null);
 			} catch (Error err) {
 				warning ("error writing: %s", err.message);
                                 this.on_error (err);
@@ -165,17 +153,32 @@ namespace Snul
 
 		private void cleanup ()
 		{
-			Source.remove_by_user_data (this);
+			try {
+				
+				Source.remove_by_user_data (this);
 
-			if (_source != null) {
-				_source.destroy ();
-				_source = null;
-			}
+				if (_source_id != 0) {
+					Source.remove (_source_id);
+					_source_id = 0;
+				}
+			
+				if (_source != null) {
+					_source.destroy ();
+					_source = null;
+				}
 
-			if (_client != null) {
-                                _input = null;
-				_client.close ();
-				_client = null;
+				if (_connection != null) {
+					_input = null;
+					_in_channel = null;
+					_connection.close (null);
+					_connection = null;
+				}
+				if (_client != null) {
+					_client = null;
+				}
+			} catch (Error err) {
+				warning ("error cleanup: %s", err.message);
+                                this.on_error (err);
 			}
 		}
 
@@ -200,7 +203,7 @@ namespace Snul
 		}
 
 
-		private bool socket_callback (IOCondition condition, int fd)
+		private bool socket_callback (IOChannel source, IOCondition condition)
 		{
 			bool res = true;
 

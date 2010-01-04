@@ -1,6 +1,6 @@
 dnl Process this file with autoconf to produce a configure script.
 
-AC_INIT(tuntun, 0.3.1)
+AC_INIT(tuntun, 0.4.0)
 
 AM_INIT_AUTOMAKE(AC_PACKAGE_NAME, AC_PACKAGE_VERSION)
 AM_CONFIG_HEADER(config.h)
@@ -13,22 +13,9 @@ AC_HEADER_STDC
 
 GNOME_COMMON_INIT
 
-AC_ARG_VAR([PATCH], [path to Patch])
-AC_PATH_PROG([PATCH], [patch], [no])
-if test "$PATCH" = "no"; then
-	AC_MSG_ERROR([patch is required])
-fi
-
-AC_ARG_VAR([TAR], [path to Tar])
-AC_PATH_PROG([TAR], [tar], [no])
-if test "$TAR" = "no"; then
-	AC_MSG_ERROR([tar is required])
-fi
-
-VALA_PROG_VALAC([0.3.4])
+VALA_PROG_VALAC([0.7.9])
 
 IT_PROG_INTLTOOL([0.35.0])
-
 
 dnl ***************************************************************************
 dnl Internationalization
@@ -41,16 +28,12 @@ ALL_LINGUAS=""
 AM_GLIB_GNU_GETTEXT
 AM_GLIB_DEFINE_LOCALEDIR([GNOMELOCALEDIR])
 
-
 AM_PROG_LIBTOOL
 
 
-
-PKG_CHECK_MODULES(TUNTUN, [gtk+-2.0 >= 2.8 libglade-2.0 >= 2.6.0 libpanelapplet-2.0 >= 2.6 libnotify >= 0.4.4, gio-2.0 >= 2.16.0])
+PKG_CHECK_MODULES(TUNTUN, [gtk+-2.0 >= 2.8 libglade-2.0 >= 2.6.0 libpanelapplet-2.0 >= 2.6 libgnomeui-2.0 >= 2.22.0 libnotify >= 0.4.4 glib-2.0 >= 2.22.0 gio-2.0 >= 2.22.0])
 AC_SUBST(TUNTUN_CFLAGS)
 AC_SUBST(TUNTUN_LIBS)
-
-
 
 
 AC_OUTPUT([
