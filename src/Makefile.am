@@ -5,8 +5,7 @@ INCLUDES = \
 	-DPACKAGE_SRC_DIR=\""$(srcdir)"\" \
 	-DPACKAGE_DATA_DIR=\""$(datadir)"\" \
 	-DGETTEXT_PACKAGE=\""$(GETTEXT_PACKAGE)"\" \
-	-I ./gnio \
-	$(TUNTUN_CFLAGS)
+	-include $(CONFIG_HEADER) $(TUNTUN_CFLAGS)
 
 AM_CFLAGS =\
 	 -Wall\
@@ -29,14 +28,12 @@ tuntun_SOURCES = \
 	tuntun-tooltip.vala \
 	snul-gnio.vala
 
-tuntun_VALAFLAGS = -C --save-temps --vapidir ./gnio/vala --vapidir ../vapi --pkg libnotify --pkg config --pkg extensions --pkg libpanelapplet-2.0 --pkg libbonoboui-2.0 --pkg vte --pkg gnome-keyring-1 --pkg gnio
-
-tuntun.vala: libgnio.a
+tuntun_VALAFLAGS = -C --save-temps --vapidir ../vapi --pkg xml --pkg libnotify --pkg config --pkg extensions --pkg libpanelapplet-2.0 --pkg libbonoboui-2.0 --pkg vte --pkg gnome-keyring-1
 
 tuntun_LDFLAGS = $(PACKAGE_LIBS) \
 	-export-dynamic
 
-tuntun_LDADD = libgnio.a $(TUNTUN_LIBS)
+tuntun_LDADD = $(TUNTUN_LIBS)
 
 serverdir       = $(libdir)/bonobo/servers
 server_in_files = tuntun.server.in
@@ -51,21 +48,5 @@ $(server_in_files): $(server_files:.server.in=.server.in.in)
 EXTRA_DIST = $(server_in_files) \
 	tuntun.server.in.in
 
-CLEANFILES = $(server_in_files) $(server_DATA) libgnio.a
+CLEANFILES = $(server_in_files) $(server_DATA)
 
-clean-local:
-	rm -rf gnio
-
-include Makefile.vm
-
-BUILT_SOURCES += libgnio.a
-
-libgnio.a:
-	echo 'Extracting gnio tarball'
-	$(TAR) xf $(top_srcdir)/gnio-svn_11072008.tar.gz 
-	echo 'Patching gnio waf script'
-	$(PATCH) -p0 -i $(top_srcdir)/gnio.build.patch 
-	echo 'Compiling gnio lib'
-	cd $(builddir)/gnio; ./waf configure;
-	cd $(builddir)/gnio; ./waf build --target=gnio; 
-	cp $(builddir)/gnio/build/default/gnio/libgnio.a  .

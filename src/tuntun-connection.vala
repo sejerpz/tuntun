@@ -48,7 +48,7 @@ namespace Tuntun {
 
 		public Connection (ConnectionInfo info) 
 		{
-			this.info = info;
+			Object(info: info);
 		}
 		
 		public weak ConnectionInfo info 
@@ -90,7 +90,7 @@ namespace Tuntun {
 			}
 		}
 
-		private void notify (string property_name)
+		private new void notify (string property_name)
 		{
 			Extensions.notify_property_changed (this, property_name);
 		}
@@ -233,7 +233,7 @@ namespace Tuntun {
 				this.control_channel_data_sent (data);
 		}
 
-		public void connect ()
+		public new void connect ()
 		{
                         this.status = ConnectionStates.CONNECTING;
                         _client.send ("hold release\n");
