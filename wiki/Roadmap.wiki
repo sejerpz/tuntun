@@ -16,15 +16,16 @@
 
 == Version 0.3 ==
   * ~~Implement a summary tooltip with the current connection status~~
-  * ~~Drop [http://persbaglio.no-ip.org/?page_id=144 S.n.u.l.] and use directly GIO library~~
+  * ~~Drop [http://persbaglio.no-ip.org/?page_id=144 S.n.u.l.] and use directly GIO (GNIO) library~~
   * ~~Reconnect automatically to the openvpn daemon management interface on connection lost~~
   * ~~Debug and code cleanup~~
 
 == Version 0.4 ==
   * ~~Improve tuntun icon to report broken connection status~~
-  * Improve tooltip status info with more informations
+  * ~~use glib / gio 2.22 for networking~~
+  * ~~respect XDG config dir~~
   * Automatic connections configuration
   * Debug and code cleanup
 
 == Future ==
-  * Update to the new Panel Applet format when it will be ready (Gnome 2.24?)
+  * Update to the new Panel Applet format when it will be ready (Gnome 2.30?)
