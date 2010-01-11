@@ -1,5 +1,5 @@
-#summary The future of Tuntun.
 #labels Featured,Phase-QA
+~~#summary The future of Tuntun.
 
 == Version 0.1 ==
   * ~~Support all the functionality that [http://persbaglio.no-ip.org/?page_id=85 ovpnClient] has~~
@@ -24,6 +24,9 @@
   * ~~Improve tuntun icon to report broken connection status~~
   * ~~use glib / gio 2.22 for networking~~
   * ~~respect XDG config dir~~
+  * ~~Debug and code cleanup~~
+
+== Version 0.5 ==
   * Automatic connections configuration
   * Debug and code cleanup
 
