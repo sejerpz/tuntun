@@ -1,0 +1,15 @@
+# List of source files containing translatable strings.
+[type: gettext/glade]ui/tuntun.ui
+[type: gettext/glade]ui/tuntun-auth-dialog.ui
+src/tuntun.server.in.in
+src/tuntun-connection-info.vala
+src/tuntun-connection.vala
+src/tuntun-utils.vala
+src/tuntun-connections-dialog.vala
+src/tuntun-constants.vala
+src/tuntun.vala
+src/tuntun-connection-dialog.vala
+src/tuntun-log-window.vala
+src/tuntun-applet.vala
+src/tuntun-tooltip.vala
+src/tuntun-auth-dialog.vala

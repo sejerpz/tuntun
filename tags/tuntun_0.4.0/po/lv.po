@@ -1,0 +1,238 @@
+# Tuntun an OpenVPN management applet.
+# Copyright (C) 2008 Andrea Del Signore
+# This file is distributed under the same license as the Tuntun package.
+# Andrea Del Signore <sejerpz@tin.it>, 2008.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Tuntun 0.0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-07-27 20:55+0200\n"
+"PO-Revision-Date: 2008-07-28 17:26+0300\n"
+"Last-Translator: Ivars Strazdiņš <ivars.strazdins@gmail.com>\n"
+"Language-Team: Latvian <ivars.strazdins@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Latvian\n"
+"X-Poedit-Country: LATVIA\n"
+
+#: ../ui/tuntun.ui.h:1
+msgid "<b>Remove the selected connection?</b>"
+msgstr "<b>Aizvākt iezīmēto savienojumu?</b>"
+
+#: ../ui/tuntun.ui.h:2
+msgid "Command area"
+msgstr "Komandu logs"
+
+#: ../ui/tuntun.ui.h:3
+msgid "Connection properties"
+msgstr "Savienojuma īpašības"
+
+#: ../ui/tuntun.ui.h:4
+msgid "Connections"
+msgstr "Savienojumi"
+
+#: ../ui/tuntun.ui.h:5
+msgid "Host address"
+msgstr "OpenVPN pārvaldības datora adrese"
+
+#: ../ui/tuntun.ui.h:6
+msgid ""
+"If you choose 'remove' the selected \n"
+"connection will be permanently removed \n"
+"from the list of available connections."
+msgstr ""
+"Ja izvēlēsieties 'aizvākt' iezīmēto \n"
+"savienojumu, tas tiks pilnībā nodzēsts \n"
+"no pieejamo savienojumu saraksta."
+
+#: ../ui/tuntun.ui.h:9
+#: ../src/tuntun-connections-dialog.vala:102
+msgid "Name"
+msgstr "Savienojuma nosaukums"
+
+#: ../ui/tuntun.ui.h:10
+#: ../ui/tuntun-auth-dialog.ui.h:1
+msgid "Password"
+msgstr "Parole"
+
+#: ../ui/tuntun.ui.h:11
+#: ../src/tuntun-connections-dialog.vala:114
+msgid "Port"
+msgstr "Ports"
+
+#: ../ui/tuntun.ui.h:12
+#: ../ui/tuntun-auth-dialog.ui.h:2
+msgid "Save in the keyring"
+msgstr "Saglabāt paroļu saišķī"
+
+#: ../ui/tuntun.ui.h:13
+msgid "Send"
+msgstr "Nosūtīt"
+
+#: ../ui/tuntun.ui.h:14
+#: ../ui/tuntun-auth-dialog.ui.h:3
+msgid "Username"
+msgstr "Lietotājvārds"
+
+#: ../ui/tuntun.ui.h:15
+msgid "_Remove"
+msgstr "_Aizvākt"
+
+#: ../ui/tuntun.ui.h:16
+#: ../ui/tuntun-auth-dialog.ui.h:4
+msgid "gtk-cancel"
+msgstr "gtk-cancel"
+
+#: ../ui/tuntun.ui.h:17
+#: ../ui/tuntun-auth-dialog.ui.h:5
+msgid "gtk-ok"
+msgstr "gtk-ok"
+
+#: ../src/tuntun.server.in.in.h:1
+msgid "Tuntun an OpenVPN connection manager"
+msgstr "TunTun - OpenVPN savienojumu pārvaldnieks"
+
+#: ../src/tuntun-connection-info.vala:45
+#: ../src/tuntun-connection.vala:84
+#: ../src/tuntun-connection.vala:85
+#: ../src/tuntun-connections-dialog.vala:330
+msgid "none"
+msgstr "nekas"
+
+#: ../src/tuntun-connection.vala:223
+msgid "unknown"
+msgstr "nezināms"
+
+#: ../src/tuntun-connections-dialog.vala:94
+msgid "Quick connect"
+msgstr "Ātrais savienojums"
+
+#: ../src/tuntun-connections-dialog.vala:108
+msgid "Host"
+msgstr "Serveris"
+
+#: ../src/tuntun-connections-dialog.vala:120
+msgid "Status"
+msgstr "Statuss"
+
+#: ../src/tuntun-connections-dialog.vala:127
+msgid "Assigned IP"
+msgstr "Piešķirtā IP adrese"
+
+#: ../src/tuntun-connections-dialog.vala:297
+msgid "Error while saving config"
+msgstr "Kļūda, saglabājot konfigurāciju"
+
+#: ../src/tuntun-log-window.vala:119
+msgid "All"
+msgstr "Visi"
+
+#: ../src/tuntun-log-window.vala:174
+msgid "select a connection first..."
+msgstr "vispirms izvēlieties savienojumu..."
+
+#: ../src/tuntun-applet.vala:101
+#, c-format
+msgid "_Preferences..."
+msgstr "_Iestatījumi"
+
+#: ../src/tuntun-applet.vala:101
+msgid "_Show log..."
+msgstr "_Rādīt žurnāla failu"
+
+#: ../src/tuntun-applet.vala:101
+msgid "_About..."
+msgstr "P_ar..."
+
+#: ../src/tuntun-applet.vala:200
+msgid "Authentication failed"
+msgstr "Pieteikšanās neizdevās"
+
+#: ../src/tuntun-applet.vala:224
+#, c-format
+msgid ""
+"connection established\n"
+"assigned ip: %s"
+msgstr ""
+"nodibināts savienojums \n"
+"piešķirtā IP adrese: %s"
+
+#: ../src/tuntun-applet.vala:229
+msgid "connection closed"
+msgstr "atvienots"
+
+#: ../src/tuntun-applet.vala:351
+msgid "translator_credits"
+msgstr "Ivars Strazdiņš"
+
+#: ../src/tuntun-applet.vala:358
+msgid "TunTun VPN Connection manager"
+msgstr "TunTun VPN savienojumu pārvaldnieks"
+
+#: ../src/tuntun-applet.vala:361
+msgid "Homepage"
+msgstr "Mājas lapa"
+
+#: ../src/tuntun-applet.vala:362
+msgid ""
+"(c) 2008 Andrea Del Signore (sejerpz@tin.it).\n"
+"\n"
+" This program is licensed under the terms of the GNU\n"
+"\n"
+" General Public License and is provided with absolutely\n"
+"\n"
+" NO WARRANTY; see the file COPYING for details."
+msgstr ""
+"(c) 2008 Andrea Del Signore (sejerpz@tin.it).\n"
+"\n"
+" Šī programma licencēta ar GNU Vispārējo publisko\n"
+"\n"
+" licenci un ar noteikumu, ka netiek sniegtas NEKĀDAS\n"
+"\n"
+" GARANTIJAS; detalizētu informāciju skatīt COPYING failā."
+
+#: ../src/tuntun-tooltip.vala:37
+#, c-format
+msgid "Tuntun connections status"
+msgstr "Tuntun savienojumu statuss"
+
+#: ../src/tuntun-tooltip.vala:51
+#, c-format
+msgid "ip address: %s"
+msgstr "IP adrese: %s"
+
+#: ../src/tuntun-tooltip.vala:55
+#, c-format
+msgid "disconnected"
+msgstr "nav savienots"
+
+#: ../src/tuntun-auth-dialog.vala:102
+#, c-format
+msgid "Username and password for %s"
+msgstr "Lietotājvārds un parole %s"
+
+#: ../src/tuntun-auth-dialog.vala:108
+#, c-format
+msgid "Private key password for %s"
+msgstr "Privātās atslēgas parole %s"
+
+#: ../src/tuntun-auth-dialog.vala:227
+#: ../src/tuntun-auth-dialog.vala:233
+msgid "Keyring"
+msgstr "Paroļu saišķis"
+
+#: ../src/tuntun-auth-dialog.vala:227
+#, c-format
+msgid "Error deleting credentials for '%s'"
+msgstr "Kļūda, dzēšot akreditācijas datus '%s'"
+
+#: ../src/tuntun-auth-dialog.vala:233
+#, c-format
+msgid "Error saving credentials for '%s'"
+msgstr "Kļūda, saglabājot akreditācijas datus '%s'"
+
+#~ msgid "perSbaglio"
+#~ msgstr "perSbaglio"
+

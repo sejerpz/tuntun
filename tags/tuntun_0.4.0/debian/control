@@ -1,0 +1,22 @@
+Source: tuntun
+Section: unknown
+Priority: optional
+Maintainer: Andrea Del Signore <sejerpz@tin.it>
+Build-Depends: debhelper (>= 5), autotools-dev
+Standards-Version: 3.7.2
+
+Package: tuntun
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: GNOME Applet GUI for OpenVPN
+ Tuntun is a GNOME applet to control a list of
+ VPN connection through the OpenVPN daemon
+ management interface.
+ .
+ Main fautures are:
+   * Light 
+   * Well integrated within the GNOME environment
+     (GNOME Keyring and notifications)
+   * Support for Auth and Private-Key authetication
+     methods
+
