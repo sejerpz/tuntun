@@ -1,5 +1,11 @@
 2010-01-11  Andrea Del Signore  <sejerpz@tin.it>
 
+	*   debian/changelog:
+
+	updated version
+
+2010-01-11  Andrea Del Signore  <sejerpz@tin.it>
+
 	*   src/snul-gio.vala:
 	*   src/Makefile.am:
 	*   ChangeLog:
