@@ -26,7 +26,7 @@ tuntun_SOURCES = \
 	tuntun-log-window.vala \
 	tuntun-auth-dialog.vala \
 	tuntun-tooltip.vala \
-	snul-gnio.vala
+	snul-gio.vala
 
 tuntun_VALAFLAGS = -C --save-temps --vapidir ../vapi --pkg xml --pkg libnotify --pkg config --pkg extensions --pkg libpanelapplet-2.0 --pkg libbonoboui-2.0 --pkg vte --pkg gnome-keyring-1
 

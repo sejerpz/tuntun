@@ -88,7 +88,8 @@ namespace Snul
 
 				_timeout_id = Timeout.add_seconds (TimeoutValue, this.on_operation_timed_out);
 				_resolver = Resolver.get_default();
-				unowned List<InetAddress> results = yield _resolver.lookup_by_name_async (this._address, this._cancellable);
+
+				List<InetAddress> results = yield _resolver.lookup_by_name_async (this._address, this._cancellable);
 				
 				if (results != null) {
 					_inet_address = (InetAddress) results.nth_data (0);
@@ -136,7 +137,8 @@ namespace Snul
 			size_t bytes_written = 0;
 
 			try {
-                                _connection.output_stream.write (buffer, buffer.len (), null);
+				if (_connection != null && _connection.output_stream != null)
+	                                _connection.output_stream.write (buffer, buffer.len (), null);
 			} catch (Error err) {
 				warning ("error writing: %s", err.message);
                                 this.on_error (err);
