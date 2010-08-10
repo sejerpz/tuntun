@@ -23,8 +23,8 @@ namespace XmlUtils
 		public MarkupParseContext (MarkupParser parser, MarkupParseFlags _flags, void* user_data, GLib.DestroyNotify? user_data_dnotify);
 		public bool parse (string text, ssize_t text_len) throws MarkupError;
 		public bool end_parse () throws MarkupError;
-		public weak string get_element ();
-		public weak GLib.SList<string> get_element_stack ();
+		public unowned string get_element ();
+		public unowned GLib.SList<string> get_element_stack ();
 		public void get_position (out int line_number, out int char_number);
 		public void push (MarkupParser parser, void* user_data);
 		public void* pop ();

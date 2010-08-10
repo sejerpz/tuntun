@@ -104,10 +104,10 @@ namespace Tuntun {
 		public bool initialize ()
 		{
 			_client = new TcpClient ();
-			_client.connected += this.client_connected;
-			_client.data_received += this.client_data_received;
-			_client.disconnected += this.client_disconnected;
-			_client.error += this.client_error;
+			_client.connected.connect (this.client_connected);
+			_client.data_received.connect (this.client_data_received);
+			_client.disconnected.connect (this.client_disconnected);
+			_client.error.connect (this.client_error);
 
 			return control_channel_connect ();
 		}
@@ -119,7 +119,7 @@ namespace Tuntun {
 			try {
 
 				this.control_channel_status = ConnectionStates.CONNECTING;
-				_client.connect (_info.address, _info.port.to_string() );
+				_client.open_connection (_info.address, _info.port.to_string() );
 				return true;
 			} catch (Error err) {
 				warning ("Error initializiong connection %s", err.message);
@@ -131,7 +131,7 @@ namespace Tuntun {
 		public bool reinitialize ()
 		{
 			if (this.status == ConnectionStates.CONNECTED)
-				_client.disconnect ();
+				_client.close_connection ();
 
 			return initialize ();
 		}
@@ -157,7 +157,7 @@ namespace Tuntun {
 		{
 			_suspend_notifications = false;
 			//disconnect immediatly, if not everything explodes
-			sender.disconnect ();
+			sender.close_connection ();
 			this.control_channel_status = ConnectionStates.ERROR;
 			_status_requested = false;
 		}
@@ -233,13 +233,13 @@ namespace Tuntun {
 				this.control_channel_data_sent (data);
 		}
 
-		public new void connect ()
+		public void open_connection ()
 		{
                         this.status = ConnectionStates.CONNECTING;
                         _client.send ("hold release\n");
 		}
 
-		public void disconnect ()
+		public void close_connection ()
 		{
                         this.status = ConnectionStates.DISCONNECTING;
                         _client.send ("signal SIGHUP\n");

@@ -50,7 +50,7 @@ namespace Tuntun {
 			return Path.build_filename (Config.PACKAGE_DATA_DIR, "tuntun", "ui", id);
 		}
 
-		public static weak Gtk.Builder get_ui ()
+		public static unowned Gtk.Builder get_ui ()
 		{
                         if (ui == null)
 				initialize_gtk_builder ();

@@ -69,9 +69,9 @@ namespace Tuntun
 			assert (_window != null);
 
                         /* one time initialization */
-                        _window.delete_event += this.on_window_delete;
+                        _window.delete_event.connect (this.on_window_delete);
 
-			_treeview.get_selection().changed += this.on_treeview_selection_changed;
+			_treeview.get_selection().changed.connect (this.on_treeview_selection_changed);
 
 			/* connection status pixbufs */
 			_pixbufs = new Gdk.Pixbuf[3];
@@ -89,7 +89,7 @@ namespace Tuntun
                         selection.set_mode (SelectionMode.SINGLE);
                         /* list view columns */
                         renderer = new CellRendererToggle ();
-                        ((CellRendererToggle)renderer).toggled += this.on_double_click_connect_toggled;
+                        ((CellRendererToggle)renderer).toggled.connect (this.on_double_click_connect_toggled);
 
                         column = new TreeViewColumn.with_attributes (_("Quick connect"), 
 			    renderer, "active", Columns.DOUBLE_CLICK_CONNECT);
@@ -132,19 +132,19 @@ namespace Tuntun
                         /* buttons events */
                         var button = (Gtk.Button) builder.get_object ("button_connection_add");
 			assert (button != null);
-                        button.clicked += this.on_button_connection_add_clicked;
+                        button.clicked.connect (this.on_button_connection_add_clicked);
 
                         button_conn_remove = (Gtk.Button) builder.get_object ("button_connection_remove");
 			assert (button_conn_remove != null);
-                        button_conn_remove.clicked += this.on_button_connection_remove_clicked;
+                        button_conn_remove.clicked.connect (this.on_button_connection_remove_clicked);
 
                         button_conn_modify = (Gtk.Button) builder.get_object ("button_connection_modify");
 			assert (button_conn_modify != null);
-                        button_conn_modify.clicked += this.on_button_connection_modify_clicked;
+                        button_conn_modify.clicked.connect (this.on_button_connection_modify_clicked);
 
                         button = (Gtk.Button) builder.get_object ("button_close");
 			assert (button != null);
-                        button.clicked += this.on_button_close_clicked;
+                        button.clicked.connect (this.on_button_close_clicked);
 
                         /* initialize connection list view */
                         _store = new ListStore (Columns.COUNT, 
@@ -160,8 +160,8 @@ namespace Tuntun
                                 store_add_item (connection);
                         }
 
-                        _tuntun.connections.connection_added += this.on_connection_added;
-                        _tuntun.connections.connection_removed += this.on_connection_removed;
+                        _tuntun.connections.connection_added.connect (this.on_connection_added);
+                        _tuntun.connections.connection_removed.connect (this.on_connection_removed);
 		}
 
                 private void on_double_click_connect_toggled (Gtk.CellRendererToggle cell_renderer, string path)
@@ -179,22 +179,22 @@ namespace Tuntun
 
                 private void cleanup_and_close ()
                 {
-                        _window.delete_event -= this.on_window_delete;
+                        _window.delete_event.disconnect (this.on_window_delete);
                         _window.hide ();
 
                         var builder = Utils.get_ui ();
                         var button = (Gtk.Button) builder.get_object ("button_connection_add");
-                        button.clicked -= this.on_button_connection_add_clicked;
+                        button.clicked.disconnect (this.on_button_connection_add_clicked);
 
 
-                        button_conn_remove.clicked -= this.on_button_connection_remove_clicked;
-                        button_conn_modify.clicked -= this.on_button_connection_modify_clicked;
+                        button_conn_remove.clicked.disconnect (this.on_button_connection_remove_clicked);
+                        button_conn_modify.clicked.disconnect (this.on_button_connection_modify_clicked);
 
                         button = (Gtk.Button) builder.get_object ("button_close");
-                        button.clicked -= this.on_button_close_clicked;
+                        button.clicked.disconnect (this.on_button_close_clicked);
 
                         if (_treeview != null) {
-				_treeview.get_selection().changed -= this.on_treeview_selection_changed;
+				_treeview.get_selection().changed.disconnect (this.on_treeview_selection_changed);
                                 var column = _treeview.get_column (0);
                                 while (column != null) {
                                         _treeview.remove_column (column);
@@ -203,8 +203,8 @@ namespace Tuntun
                         }
                         this.closed ();
 
-                        _tuntun.connections.connection_added -= this.on_connection_added;
-                        _tuntun.connections.connection_removed -= this.on_connection_removed;
+                        _tuntun.connections.connection_added.disconnect (this.on_connection_added);
+                        _tuntun.connections.connection_removed.disconnect (this.on_connection_removed);
                 }
 
                 public ConnectionsDialog (Tuntun tuntun) 
@@ -237,7 +237,7 @@ namespace Tuntun
 			button_conn_remove.set_sensitive (sensitive);
 		}
 
-                private bool on_window_delete (Gtk.Window sender, Gdk.Event event)
+                private bool on_window_delete (Gtk.Widget sender, Gdk.Event event)
                 {
                         cleanup_and_close ();
                         return true;

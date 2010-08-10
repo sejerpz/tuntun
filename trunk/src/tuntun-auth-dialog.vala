@@ -40,7 +40,7 @@ namespace Tuntun
 	{
 		private Connection _connection = null;
 		private AuthenticationModes _mode = AuthenticationModes.USERNAME_PASSWORD;
-		private string _type = null;
+		private string _auth_type = null;
 		private weak Gtk.Entry _entry_user;
 		private weak Gtk.Entry _entry_pass;
 		private weak CheckButton _checkbutton_save_in_keyring;
@@ -49,17 +49,17 @@ namespace Tuntun
 
 		construct
 		{
-			_connection.authentication_failed += this.on_connection_authentication_failed;
+			_connection.authentication_failed.connect (this.on_connection_authentication_failed);
 		}
 
-		public AuthDialog (Connection connection, AuthenticationModes mode, string type) 
+		public AuthDialog (Connection connection, AuthenticationModes mode, string auth_type) 
 		{ 
-			GLib.Object(connection: connection, mode: mode, type: type);
+			GLib.Object(connection: connection, mode: mode, auth_type: auth_type);
 		}
 
 		public Connection connection { construct { _connection = value; } }
 		public AuthenticationModes mode { construct { _mode = value; } }
-		public new string type { construct { _type = value; } }
+		public new string auth_type { construct { _auth_type = value; } }
 
 		private void initialize_ui ()
 		{
@@ -77,10 +77,10 @@ namespace Tuntun
 			this.set_resizable (false);
 			var button = (Gtk.Button) builder.get_object ("button_auth_ok");
 			assert (button != null);
-			button.clicked += this.on_button_ok_clicked;
+			button.clicked.connect (this.on_button_ok_clicked);
 			button = (Gtk.Button) builder.get_object ("button_auth_cancel");
 			assert (button != null);
-			button.clicked += this.on_button_cancel_clicked;
+			button.clicked.connect (this.on_button_cancel_clicked);
 
 			_entry_user = (Gtk.Entry)  builder.get_object ("entry_username");
 			assert (_entry_user != null);
@@ -173,7 +173,7 @@ namespace Tuntun
 			}
 
 			if (!cancel) {
-				_connection.authenticate (_type, username, password);
+				_connection.authenticate (_auth_type, username, password);
 				if (_checkbutton_save_in_keyring.get_active ()) {
 					if (username != null)
 						save (username, password);
@@ -183,7 +183,7 @@ namespace Tuntun
 					this.destroy ();
 				}
 			} else {
-				_connection.cancel_authentication (_type, username);
+				_connection.cancel_authentication (_auth_type, username);
 			}
 		}
 
@@ -213,7 +213,7 @@ namespace Tuntun
 					username = null;
 					password = npd.password;
 				}
-				this._connection.authenticate (this._type, username, password);
+				this._connection.authenticate (this._auth_type, username, password);
 			} else {
 				this.authenticate_dialog ();
 			}

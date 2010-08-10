@@ -56,11 +56,11 @@ namespace Tuntun
 				Notify.init ("Tuntun");			
 
 				this._tuntun = new Tuntun ();
-				this._tuntun.connections.connection_status_changed += this.on_connection_status_changed;
-				this._tuntun.connections.connection_fatal_error += this.on_connection_fatal_error;
-				this._tuntun.connections.authentication_required += this.on_connection_authentication_required;
-				this._tuntun.connections.authentication_failed += this.on_connection_authentication_failed;
-				this._tuntun.connections.connection_activity += this.on_connection_activity;
+				this._tuntun.connections.connection_status_changed.connect (this.on_connection_status_changed);
+				this._tuntun.connections.connection_fatal_error.connect (this.on_connection_fatal_error);
+				this._tuntun.connections.authentication_required.connect (this.on_connection_authentication_required);
+				this._tuntun.connections.authentication_failed.connect (this.on_connection_authentication_failed);
+				this._tuntun.connections.connection_activity.connect (this.on_connection_activity);
 
 				_verbs = new BonoboUI.Verb[4];
 				_animation_frames = new Gdk.Pixbuf[3];
@@ -112,9 +112,9 @@ namespace Tuntun
 
 				this.setup_menu (_right_click_menu_xml.printf (_("_Preferences..."), _("_Show log..."), _("_About...")), _verbs, this);
 
-				this.button_press_event += this.on_button_press_release;
+				this.button_press_event.connect (this.on_button_press_release);
 				this.has_tooltip = true;
-				this.query_tooltip += this.on_query_tooltip;
+				this.query_tooltip.connect (this.on_query_tooltip);
 				this.show_all ();
 			} catch (Error err) {
 				Utils.display_error ("PanelApplet.create", err.message);
@@ -127,7 +127,7 @@ namespace Tuntun
                         return true;
                 }
 
-		private bool on_query_tooltip (PanelApplet applet, int x, int y, bool keyboard_tooltip, Gtk.Tooltip tooltip)
+		private bool on_query_tooltip (Gtk.Widget applet, int x, int y, bool keyboard_tooltip, Gtk.Tooltip tooltip)
 		{
 			tooltip.set_custom (new Tooltip (_tuntun.connections));
 			return true;
@@ -185,7 +185,7 @@ namespace Tuntun
 			_image.set_from_pixbuf (_images[icon]);
 		}
 
-                private bool on_button_press_release (PanelApplet sender, Gdk.EventButton event) 
+                private bool on_button_press_release (Gtk.Widget sender, Gdk.EventButton event) 
 		{
                         if (event.type == Gdk.EventType.BUTTON_PRESS && 
                             event.button == 1) {
@@ -204,9 +204,9 @@ namespace Tuntun
 			foreach (Connection conn in _tuntun.connections.items) {
 				if (conn.info.quick_connect == true) {
                                         if (conn.status == ConnectionStates.DISCONNECTED)
-                                                conn.connect ();
+                                                conn.open_connection ();
                                         else
-                                                conn.disconnect ();
+                                                conn.close_connection ();
 				}
 			}
 		}
@@ -318,14 +318,14 @@ namespace Tuntun
                                 }
 
                                 item.image = new Image.from_file (menu_image);
-                                item.activate += this.on_connection_menu_item_activated;
+                                item.activate.connect (this.on_connection_menu_item_activated);
                         }
 
                         popup_menu.show_all ();
                         popup_menu.popup (null, null, null, 0, Gtk.get_current_event_time ());
                 }
 
-                private void on_connection_menu_item_activated (Gtk.ImageMenuItem sender)
+                private void on_connection_menu_item_activated (Gtk.Widget sender)
                 {
                         weak Connection connection = null;
 
@@ -334,9 +334,9 @@ namespace Tuntun
 
                         return_if_fail (connection != null);
                         if (connection.status == ConnectionStates.CONNECTED)
-                                connection.disconnect ();
+                                connection.open_connection ();
                         else if (connection.status == ConnectionStates.DISCONNECTED)
-                                connection.connect ();
+                                connection.close_connection ();
                         
                 }
 
@@ -357,7 +357,7 @@ namespace Tuntun
 		{
 			if (_log == null) {
 				_log = new LogWindow (_tuntun);
-				_log.closed += this.on_log_window_closed;
+				_log.closed.connect (this.on_log_window_closed);
 			}
 			_log.show ();
 		}
@@ -366,20 +366,20 @@ namespace Tuntun
                 {
                         if (_settings == null) {
                                 _settings = new ConnectionsDialog (_tuntun);
-                                _settings.closed += this.on_settings_dialog_closed;
+                                _settings.closed.connect (this.on_settings_dialog_closed);
                         }
                         _settings.show ();
                 }
 
                 private void on_log_window_closed (LogWindow sender)
                 {
-                        _log.closed -= this.on_log_window_closed;
+                        _log.closed.disconnect (this.on_log_window_closed);
                         _log = null;
                 }
 
                 private void on_settings_dialog_closed (ConnectionsDialog sender)
                 {
-                        _settings.closed -= this.on_settings_dialog_closed;
+                        _settings.closed.connect (this.on_settings_dialog_closed);
                         _settings = null;
                 }
 

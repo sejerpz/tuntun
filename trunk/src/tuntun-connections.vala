@@ -161,10 +161,10 @@ namespace Tuntun
 			    (Callback)this.connection_notify_property_changed, this);
 			Signal.connect (connection, "notify::control-channel-status", 
 			    (Callback)this.connection_notify_property_changed, this);
-			connection.authentication_required += this.on_connection_authentication_required;
-			connection.authentication_failed += this.on_connection_authentication_failed;
-			connection.control_channel_fatal_error += this.on_connection_fatal_error;
-			connection.control_channel_data_received += this.on_connection_data_received;
+			connection.authentication_required.connect (this.on_connection_authentication_required);
+			connection.authentication_failed.connect (this.on_connection_authentication_failed);
+			connection.control_channel_fatal_error.connect (this.on_connection_fatal_error);
+			connection.control_channel_data_received.connect (this.on_connection_data_received);
 		}
 
 		public void remove (Connection connection)
@@ -172,10 +172,10 @@ namespace Tuntun
 			items.remove (connection);
 			SignalHandler.disconnect_by_func (connection, 
 			    (void *) this.connection_notify_property_changed, this);
-			connection.authentication_required -= this.on_connection_authentication_required;
-			connection.authentication_failed -= this.on_connection_authentication_failed;
-			connection.control_channel_fatal_error -= this.on_connection_fatal_error;
-			connection.control_channel_data_received -= this.on_connection_data_received;
+			connection.authentication_required.disconnect (this.on_connection_authentication_required);
+			connection.authentication_failed.disconnect (this.on_connection_authentication_failed);
+			connection.control_channel_fatal_error.disconnect (this.on_connection_fatal_error);
+			connection.control_channel_data_received.disconnect (this.on_connection_data_received);
                         on_connection_removed (connection);
 		}
 
