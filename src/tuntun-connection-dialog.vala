@@ -53,10 +53,10 @@ namespace Tuntun
 
                         var button = (Gtk.Button) builder.get_object ("button_connection_dialog_ok");
                         assert (button != null);
-                        button.clicked += this.on_button_connection_ok_clicked;
+                        button.clicked.connect (this.on_button_connection_ok_clicked);
                         button = (Gtk.Button) builder.get_object ("button_connection_dialog_cancel");
                         assert (button != null);
-                        button.clicked += this.on_button_connection_cancel_clicked;
+                        button.clicked.connect (this.on_button_connection_cancel_clicked);
 
                         _name = (Gtk.Entry) builder.get_object ("entry_connection_name");
                         assert (_name != null);
@@ -73,9 +73,9 @@ namespace Tuntun
                         var builder = Utils.get_ui ();
 
                         var button = (Gtk.Button) builder.get_object ("button_connection_dialog_ok");
-                        button.clicked -= this.on_button_connection_ok_clicked;
+                        button.clicked.disconnect (this.on_button_connection_ok_clicked);
                         button = (Gtk.Button) builder.get_object ("button_connection_dialog_cancel");
-                        button.clicked -= this.on_button_connection_cancel_clicked;
+                        button.clicked.disconnect (this.on_button_connection_cancel_clicked);
                 }
 
                 public ConnectionDialog (ConnectionInfo connection_info) 

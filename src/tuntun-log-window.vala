@@ -68,14 +68,14 @@ namespace Tuntun
                         _window = (Gtk.Window) builder.get_object ("window_log");
                         assert (_window != null);
                         /* one time initialization */
-                        _window.delete_event += this.on_window_delete;
+                        _window.delete_event.connect (this.on_window_delete);
 
                         _text_view = (Gtk.TextView) builder.get_object ("textview_buffer");
                         assert (_text_view != null);
                  
                         _button_send = (Gtk.Button) builder.get_object ("button_send");
                         assert (_button_send != null);
-                        _button_send.clicked += this.on_button_send_clicked;
+                        _button_send.clicked.disconnect (this.on_button_send_clicked);
 
                         _entry_send = (Gtk.Entry) builder.get_object ("entry_send");
                         assert (_entry_send != null);
@@ -123,8 +123,8 @@ namespace Tuntun
 				_store.set (iter, 
 				    ComboColumns.NAME, connection.info.name,
 				    ComboColumns.CONNECTION, connection);
-				connection.control_channel_data_received += this.on_connection_data_received;
-				connection.control_channel_data_sent += this.on_connection_data_sent;
+				connection.control_channel_data_received.connect (this.on_connection_data_received);
+				connection.control_channel_data_sent.connect (this.on_connection_data_sent);
                         }
 
 			_combo = (Gtk.ComboBox) builder.get_object ("combobox_connection");
@@ -134,30 +134,30 @@ namespace Tuntun
 			_combo.pack_start (renderer, true);
 			_combo.set_attributes(renderer, "text", 0);
 			_combo.set_model (_store);
-			_combo.changed += this.on_combo_active_connection_changed;
+			_combo.changed.connect (this.on_combo_active_connection_changed);
 			_store.get_iter_first (out iter);
 			_combo.set_active_iter (iter);
 		}
 
                 private void cleanup_and_close ()
                 {
-                        _window.delete_event -= this.on_window_delete;
+                        _window.delete_event.disconnect (this.on_window_delete);
                         _window.hide ();
-                        _button_send.clicked -= this.on_button_send_clicked;
+                        _button_send.clicked.disconnect (this.on_button_send_clicked);
                         TreeIter iter;
 			bool valid = _store.get_iter_first (out iter);
 			while (valid) {
 				Connection connection = null;
 				_store.get (iter, ComboColumns.CONNECTION, out connection);
 				if (connection != null) {
-					connection.control_channel_data_received -= this.on_connection_data_received;
-					connection.control_channel_data_sent -= this.on_connection_data_sent;
+					connection.control_channel_data_received.disconnect (this.on_connection_data_received);
+					connection.control_channel_data_sent.disconnect (this.on_connection_data_sent);
 				}
 				valid = _store.iter_next (ref iter);
                         }
 
 			_combo.set_model (null);
-			_combo.changed -= this.on_combo_active_connection_changed;
+			_combo.changed.disconnect (this.on_combo_active_connection_changed);
 			_combo.clear ();
 			_store = null;
 			_tag_table = null;
@@ -241,7 +241,7 @@ namespace Tuntun
 			text_buffer.delete_mark (mark);
 		}
 
-                private bool on_window_delete (Gtk.Window sender, Gdk.Event event)
+                private bool on_window_delete (Gtk.Widget sender, Gdk.Event event)
                 {
                         cleanup_and_close ();
                         return true;

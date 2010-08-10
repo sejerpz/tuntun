@@ -76,7 +76,7 @@ namespace Snul
 			cleanup ();
 		}
 
-		public async new void connect (string address, string port) throws Error
+		public async void open_connection (string address, string port) throws Error
 		{
 			try {
 				if (_client != null)
@@ -147,7 +147,7 @@ namespace Snul
 			return bytes_written;
 		}
 
-		public void disconnect ()
+		public void close_connection ()
 		{
 			cleanup ();
 			on_disconnected ();
@@ -223,7 +223,7 @@ namespace Snul
 							if (buffer != null) {
 								message.append_printf ("%s\n", buffer);
 							}
-						} catch (IOError err) {
+						} catch (Error err) {
                                                         if (err.code != 27) { //IOError.WOULD_BLOCK
                                                                 this.on_error (err);
                                                         }
@@ -235,22 +235,22 @@ namespace Snul
                                                 this.on_data_received (message.str, message.len);
                                         } else {
                                                 this.on_error (new TcpSocketError.SOCKET_BROKEN ("zero length data, socket broken? Closing connection."));
-                                                this.disconnect ();
+                                                this.close_connection ();
                                         }
 
 					break;
 				case IOCondition.HUP:
                                         this.on_error (new TcpSocketError.SOCKET_HUP ("Socket HUP"));
-					this.disconnect ();
+					this.close_connection ();
 					res = false;
 					break;
 				case IOCondition.ERR:
 					this.on_error (new TcpSocketError.IOCHANNEL_ERROR ("IOChannel error (ERR)"));
-					this.disconnect ();
+					this.close_connection ();
 					break;
 				case IOCondition.NVAL:
 					this.on_error (new TcpSocketError.IOCHANNEL_NVAL ("IOChannel invalid request (NAVL)"));
-					this.disconnect ();
+					this.close_connection ();
 					break;
 			}
 			return res;
