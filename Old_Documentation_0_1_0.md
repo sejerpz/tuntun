@@ -1,0 +1,36 @@
+_**This document refers to an old version (0.1.0) of the tuntun applet**_
+
+_Need help: I've made my best to translate this page from italian to english but I'm not a so good english speaker and writer. So if you find some mistakes or you feel that you can do something to correct my "engrish", drop me an email at: sejerpz at tin dot it. Your help will be appreciated. Andrea._
+
+### Preface ###
+
+_**Tuntun**_ is a GNOME applet written in Vala useful to manage Vpn connections. It's a GUI that can show the state of a VPN connection and open or close it through the **OpenVpn Management Interface**.
+
+### Usage ###
+
+After adding it to the GNOME panel, you can configure the predefined Open VPN connections by clicking with the right mouse button on the Tuntun icon and then selecting the item Properties from the popup menu:
+|![http://tuntun.googlecode.com/svn/wiki/images/docs/conn_manager.png](http://tuntun.googlecode.com/svn/wiki/images/docs/conn_manager.png)|
+|:----------------------------------------------------------------------------------------------------------------------------------------|
+You can add, remove a connection with the buttons _add, remove_ or modify its properties in a window like the following with the button _properties:_
+|![http://tuntun.googlecode.com/svn/wiki/images/docs/conn_prop.png](http://tuntun.googlecode.com/svn/wiki/images/docs/conn_prop.png)      |
+
+
+  * Name: connection's name
+  * Address: ip address or server name where OpenVPN is running (usually localhost)
+  * Port: port number where the server is listening, written in the connection config option '_management_'.
+
+You can simply open or close a connection by selecting it on the menu that will popup with a left clck on the Tuntun icon. A boubble window will appear whenever the connection state change.
+|![http://tuntun.googlecode.com/svn/wiki/images/docs/connecting.png](http://tuntun.googlecode.com/svn/wiki/images/docs/connecting.png)|
+|:------------------------------------------------------------------------------------------------------------------------------------|
+|![http://tuntun.googlecode.com/svn/wiki/images/docs/connection_established.png](http://tuntun.googlecode.com/svn/wiki/images/docs/connection_established.png)|
+
+Legend of the icons shown on the popup menu:
+  * ![http://tuntun.googlecode.com/svn/wiki/images/docs/connected.png](http://tuntun.googlecode.com/svn/wiki/images/docs/connected.png) connect to the server
+  * ![http://tuntun.googlecode.com/svn/wiki/images/docs/not_connected.png](http://tuntun.googlecode.com/svn/wiki/images/docs/not_connected.png) close the opened connection
+  * ![http://tuntun.googlecode.com/svn/wiki/images/docs/unknown.png](http://tuntun.googlecode.com/svn/wiki/images/docs/unknown.png) connection status unknown (the server running the Management Interface is unreachable, the corresponding menu item will be disabled).
+
+### Links ###
+
+  * _kovpn_: it's a project like ovpnClient, but more advanced and for KDE Desktop (http://www.enlighter.de/)
+  * _Network Manager_: it's a GNOME application and it has a module to control OpenVPN connection (http://www.gnome.org/projects/NetworkManager/)
+  * _Tango Project_: where I've taken the icons for Tuntun (http://tango.freedesktop.org/)
